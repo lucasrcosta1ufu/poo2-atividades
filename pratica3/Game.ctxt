@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Game
+comment1.params=
+comment1.target=Game()
+comment2.params=g
+comment2.target=void\ paint(java.awt.Graphics)
+comment3.params=game
+comment3.target=void\ jogar(Game)
+numComments=4

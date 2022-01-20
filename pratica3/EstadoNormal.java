@@ -32,7 +32,7 @@ public class EstadoNormal extends Estado
         }
     }
     
-    public void dano(){
-        this.perdeVida(10);
+    public void dano(int dano){
+        this.perdeVida(dano);
     }
 }

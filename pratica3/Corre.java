@@ -7,5 +7,5 @@
  */
 public interface Corre
 {
-    public void correr();
+    public int correr();
 }

@@ -7,7 +7,8 @@
  */
 public class CorreDevagar implements Corre
 {
-    public void correr(){
-        System.out.printf("Corre Devagar.\n");
+    private int velocidade = 5;
+    public int correr() {
+        return velocidade;
     }
 }

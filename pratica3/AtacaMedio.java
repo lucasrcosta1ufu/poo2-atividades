@@ -7,7 +7,8 @@
  */
 public class AtacaMedio implements Ataca
 {
-    public void atacar(){
-        System.out.printf("Ataque Medio.\n");
+    private int forca = 10;
+    public int atacar(){
+        return forca;
     }
 }

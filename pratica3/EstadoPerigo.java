@@ -32,7 +32,7 @@ public class EstadoPerigo extends Estado
         }
     }
     
-    public void dano(){
-        this.perdeVida(5);
+    public void dano(int dano){
+        this.perdeVida(dano);
     }
 }

@@ -1,12 +1,14 @@
 import java.util.Observer;
 import java.util.Observable;
 
-public class Robo extends Game implements Observer {
+public class Robo implements Observer {
     private RoboEstado vida;
     private int quantidade;
     private int x;
     private int y;
     private String nome; 
+    private Corre c;
+    private Ataca a;
     
     public Robo(int x, int y,String nome){
         this.x = x;
@@ -54,8 +56,8 @@ public class Robo extends Game implements Observer {
     
     public void setY(int y){this.y = y; }           
     
-    public void recebeAtaque(){
-        vida.dano();
+    public void recebeAtaque(int ataque) {
+        vida.dano(ataque);
     }
     
     public void recompensa(){
@@ -67,9 +69,9 @@ public class Robo extends Game implements Observer {
         Jogador jogador = (Jogador)subject;
         
         //se estiver em distancia de ataque
-        if ( ( (this.x - jogador.getX()) == 0) && ((this.y - jogador.getY()) == 0) ){
+        if ( ( Math.abs(this.x - jogador.getX()) == 0) && (Math.abs(this.y - jogador.getY()) == 0) ){
             System.out.println("Ataque feito por: "+ this.getNome());
-            jogador.recebeAtaque();
+            jogador.recebeAtaque(this.getA().atacar());
             System.out.println(" Personagem's LIFE: "+ jogador.getQuantidade());
             if (Math.random() < 0.5){
                 jogador.setPos(jogador.getX()+(int)(100*Math.random()), jogador.getY()-(int)(100*Math.random()));
@@ -97,9 +99,6 @@ public class Robo extends Game implements Observer {
     }
     
     // ------------------------------------------------ //
-    
-    private Corre c;
-    private Ataca a;
     
     public Corre getC(){
         return this.c;

@@ -55,7 +55,7 @@ public abstract class RoboEstado
     
     public abstract void setLimites();
     
-    public abstract void dano();
+    public abstract void dano(int dano);
     
     public abstract void verificaEstado();
     

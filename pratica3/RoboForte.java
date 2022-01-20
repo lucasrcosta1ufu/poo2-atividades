@@ -26,7 +26,7 @@ public class RoboForte extends RoboEstado
         }
     }
     
-    public void dano(){
-        this.perdeVida(15);
+    public void dano(int dano){
+        this.perdeVida(dano);
     }
 }

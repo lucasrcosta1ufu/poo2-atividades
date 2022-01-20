@@ -7,7 +7,8 @@
  */
 public class CorreRapido implements Corre
 {
-    public void correr(){
-        System.out.printf("Corre Rapido.\n");
+    private int velocidade = 15;
+    public int correr() {
+        return velocidade;
     }
 }

@@ -36,11 +36,11 @@ public class EstadoMorto extends Estado
     }
     
     public void morte(){
-        System.out.println("Game over!");
+        javax.swing.JOptionPane.showMessageDialog(null, "Voce ganhou!");
         System.exit(0);
     }
     
-    public void dano(){
+    public void dano(int dano){
         this.morte();
     }
 }

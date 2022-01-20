@@ -10,6 +10,8 @@ import java.util.ArrayList;
  */
 public class Jogador extends Observable
 {
+    private Corre c;
+    private Ataca a;
     private Estado vida;
     private int quantidade;   
     
@@ -36,16 +38,14 @@ public class Jogador extends Observable
         this.quantidade = quantidade;
     }
     
-    public void recebeAtaque(){
-        vida.dano();
+    public void recebeAtaque(int ataque) {
+        vida.dano(ataque);
     }
     
     public void recompensa(){
         vida.ganhaVida();
     }
      
-    private Corre c;
-    private Ataca a;
     
     public Corre getC(){
         return this.c;
@@ -111,14 +111,14 @@ public class Jogador extends Observable
         //se estiver em distancia de ataque
         int numRobos = robos.size();
         for(int i = 0; i <= numRobos; i ++){
-            if ( ( (this.getX() - robos.get(i).getX()) < 2) && ((this.getY() - robos.get(i).getY()) < 2) ){
+            if ( ( Math.abs(this.getX() - robos.get(i).getX()) == 0) && (Math.abs(this.getY() - robos.get(i).getY()) == 0) ){
                 robos.get(i).getVida().verificaEstado();
                 if(robos.get(i).getVida() instanceof RoboMorto){
                     System.out.println("Game is over to "+ robos.get(i).getNome());
                     this.deleteObserver(robos.get(i));
                     robos.remove(i);
                 }else{
-                    robos.get(i).recebeAtaque();
+                    robos.get(i).recebeAtaque(this.getA().atacar());
                     System.out.println(robos.get(i).getNome() + "'s LIFE: " + robos.get(i).getQuantidade());
                     if (Math.random() < 0.5){
                         robos.get(i).setPos(robos.get(i).getX()+(int)(100*Math.random()), robos.get(i).getY()-(int)(100*Math.random()));

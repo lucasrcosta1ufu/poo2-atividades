@@ -26,7 +26,7 @@ public class RoboNormal extends RoboEstado
         }
     }
     
-    public void dano(){
-        this.perdeVida(10);
+    public void dano(int dano){
+        this.perdeVida(dano);
     }
 }

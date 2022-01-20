@@ -7,5 +7,5 @@
  */
 public interface Ataca
 {
-    public void atacar();
+    public int atacar();
 }

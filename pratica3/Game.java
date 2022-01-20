@@ -34,16 +34,16 @@ public class Game extends JPanel {
             //System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
 
             if (e.getKeyCode() == KeyEvent.VK_LEFT)
-               jogador.setX(jogador.getX()-10);
+               jogador.setX(jogador.getX()-jogador.getC().correr());
                
             if (e.getKeyCode() == KeyEvent.VK_RIGHT)
-               jogador.setX(jogador.getX()+10);
+               jogador.setX(jogador.getX()+jogador.getC().correr());
                
             if (e.getKeyCode() == KeyEvent.VK_UP)
-                jogador.setY(jogador.getY()-10);
+                jogador.setY(jogador.getY()-jogador.getC().correr());
             
             if (e.getKeyCode() == KeyEvent.VK_DOWN)
-               jogador.setY(jogador.getY()+10);    
+               jogador.setY(jogador.getY()+jogador.getC().correr());    
                
             if (e.getKeyCode() == KeyEvent.VK_SPACE)
                jogador.enviaAtaque(robos);  
@@ -65,15 +65,6 @@ public class Game extends JPanel {
 
         //g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        g2d.setColor(Color.GREEN);        
-        g2d.fillOval(r1.getX(), r1.getY(), 20, 20);
-
-        g2d.setColor(Color.RED);                
-        g2d.fillOval(r2.getX(), r2.getY(), 20, 20);
-
-        g2d.setColor(Color.BLACK);        
-        g2d.fillOval(r3.getX(), r3.getY(), 20, 20);
-
         g2d.setColor(Color.BLUE);                        
         g2d.fillOval(jogador.getX(), jogador.getY(), 20, 20);
         
@@ -84,39 +75,67 @@ public class Game extends JPanel {
         g2d.setColor(Color.BLUE);
         g2d.setFont(new Font("Serif", Font.BOLD, 20));
         //g2d.drawString(jogador.getQuantidade(), 0 ,0);
-        g2d.drawString("Vida Jogador", 853 ,21);
+        g2d.drawString(getPorcentagemVida(jogador, "Jogador:"), 856 ,21);
+        
+        if (robos.size() == 0) {
+            JOptionPane.showMessageDialog(null, "Voce ganhou!");
+            System.exit(0);
+        }
+        
         // ------------- //
+        if (robos.size() >= 1) {
+            g2d.setColor(Color.GREEN);        
+            g2d.fillOval(robos.get(0).getX(), robos.get(0).getY(), 20, 20);
+            
+            // --- Robo 1 --- //
+            g2d.setColor(Color.WHITE); 
+            g2d.fillRect(850, 32, 140, 26);
         
-        // --- Robo 1 --- //
-        g2d.setColor(Color.WHITE); 
-        g2d.fillRect(850, 32, 140, 26);
+            g2d.setColor(Color.GREEN);
+            g2d.setFont(new Font("Serif", Font.BOLD, 20));
+            g2d.drawString(getPorcentagemVida(robos.get(0), "Robo 1:"),  856 ,51);
+        }
         
-        g2d.setColor(Color.GREEN);
-        g2d.setFont(new Font("Serif", Font.BOLD, 20));
-        g2d.drawString("Vida Robo 1", 856 ,51);
         // ------------- //
+        if (robos.size() >= 2) {
+            g2d.setColor(Color.RED);                
+            g2d.fillOval(robos.get(1).getX(), robos.get(1).getY(), 20, 20);
+            
+            // --- Robo 2 --- //
+            g2d.setColor(Color.WHITE); 
+            g2d.fillRect(850, 62, 140, 26);
+            
+            g2d.setColor(Color.RED);
+            g2d.setFont(new Font("Serif", Font.BOLD, 20));
+            g2d.drawString(getPorcentagemVida(robos.get(1), "Robo 2:"), 856 ,81);
+        }
         
-        // --- Robo 2 --- //
-        g2d.setColor(Color.WHITE); 
-        g2d.fillRect(850, 62, 140, 26);
-        
-        g2d.setColor(Color.RED);
-        g2d.setFont(new Font("Serif", Font.BOLD, 20));
-        g2d.drawString("Vida Robo 2", 856 ,81);
         // ------------- //
-        
-        // --- Robo 3 --- //
-        g2d.setColor(Color.WHITE); 
-        g2d.fillRect(850, 92, 140, 26);
-        
-        g2d.setColor(Color.BLACK);
-        g2d.setFont(new Font("Serif", Font.BOLD, 20));
-        //g2d.drawString(jogador.getQuantidade(), 0 ,0);
-        g2d.drawString("Vida Robo 3", 856 ,111);
-        // ------------- //
+        if (robos.size() == 3) {
+            g2d.setColor(Color.BLACK);        
+            g2d.fillOval(robos.get(2).getX(), robos.get(2).getY(), 20, 20);
+            
+            // --- Robo 3 --- //
+            g2d.setColor(Color.WHITE); 
+            g2d.fillRect(850, 92, 140, 26);
+            
+            g2d.setColor(Color.BLACK);
+            g2d.setFont(new Font("Serif", Font.BOLD, 20));
+            //g2d.drawString(jogador.getQuantidade(), 0 ,0);
+            g2d.drawString(getPorcentagemVida(robos.get(2), "Robo 3:"), 856 ,111);
+            // ------------- //
+        }
         
     }
 
+    public String getPorcentagemVida(Jogador jogador, String preffix) {
+        return String.format("%s %d", preffix, jogador.getQuantidade()); 
+    }
+    
+    public String getPorcentagemVida(Robo robo, String preffix) {
+        return String.format("%s %d", preffix, robo.getQuantidade()); 
+    }
+    
     public void jogar(Game game) throws InterruptedException {
         int x = 999;
         int y = 571;
@@ -171,9 +190,9 @@ public class Game extends JPanel {
         robos.add(r2);
         robos.add(r3);
         
-        jogador.addObserver(r1);
-        jogador.addObserver(r2);
-        jogador.addObserver(r3);         
+        jogador.addObserver(robos.get(0));
+        jogador.addObserver(robos.get(1));
+        jogador.addObserver(robos.get(2));
 
         
         while (true) {

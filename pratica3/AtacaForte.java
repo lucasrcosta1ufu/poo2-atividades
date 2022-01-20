@@ -7,7 +7,8 @@
  */
 public class AtacaForte implements Ataca
 {
-    public void atacar(){
-        System.out.printf("Ataque Forte.\n");
+    private int forca = 15;
+    public int atacar(){
+        return forca;
     }
 }

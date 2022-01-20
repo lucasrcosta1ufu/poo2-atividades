@@ -7,7 +7,8 @@
  */
 public class AtacaFraco implements Ataca
 {
-    public void atacar(){
-        System.out.printf("Ataque Fraco.\n");
+    private int forca = 5;
+    public int atacar(){
+        return forca;
     }
 }

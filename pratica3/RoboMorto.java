@@ -35,7 +35,7 @@ public class RoboMorto extends RoboEstado
         //System.exit(0);
     }
     
-    public void dano(){
+    public void dano(int dano){
         this.morte();
     }
 }

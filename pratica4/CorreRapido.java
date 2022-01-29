@@ -11,4 +11,6 @@ public class CorreRapido implements Corre
     public int correr() {
         return velocidade;
     }
+    
+    
 }

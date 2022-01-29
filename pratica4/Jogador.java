@@ -17,11 +17,17 @@ public class Jogador extends Observable
     private Escudo escudo;
     private String nome;
     private int x = 0;
-    private int y = 0;    
+    private int y = 0; 
+    private int maxX,maxY;   
+    private int tamX, tamY;
     
-    public Jogador(int x, int y){
+    public Jogador(int x, int y, int maxX, int maxY){
         this.x = x;
         this.y = y;
+        this.maxX = maxX;
+        this.maxY = maxY;
+        this.tamX = tamX;
+        this.tamY = tamY;
         vida = new EstadoNormal(this);
         setQuantidade(70);
     }
@@ -138,7 +144,7 @@ public class Jogador extends Observable
                //se precisa andar para tras
                if (robos.get(i).getY() > this.y) this.y = this.y+(int)(5*Math.random());
                else this.y = this.y-(int)(5*Math.random());
-         
+                       
             }
             
             if (robos.get(i).getX() < 0) robos.get(i).setX(100);
@@ -157,6 +163,35 @@ public class Jogador extends Observable
     public String toString(){
         return this.nome;
     }    
+    
+    
+    public void moveToUp() {
+        if(this.y - this.getC().correr() >= 0)
+            this.setY(this.getY()-this.getC().correr());
+        else
+            this.y = 0;
+    }
+    
+    public void moveToDown() {
+        if(this.y + this.getC().correr() <= this.maxY)
+            this.setY(this.getY()+this.getC().correr());  
+        else
+            this.y = this.maxY;
+    }
+    
+    public void moveToLeft() {
+        if(this.x - this.getC().correr() >= 0)
+            this.setX(this.getX()-this.getC().correr());
+        else
+            this.x = 0;
+    }
+    
+    public void moveToRight() {
+        if(this.x + this.getC().correr() <= this.maxX)
+            this.setX(this.getX()+this.getC().correr());
+        else
+            this.x = this.maxX;
+    }
     
     
     

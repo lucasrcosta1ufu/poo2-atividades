@@ -48,16 +48,16 @@ public class Game extends JPanel {
             //System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
 
             if (e.getKeyCode() == KeyEvent.VK_LEFT)
-                jogador.setX(jogador.getX()-jogador.getC().correr());
+                jogador.moveToLeft();
                
             if (e.getKeyCode() == KeyEvent.VK_RIGHT)
-                jogador.setX(jogador.getX()+jogador.getC().correr());
+                jogador.moveToRight();
                
             if (e.getKeyCode() == KeyEvent.VK_UP)
-                jogador.setY(jogador.getY()-jogador.getC().correr());
+                jogador.moveToUp();
             
             if (e.getKeyCode() == KeyEvent.VK_DOWN)
-                jogador.setY(jogador.getY()+jogador.getC().correr());    
+                jogador.moveToDown(); 
                
             if (e.getKeyCode() == KeyEvent.VK_SPACE)
                 jogador.enviaAtaque(robos); 
@@ -98,10 +98,7 @@ public class Game extends JPanel {
         //g2d.drawString(jogador.getQuantidade(), 0 ,0);
         g2d.drawString(getPorcentagemVida(jogador, "Jogador:"), 856 ,21);
         
-        if (robos.size() == 0) {
-            JOptionPane.showMessageDialog(null, "Voce ganhou!");
-            System.exit(0);
-        }
+        
         
         // ------------- //
         if (robos.size() >= 1) {
@@ -205,10 +202,10 @@ public class Game extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
         
         robos = new ArrayList<Robo>();      
-        r1 = new Robo(10,450,"Robo 1");
-        r2 = new Robo(400,20,"Robo 2");
-        r3 = new Robo(50,50,"Robo 3");
-        jogador = new Jogador(100,400);
+        r1 = new Robo(200,400, width, height,"Robo 1");
+        r2 = new Robo(400,10, width, height,"Robo 2");
+        r3 = new Robo(150,50, width, height,"Robo 3");
+        jogador = new Jogador(50,400, width, height);
         
         robos.add(r1);
         robos.add(r2);
@@ -235,10 +232,15 @@ public class Game extends JPanel {
         
         
         while (true) {
+            if (robos.size() == 0) {
+                JOptionPane.showMessageDialog(null, "Voce ganhou!");
+                break;
+            }
             jogador.show();
             game.repaint();
             Thread.sleep(50);
         }
+        System.exit(0);
     }
     
     private void inputImage(){

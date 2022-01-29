@@ -9,10 +9,13 @@ public class Robo implements Observer {
     private String nome; 
     private Corre c;
     private Ataca a;
+    private int maxX,maxY;
     
-    public Robo(int x, int y,String nome){
+    public Robo(int x, int y, int maxX, int maxY, String nome){
         this.x = x;
         this.y = y;
+        this.maxX = maxX;
+        this.maxY = maxY;
         this.nome = nome;
         vida = new RoboNormal(this);
         setQuantidade(70);

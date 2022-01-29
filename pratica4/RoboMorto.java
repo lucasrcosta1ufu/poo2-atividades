@@ -30,7 +30,8 @@ public class RoboMorto extends RoboEstado
         this.morte();
     }
     
-    public void morte(){     
+    public void morte(){  
+        this.morte();
         //javax.swing.JOptionPane.showMessageDialog(null, "You win :)");
         //System.exit(0);
     }

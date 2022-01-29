@@ -115,15 +115,15 @@ public class Jogador extends Observable
     
     // ------------------------------------------------------- //
           
-    public void enviaAtaque(ArrayList<Robo> robos){
-        //se estiver em distancia de ataque
-        int numRobos = robos.size();
-        for(int i = 0; i <= numRobos; i ++){
-            if ( ( Math.abs(this.getX() - robos.get(i).getX()) <= 10) && (Math.abs(this.getY() - robos.get(i).getY()) <= 10) ){
+    public synchronized void enviaAtaque(ArrayList<Robo> robos){
+        //se estiver em distancia de ataque     
+        for(int i = 0; i < robos.size(); i++){
+            if ((Math.abs(this.getX() - robos.get(i).getX()) <= 10) && (Math.abs(this.getY() - robos.get(i).getY()) <= 10) ){
                 robos.get(i).getVida().verificaEstado();
-                if(robos.get(i).getVida() instanceof RoboMorto){
+                if (robos.get(i).getVida() instanceof RoboMorto){
                     this.deleteObserver(robos.get(i));
                     robos.remove(i);
+                    continue;
                 }else{
                     robos.get(i).recebeAtaque(this.getA().atacar());
                     if (Math.random() < 0.5){

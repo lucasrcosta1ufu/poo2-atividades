@@ -1,5 +1,6 @@
 import java.util.Observer;
 import java.util.Observable;
+import java.awt.Color;
 
 public class Robo implements Observer {
     private RoboEstado vida;
@@ -9,11 +10,16 @@ public class Robo implements Observer {
     private String nome; 
     private Corre c;
     private Ataca a;
+    private int maxX,maxY;
+    private Color cor;
     
-    public Robo(int x, int y,String nome){
+    public Robo(int x, int y, int maxX, int maxY, String nome, Color cor){
         this.x = x;
         this.y = y;
+        this.maxX = maxX;
+        this.maxY = maxY;
         this.nome = nome;
+        this.cor = cor;
         vida = new RoboNormal(this);
         setQuantidade(70);
     }
@@ -48,13 +54,29 @@ public class Robo implements Observer {
         this.nome = nome;
     }
     
-    public int getX() {return this.x;}
+    public int getX() {
+        return this.x;
+    }
     
-    public int getY() {return this.y;}    
+    public int getY() {
+        return this.y;
+    }    
 
-    public void setX(int x){this.x = x; }           
+    public void setX(int x){
+        this.x = x; 
+    }           
     
-    public void setY(int y){this.y = y; }           
+    public void setY(int y){
+        this.y = y; 
+    }      
+    
+    public void setCor(Color cor){
+        this.cor = cor;
+    }
+    
+    public Color getCor(){
+        return this.cor;
+    }
     
     public void recebeAtaque(int ataque) {
         vida.dano(ataque);

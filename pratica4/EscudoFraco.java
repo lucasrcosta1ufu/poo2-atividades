@@ -1,6 +1,5 @@
 
 import java.awt.image.BufferedImage;
-import java.io.InputStream;
 
 /**
  * Write a description of class EscudoFraco here.

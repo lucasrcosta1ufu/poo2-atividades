@@ -2,6 +2,7 @@ import java.util.Random;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
+import javax.imageio.ImageIO;
 
 /**
  * Abstract class Escudo - write a description of the class here

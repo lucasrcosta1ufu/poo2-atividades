@@ -223,11 +223,11 @@ public class Game extends JPanel {
         jogador.addObserver(robos.get(1));
         jogador.addObserver(robos.get(2));
 
-        eFraco = new EscudoFraco(escudoFraco);
+        eFraco = new EscudoFraco();
         eFraco.setRandomicPosition(width, height);
-        eMedio = new EscudoMedio(escudoMedio);
+        eMedio = new EscudoMedio();
         eMedio.setRandomicPosition(width, height);
-        eForte = new EscudoForte(escudoForte);
+        eForte = new EscudoForte();
         eForte.setRandomicPosition(width, height);
 
         escudos.add(eFraco);

@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
  */
 public class EscudoMedio extends Escudo
 {
-    public EscudoMedio (BufferedImage image) {
+    public EscudoMedio () {
         super("./res/escudoMedio.png", 3);
     }
 }

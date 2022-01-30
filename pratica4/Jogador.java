@@ -92,7 +92,11 @@ public class Jogador extends Observable {
     }
 
     public void addEscudo(Escudo escudo) {
-        this.escudo.setNext(escudo);
+        if (this.escudo != null) {
+            this.escudo.setNext(escudo);
+        } else {
+            this.setEscudo(escudo);  
+        }
     }
 
     public void corrida() {
@@ -189,8 +193,7 @@ public class Jogador extends Observable {
             	(Math.abs(this.getX() - escudos.get(i).getX()) <= 2) &&
             	(Math.abs(this.getY() - escudos.get(i).getY()) <= 2)
             ) {
-                this.setEscudo(escudos.get(i));
-                //this.addEscudo(escudos.get(i));
+                this.addEscudo(escudos.get(i));
                 escudos.remove(escudos.get(i));
             }
         }

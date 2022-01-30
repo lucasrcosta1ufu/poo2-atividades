@@ -16,20 +16,34 @@ public abstract class Escudo
     private Escudo next;
     private int x, y;
     private Color cor;
-    private InputStream weakShield;
+    private InputStream shield;
     private BufferedImage image;
     
     public Escudo() {}
     
     public Escudo(String path) {
-        weakShield = getClass().getResourceAsStream(path);
-        this.image = ImageIO.read(weakShield);
+        shield = getClass().getResourceAsStream(path);
+        try
+        {
+            this.image = ImageIO.read(shield);
+        }
+        catch (java.io.IOException ioe)
+        {
+            ioe.printStackTrace();
+        }
         
     }
     
     public Escudo(String path, int defesa) {
-        weakShield = getClass().getResourceAsStream(path);
-        this.image = ImageIO.read(weakShield);
+        shield = getClass().getResourceAsStream(path);
+        try
+        {
+            this.image = ImageIO.read(shield);
+        }
+        catch (java.io.IOException ioe)
+        {
+            ioe.printStackTrace();
+        }
         this.defesa = defesa;
         
     }

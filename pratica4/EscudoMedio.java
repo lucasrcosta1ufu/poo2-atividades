@@ -1,4 +1,5 @@
 
+import java.awt.image.BufferedImage;
 /**
  * Write a description of class EscudoMedio here.
  *
@@ -7,7 +8,8 @@
  */
 public class EscudoMedio extends Escudo
 {
-    public EscudoMedio () {
+    public EscudoMedio (BufferedImage image) {
+        super(image);
         super.setDefesa(3);
     }
 }

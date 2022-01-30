@@ -1,5 +1,6 @@
 import java.util.Random;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 
 /**
  * Abstract class Escudo - write a description of the class here
@@ -13,6 +14,12 @@ public abstract class Escudo
     private Escudo next;
     private int x, y;
     private Color cor;
+    private BufferedImage image;
+    
+    public Escudo(BufferedImage image) {
+        this.image = image;
+        
+    }
      
     public void setDefesa(int defesa) {
         this.defesa = defesa;
@@ -52,6 +59,14 @@ public abstract class Escudo
     
     public Color getCor() {
         return this.cor;
+    }
+    
+    public void setImage(BufferedImage image) {
+        this.image = image;
+    }
+    
+    public BufferedImage getImage() {
+        return this.image;
     }
     
     public int processaAtaque(int ataque){

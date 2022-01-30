@@ -1,4 +1,7 @@
 
+import java.awt.image.BufferedImage;
+import java.io.InputStream;
+
 /**
  * Write a description of class EscudoFraco here.
  *
@@ -7,7 +10,8 @@
  */
 public class EscudoFraco extends Escudo
 {
-    public EscudoFraco() {
+    public EscudoFraco (BufferedImage image) {
+        super(image);
         super.setDefesa(1);
     }
 }

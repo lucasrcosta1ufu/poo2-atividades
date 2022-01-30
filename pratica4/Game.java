@@ -26,7 +26,7 @@ public class Game extends JPanel {
     private ArrayList<Escudo> escudos;
     private Font EnemyStatusFont = new Font("Serif", Font.BOLD, 20);
 
-    private BufferedImage shield, character, enemy1, enemy2, enemy3;
+    private BufferedImage escudoFraco, escudoMedio, escudoForte, character, enemy1, enemy2, enemy3;
 
     public Game() {
         KeyListener listener = new MyKeyListener();
@@ -93,7 +93,7 @@ public class Game extends JPanel {
 
         escudos.forEach((Escudo escudo) -> {
             // g2d.fillOval(((Escudo) escudo).getX(), ((Escudo) escudo).getY(), 30, 30);
-            g2d.drawImage(shield, ((Escudo) escudo).getX(), ((Escudo) escudo).getY(), 30, 30, null);
+            g2d.drawImage(escudo.getImage(), ((Escudo) escudo).getX(), ((Escudo) escudo).getY(), 30, 30, null);
         });
 
         // g2d.drawString(jogador.getQuantidade(), 0 ,0);
@@ -132,7 +132,7 @@ public class Game extends JPanel {
         g2d.setColor(Color.WHITE);
         g2d.fillRect(posX,posY, 140, 26);
 
-        g2d.setColor(Color.BLUE);
+        g2d.setColor(Color.RED);
         g2d.setFont(EnemyStatusFont);
     }
 
@@ -146,6 +146,10 @@ public class Game extends JPanel {
 
         g2d.setColor(robo.getCor());
         g2d.setFont(EnemyStatusFont);
+    }
+    
+    public void drawEscudo(Graphics2D g2d, Robo robo, int posX, int posY){
+        
     }
 
     public String getPorcentagemVida(Jogador jogador, String preffix) {
@@ -206,9 +210,9 @@ public class Game extends JPanel {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        r1 = new Robo(200, 400, width, height, "Robo 1", Color.ORANGE, enemy1);
+        r1 = new Robo(200, 400, width, height, "Robo 1", Color.BLUE, enemy1);
         r2 = new Robo(400, 10, width, height, "Robo 2", Color.GREEN, enemy2);
-        r3 = new Robo(150, 50, width, height, "Robo 3", Color.RED, enemy3);
+        r3 = new Robo(150, 50, width, height, "Robo 3", Color.ORANGE, enemy3);
         jogador = new Jogador(50, 400, width, height, character);
 
         robos.add(r1);
@@ -219,15 +223,12 @@ public class Game extends JPanel {
         jogador.addObserver(robos.get(1));
         jogador.addObserver(robos.get(2));
 
-        eFraco = new EscudoFraco();
+        eFraco = new EscudoFraco(escudoFraco);
         eFraco.setRandomicPosition(width, height);
-        eFraco.setCor(Color.YELLOW);
-        eMedio = new EscudoMedio();
+        eMedio = new EscudoMedio(escudoMedio);
         eMedio.setRandomicPosition(width, height);
-        eMedio.setCor(Color.PINK);
-        eForte = new EscudoForte();
+        eForte = new EscudoForte(escudoForte);
         eForte.setRandomicPosition(width, height);
-        eForte.setCor(Color.ORANGE);
 
         escudos.add(eFraco);
         escudos.add(eMedio);
@@ -247,13 +248,17 @@ public class Game extends JPanel {
     }
 
     private void inputImage() {
-        InputStream is = getClass().getResourceAsStream("./res/escudoFraco.png");
+        InputStream weakShield = getClass().getResourceAsStream("./res/escudoFraco.png");
+        InputStream mediumShield = getClass().getResourceAsStream("./res/escudoMedio.png");
+        InputStream strongShield = getClass().getResourceAsStream("./res/escudoForte.png");
         InputStream cs = getClass().getResourceAsStream("./res/character.png");
         InputStream es1 = getClass().getResourceAsStream("./res/enemy1.png");
         InputStream es2 = getClass().getResourceAsStream("./res/enemy2.png");
         InputStream es3 = getClass().getResourceAsStream("./res/enemy3.png");
         try {
-            shield = ImageIO.read(is);
+            escudoFraco = ImageIO.read(weakShield);
+            escudoMedio = ImageIO.read(mediumShield);
+            escudoForte = ImageIO.read(strongShield);
             character = ImageIO.read(cs);
             enemy1 = ImageIO.read(es1);
             enemy2 = ImageIO.read(es2);

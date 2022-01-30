@@ -25,7 +25,7 @@ public class Game extends JPanel {
     private Jogador jogador;
     private ArrayList<Escudo> escudos;
     private Font EnemyStatusFont = new Font("Serif", Font.BOLD, 20);
-
+    private ArrayList<Poder> poderes;
     private BufferedImage character, enemy1, enemy2, enemy3;
 
     public Game() {
@@ -95,7 +95,12 @@ public class Game extends JPanel {
             // g2d.fillOval(((Escudo) escudo).getX(), ((Escudo) escudo).getY(), 30, 30);
             g2d.drawImage(escudo.getImage(), ((Escudo) escudo).getX(), ((Escudo) escudo).getY(), 30, 30, null);
         });
-
+        
+        poderes.forEach((Poder poder) -> {
+            // g2d.fillOval(((Escudo) escudo).getX(), ((Escudo) escudo).getY(), 30, 30);
+            g2d.drawImage(poder.getImage(), ((Poder) poder).getX(), ((Poder) poder).getY(), 40, 40, null);
+        });
+        
         // g2d.drawString(jogador.getQuantidade(), 0 ,0);
         this.drawJogador(g2d, jogador, 850, 2);
         g2d.drawString(getPorcentagemVida(jogador, "Jogador:"), 856, 21);
@@ -161,10 +166,6 @@ public class Game extends JPanel {
         g2d.setColor(robo.getCor());
         g2d.setFont(EnemyStatusFont);
     }
-    
-    public void drawEscudo(Graphics2D g2d, Robo robo, int posX, int posY){
-        
-    }
 
     public String getPorcentagemVida(Jogador jogador, String preffix) {
         return String.format("%s %d", preffix, jogador.getQuantidade());
@@ -178,6 +179,7 @@ public class Game extends JPanel {
         System.out.println("------------- Comeca jogo --------------");
         Font baseFont = new Font("Serif", Font.BOLD, 60);
         Escudo eForte, eMedio, eFraco;
+        Poder soco,chute,especial;
 
         JFrame frame = new JFrame("RoboHunt");
 
@@ -247,6 +249,17 @@ public class Game extends JPanel {
         escudos.add(eFraco);
         escudos.add(eMedio);
         escudos.add(eForte);
+        
+        soco = new SuperSoco();
+        soco.setRandomicPosition(width, height);
+        chute = new SuperChute();
+        chute.setRandomicPosition(width, height);
+        especial = new Special();
+        especial.setRandomicPosition(width, height);
+        
+        poderes.add(soco);
+        poderes.add(chute);
+        poderes.add(especial);
 
         while (true) {
             if (robos.size() == 0) {

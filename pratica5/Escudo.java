@@ -115,10 +115,4 @@ public abstract class Escudo
         //this.x = random.nextInt(maxX);
         //this.y = random.nextInt(maxY);
     }
-    
-    /*public void pegarEscudo(Jogador jogador) {
-        if ((Math.abs(jogador.getX() - this.getX()) == 0) && (Math.abs(jogador.getY() - this.getY()) == 0)){
-            if(
-        }
-    }*/
 }

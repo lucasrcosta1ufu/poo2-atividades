@@ -189,6 +189,7 @@ public class Jogador extends Observable {
 
     public void coletaEscudo(ArrayList<Escudo> escudos) {
         for (int i = 0; i < escudos.size(); i++) {
+                System.out.println("ola");
             if (
             	(Math.abs(this.getX() - escudos.get(i).getX()) <= 2) &&
             	(Math.abs(this.getY() - escudos.get(i).getY()) <= 2)

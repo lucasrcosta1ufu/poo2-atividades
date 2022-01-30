@@ -140,24 +140,24 @@ public class Jogador extends Observable {
             	(Math.abs(this.getX() - robo.getX()) <= 10) &&
             	(Math.abs(this.getY() - robo.getY()) <= 10)
             ) {
+                robo.recebeAtaque(this.getA().atacar());
                 robo.getVida().verificaEstado();
                 if (robo.getVida() instanceof RoboMorto) {
                     this.deleteObserver(robo);
                     robos.remove(robo);
                     continue;
+                }
+
+                if (Math.random() < 0.5) {
+                    robo.setPos(
+                        robo.getX() + (int) (100 * Math.random()),
+                        robo.getY() - (int) (100 * Math.random())
+                    );
                 } else {
-                    robo.recebeAtaque(this.getA().atacar());
-                    if (Math.random() < 0.5) {
-                        robo.setPos(
-	                        robo.getX() + (int) (100 * Math.random()),
-	                        robo.getY() - (int) (100 * Math.random())
-                        );
-                    } else {
-                        robo.setPos(
-                            robo.getX() - (int) (100 * Math.random()),
-                            robo.getY() + (int) (100 * Math.random())
-                        );
-                    }
+                    robo.setPos(
+                        robo.getX() - (int) (100 * Math.random()),
+                        robo.getY() + (int) (100 * Math.random())
+                    );
                 }
             } else {
                 if (robo.getX() > this.x) {

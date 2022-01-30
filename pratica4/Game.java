@@ -100,10 +100,11 @@ public class Game extends JPanel {
         
         
         
+        
         // ------------- //
         if (robos.size() >= 1) {
-            g2d.fillOval(robos.get(0).getX(), robos.get(0).getY(), 20, 20);
-            //g2d.drawImage(enemy1,robos.get(0).getX(), robos.get(0).getY(), 70, 70,null);
+            //g2d.fillOval(robos.get(0).getX(), robos.get(0).getY(), 20, 20);
+            g2d.drawImage(enemy1,robos.get(0).getX(), robos.get(0).getY(), 70, 70,null);
             
             // --- Robo 1 --- //
             g2d.setColor(Color.WHITE); 
@@ -112,12 +113,13 @@ public class Game extends JPanel {
             g2d.setColor(robos.get(0).getCor());
             g2d.setFont(new Font("Serif", Font.BOLD, 20));
             g2d.drawString(getPorcentagemVida(robos.get(0), "Robo 1:"),  856 ,51);
+            
         }
         
         // ------------- //
         if (robos.size() >= 2) {                
-            g2d.fillOval(robos.get(1).getX(), robos.get(1).getY(), 20, 20);
-            //g2d.drawImage(enemy2,robos.get(1).getX(), robos.get(1).getY(), 70, 70,null);
+            //g2d.fillOval(robos.get(1).getX(), robos.get(1).getY(), 20, 20);
+            g2d.drawImage(enemy2,robos.get(1).getX(), robos.get(1).getY(), 70, 70,null);
             
             // --- Robo 2 --- //
             g2d.setColor(Color.WHITE); 
@@ -130,8 +132,8 @@ public class Game extends JPanel {
         
         // ------------- //
         if (robos.size() == 3) {
-            g2d.fillOval(robos.get(2).getX(), robos.get(2).getY(), 20, 20);
-            //g2d.drawImage(enemy3,robos.get(2).getX(), robos.get(2).getY(), 70, 70,null);
+            //g2d.fillOval(robos.get(2).getX(), robos.get(2).getY(), 20, 20);
+            g2d.drawImage(enemy3,robos.get(2).getX(), robos.get(2).getY(), 70, 70,null);
             
             // --- Robo 3 --- //
             g2d.setColor(Color.WHITE); 

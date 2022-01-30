@@ -122,7 +122,7 @@ public class Jogador extends Observable
                 robos.get(i).getVida().verificaEstado();
                 if (robos.get(i).getVida() instanceof RoboMorto){
                     this.deleteObserver(robos.get(i));
-                    robos.remove(i);
+                    robos.remove(robos.get(i));
                     continue;
                 }else{
                     robos.get(i).recebeAtaque(this.getA().atacar());

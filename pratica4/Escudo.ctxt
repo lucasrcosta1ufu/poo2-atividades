@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Escudo
-comment0.text=\n\ Abstract\ class\ Escudo\ -\ write\ a\ description\ of\ the\ class\ here\n\n\ @author\ (your\ name\ here)\n\ @version\ (version\ number\ or\ date\ here)\n
+comment0.text=\r\n\ Abstract\ class\ Escudo\ -\ write\ a\ description\ of\ the\ class\ here\r\n\r\n\ @author\ (your\ name\ here)\r\n\ @version\ (version\ number\ or\ date\ here)\r\n
 comment1.params=defesa
 comment1.target=void\ setDefesa(int)
 comment10.params=

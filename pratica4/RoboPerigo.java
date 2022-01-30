@@ -14,7 +14,7 @@ public class RoboPerigo extends RoboEstado
     }
     
     public void setLimites(){
-        this.setLimiteInferior(0);
+        this.setLimiteInferior(1);
         this.setLimiteSuperior(29);
     }
     

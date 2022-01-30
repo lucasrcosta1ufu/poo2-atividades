@@ -19,17 +19,17 @@ public class Jogador extends Observable {
     private int x = 0;
     private int y = 0;
     private int maxX, maxY;
-    private int tamX, tamY;
+    private int width, height;
     private BufferedImage image;
 
-    public Jogador(int x, int y, int maxX, int maxY, BufferedImage image) {
+    public Jogador(int x, int y, int maxX, int maxY, int width, int height, BufferedImage image) {
         this.x = x;
         this.y = y;
-        this.maxX = maxX;
-        this.maxY = maxY;
-        this.tamX = tamX;
-        this.tamY = tamY;
+        this.maxX = maxX - width;
+        this.maxY = maxY - height;
         this.image = image;
+        this.width = width;
+        this.height = height;
 
         this.vida = new EstadoNormal(this);
         this.setQuantidade(70);
@@ -52,11 +52,30 @@ public class Jogador extends Observable {
     }
 
     public void recebeAtaque(int ataque) {
+        if (this.escudo != null) {
+            ataque = this.escudo.processaAtaque(ataque);
+        }
         vida.dano(ataque);
     }
 
     public void recompensa() {
         vida.ganhaVida();
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int heigth) {
+        this.height = heigth;
+    }
+
+    public int getWidth() {
+        return this.width;
+    }
+
+    public int getHeight() {
+        return this.height;
     }
 
     public Corre getC() {
@@ -189,10 +208,9 @@ public class Jogador extends Observable {
 
     public void coletaEscudo(ArrayList<Escudo> escudos) {
         for (int i = 0; i < escudos.size(); i++) {
-                System.out.println("ola");
             if (
-            	(Math.abs(this.getX() - escudos.get(i).getX()) <= 2) &&
-            	(Math.abs(this.getY() - escudos.get(i).getY()) <= 2)
+            	(Math.abs(this.getX() - escudos.get(i).getX()) <= 10) &&
+            	(Math.abs(this.getY() - escudos.get(i).getY()) <= 10)
             ) {
                 this.addEscudo(escudos.get(i));
                 escudos.remove(escudos.get(i));

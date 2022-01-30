@@ -12,20 +12,39 @@ public class Robo implements Observer {
     private Corre c;
     private Ataca a;
     private int maxX, maxY;
+    private int width, height;
     private Color cor;
     private BufferedImage image;
 
-    public Robo(int x, int y, int maxX, int maxY, String nome, Color cor, BufferedImage image) {
+    public Robo(int x, int y, int maxX, int maxY, int width, int height, String nome, Color cor, BufferedImage image) {
         this.x = x;
         this.y = y;
-        this.maxX = maxX;
-        this.maxY = maxY;
+        this.maxX = maxX - width;
+        this.maxY = maxY - height;
         this.nome = nome;
         this.cor = cor;
         this.image = image;
+        this.width = width;
+        this.height = height;
 
         this.vida = new RoboNormal(this);
         this.setQuantidade(70);
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int heigth) {
+        this.height = height;
+    }
+
+    public int getWidth() {
+        return this.width;
+    }
+
+    public int getHeight() {
+        return this.height;
     }
 
     public RoboEstado getVida() {
@@ -99,18 +118,11 @@ public class Robo implements Observer {
     }
 
     public void update(Observable subject, Object arg) {
-
         Jogador jogador = (Jogador) subject;
 
         // se estiver em distancia de ataque
         if ((Math.abs(this.x - jogador.getX()) == 0) && (Math.abs(this.y - jogador.getY()) == 0)) {
-            if (jogador.getEscudo() != null) {
-                jogador.recebeAtaque(
-                    jogador.getEscudo().processaAtaque(this.getA().atacar())
-                );
-            } else {
-                jogador.recebeAtaque(this.getA().atacar());
-            }
+            jogador.recebeAtaque(this.getA().atacar());
 
             if (Math.random() < 0.5) {
                 jogador.setPos(
@@ -127,15 +139,15 @@ public class Robo implements Observer {
         } else {
             // se precisa andar para frente
             if (jogador.getX() > this.x) {
-                this.x = this.x + (int) (5 * Math.random());
+                this.moveToRight((int) (5 * Math.random()));
             } else {
-                this.x = this.x - (int) (5 * Math.random());
+                this.moveToLeft((int) (5 * Math.random()));
             }
             // se precisa andar para tras
             if (jogador.getY() > this.y) {
-                this.y = this.y + (int) (5 * Math.random());
+                this.moveToDown((int) (5 * Math.random()));
             } else {
-                this.y = this.y - (int) (5 * Math.random());
+                this.moveToUp((int) (5 * Math.random()));
             }
 
         }
@@ -173,5 +185,37 @@ public class Robo implements Observer {
 
     public void ataque() {
         a.atacar();
+    }
+
+    public void moveToUp(int moviment) {
+        if (this.y - moviment >= 0) {
+            this.setY(this.getY() - moviment);
+        } else {
+            this.y = 0;
+        }
+    }
+
+    public void moveToDown(int moviment) {
+        if (this.y + moviment <= this.maxY) {
+            this.setY(this.getY() + moviment);
+        } else {
+            this.y = this.maxY;
+        }
+    }
+
+    public void moveToLeft(int moviment) {
+        if (this.x - moviment >= 0) {
+            this.setX(this.getX() - moviment);
+        } else {
+            this.x = 0;
+        }
+    }
+
+    public void moveToRight(int moviment) {
+        if (this.x + moviment <= this.maxX) {
+            this.setX(this.getX() + moviment);
+        } else {
+            this.x = this.maxX;
+        }
     }
 }

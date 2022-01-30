@@ -103,7 +103,7 @@ public abstract class Escudo
             return this.getNext().processaAtaque(resultado);
         }
         
-        return resultado >= 0 ? resultado : 0;
+        return resultado > 0 ? resultado : 0;
     }
     
     public void setRandomicPosition(int maxX, int maxY) {

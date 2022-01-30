@@ -126,7 +126,14 @@ public class Game extends JPanel {
 
     public void drawJogador(Graphics2D g2d, Jogador jogador, int posX, int posY) {
         // g2d.fillOval(jogador.getX(), jogador.getY(), 20, 20);
-        g2d.drawImage(jogador.getAvatar(), jogador.getX(), jogador.getY(), 40, 40, null);
+        g2d.drawImage(
+            jogador.getAvatar(),
+            jogador.getX(),
+            jogador.getY(),
+            jogador.getWidth(),
+            jogador.getHeight(),
+            null
+        );
 
         // -- Jogador -- //
         g2d.setColor(Color.WHITE);
@@ -138,7 +145,14 @@ public class Game extends JPanel {
 
     public void drawRobo(Graphics2D g2d, Robo robo, int posX, int posY) {
         // g2d.fillOval(robos.get(2).getX(), robos.get(2).getY(), 20, 20);
-        g2d.drawImage(robo.getAvatar(), robo.getX(), robo.getY(), 70, 70, null);
+        g2d.drawImage(
+            robo.getAvatar(),
+            robo.getX(),
+            robo.getY(),
+            robo.getWidth(),
+            robo.getHeight(),
+            null
+        );
 
         // --- Robo 3 --- //
         g2d.setColor(Color.WHITE);
@@ -210,10 +224,10 @@ public class Game extends JPanel {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        r1 = new Robo(200, 400, width, height, "Robo 1", Color.BLUE, enemy1);
-        r2 = new Robo(400, 10, width, height, "Robo 2", Color.GREEN, enemy2);
-        r3 = new Robo(150, 50, width, height, "Robo 3", Color.ORANGE, enemy3);
-        jogador = new Jogador(50, 400, width, height, character);
+        r1 = new Robo(200, 400, width, height, 70, 70, "Robo 1", Color.BLUE, enemy1);
+        r2 = new Robo(400, 10, width, height, 70, 70, "Robo 2", Color.GREEN, enemy2);
+        r3 = new Robo(150, 50, width, height, 70, 70, "Robo 3", Color.ORANGE, enemy3);
+        jogador = new Jogador(50, 400, width, height, 40, 40, character);
 
         robos.add(r1);
         robos.add(r2);

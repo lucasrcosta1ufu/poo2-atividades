@@ -9,8 +9,7 @@ import java.awt.image.BufferedImage;
 public class EscudoForte extends Escudo
 {
     public EscudoForte (BufferedImage image) {
-        super(image);
-        super.setDefesa(5);
+        super("./res/escudoForte.png", 5);
     }
 }
 

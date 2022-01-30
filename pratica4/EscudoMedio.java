@@ -9,7 +9,6 @@ import java.awt.image.BufferedImage;
 public class EscudoMedio extends Escudo
 {
     public EscudoMedio (BufferedImage image) {
-        super(image);
-        super.setDefesa(3);
+        super("./res/escudoMedio.png", 3);
     }
 }

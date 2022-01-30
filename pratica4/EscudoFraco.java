@@ -10,9 +10,8 @@ import java.io.InputStream;
  */
 public class EscudoFraco extends Escudo
 {
-    public EscudoFraco (BufferedImage image) {
-        super(image);
-        super.setDefesa(1);
+    public EscudoFraco () {
+        super("./res/escudoFraco.png", 1);
     }
 }
 

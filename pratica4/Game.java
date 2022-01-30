@@ -26,7 +26,7 @@ public class Game extends JPanel {
     private ArrayList<Escudo> escudos;
     private Font EnemyStatusFont = new Font("Serif", Font.BOLD, 20);
 
-    private BufferedImage escudoFraco, escudoMedio, escudoForte, character, enemy1, enemy2, enemy3;
+    private BufferedImage character, enemy1, enemy2, enemy3;
 
     public Game() {
         KeyListener listener = new MyKeyListener();
@@ -248,17 +248,11 @@ public class Game extends JPanel {
     }
 
     private void inputImage() {
-        InputStream weakShield = getClass().getResourceAsStream("./res/escudoFraco.png");
-        InputStream mediumShield = getClass().getResourceAsStream("./res/escudoMedio.png");
-        InputStream strongShield = getClass().getResourceAsStream("./res/escudoForte.png");
         InputStream cs = getClass().getResourceAsStream("./res/character.png");
         InputStream es1 = getClass().getResourceAsStream("./res/enemy1.png");
         InputStream es2 = getClass().getResourceAsStream("./res/enemy2.png");
         InputStream es3 = getClass().getResourceAsStream("./res/enemy3.png");
         try {
-            escudoFraco = ImageIO.read(weakShield);
-            escudoMedio = ImageIO.read(mediumShield);
-            escudoForte = ImageIO.read(strongShield);
             character = ImageIO.read(cs);
             enemy1 = ImageIO.read(es1);
             enemy2 = ImageIO.read(es2);

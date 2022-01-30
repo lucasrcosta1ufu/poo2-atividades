@@ -14,10 +14,21 @@ public abstract class Escudo
     private Escudo next;
     private int x, y;
     private Color cor;
+    private InputStream weakShield;
     private BufferedImage image;
     
-    public Escudo(BufferedImage image) {
-        this.image = image;
+    public Escudo() {}
+    
+    public Escudo(String path) {
+        weakShield = getClass().getResourceAsStream(path);
+        this.image = ImageIO.read(weakShield);
+        
+    }
+    
+    public Escudo(String path, int defesa) {
+        weakShield = getClass().getResourceAsStream(path);
+        this.image = ImageIO.read(weakShield);
+        this.defesa = defesa;
         
     }
      

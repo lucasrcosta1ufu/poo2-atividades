@@ -1,4 +1,5 @@
 
+import java.awt.image.BufferedImage;
 /**
  * Write a description of class EscudoForte here.
  *
@@ -8,7 +9,7 @@
 public class EscudoForte extends Escudo
 {
     public EscudoForte () {
-        super.setDefesa(5);
+        super("./res/escudoForte.png", 5);
     }
 }
 

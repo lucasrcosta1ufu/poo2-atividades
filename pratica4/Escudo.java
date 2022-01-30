@@ -1,5 +1,8 @@
 import java.util.Random;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.InputStream;
+import javax.imageio.ImageIO;
 
 /**
  * Abstract class Escudo - write a description of the class here
@@ -13,6 +16,37 @@ public abstract class Escudo
     private Escudo next;
     private int x, y;
     private Color cor;
+    private InputStream shield;
+    private BufferedImage image;
+    
+    public Escudo() {}
+    
+    public Escudo(String path) {
+        shield = getClass().getResourceAsStream(path);
+        try
+        {
+            this.image = ImageIO.read(shield);
+        }
+        catch (java.io.IOException ioe)
+        {
+            ioe.printStackTrace();
+        }
+        
+    }
+    
+    public Escudo(String path, int defesa) {
+        shield = getClass().getResourceAsStream(path);
+        try
+        {
+            this.image = ImageIO.read(shield);
+        }
+        catch (java.io.IOException ioe)
+        {
+            ioe.printStackTrace();
+        }
+        this.defesa = defesa;
+        
+    }
      
     public void setDefesa(int defesa) {
         this.defesa = defesa;
@@ -54,6 +88,14 @@ public abstract class Escudo
         return this.cor;
     }
     
+    public void setImage(BufferedImage image) {
+        this.image = image;
+    }
+    
+    public BufferedImage getImage() {
+        return this.image;
+    }
+    
     public int processaAtaque(int ataque){
         int resultado = ataque - this.getDefesa();
         
@@ -61,7 +103,7 @@ public abstract class Escudo
             return this.getNext().processaAtaque(resultado);
         }
         
-        return resultado >= 0 ? resultado : 0;
+        return resultado > 0 ? resultado : 0;
     }
     
     public void setRandomicPosition(int maxX, int maxY) {

@@ -1,4 +1,6 @@
 
+import java.awt.image.BufferedImage;
+
 /**
  * Write a description of class EscudoFraco here.
  *
@@ -7,8 +9,8 @@
  */
 public class EscudoFraco extends Escudo
 {
-    public EscudoFraco() {
-        super.setDefesa(1);
+    public EscudoFraco () {
+        super("./res/escudoFraco.png", 1);
     }
 }
 

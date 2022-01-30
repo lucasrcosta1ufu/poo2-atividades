@@ -130,7 +130,7 @@ public class Game extends JPanel {
 
         // -- Jogador -- //
         g2d.setColor(Color.WHITE);
-        g2d.fillRect(posX, 2, posY, 26);
+        g2d.fillRect(posX,posY, 140, 26);
 
         g2d.setColor(Color.BLUE);
         g2d.setFont(EnemyStatusFont);
@@ -206,7 +206,7 @@ public class Game extends JPanel {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        r1 = new Robo(200, 400, width, height, "Robo 1", Color.BLUE, enemy1);
+        r1 = new Robo(200, 400, width, height, "Robo 1", Color.ORANGE, enemy1);
         r2 = new Robo(400, 10, width, height, "Robo 2", Color.GREEN, enemy2);
         r3 = new Robo(150, 50, width, height, "Robo 3", Color.RED, enemy3);
         jogador = new Jogador(50, 400, width, height, character);
@@ -247,7 +247,7 @@ public class Game extends JPanel {
     }
 
     private void inputImage() {
-        InputStream is = getClass().getResourceAsStream("./res/shield.png");
+        InputStream is = getClass().getResourceAsStream("./res/escudoFraco.png");
         InputStream cs = getClass().getResourceAsStream("./res/character.png");
         InputStream es1 = getClass().getResourceAsStream("./res/enemy1.png");
         InputStream es2 = getClass().getResourceAsStream("./res/enemy2.png");

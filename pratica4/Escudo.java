@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
 import javax.imageio.ImageIO;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Abstract class Escudo - write a description of the class here
@@ -108,8 +109,8 @@ public abstract class Escudo
     
     public void setRandomicPosition(int maxX, int maxY) {
         Random random = new Random();
-        this.x = random.nextInt(maxX);
-        this.y = random.nextInt(maxY);
+        this.x = ThreadLocalRandom.current().nextInt(0, 800);
+        this.y = ThreadLocalRandom.current().nextInt(120, 550); 
     }
     
     /*public void pegarEscudo(Jogador jogador) {

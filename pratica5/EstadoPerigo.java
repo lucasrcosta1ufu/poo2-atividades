@@ -11,6 +11,7 @@ public class EstadoPerigo extends Estado
         super(p);
         p.setC(new CorreDevagar());
         p.setA(new AtacaFraco());
+        System.out.println("Estado Perigo");
     }
     
     public void setLimites(){

@@ -10,6 +10,7 @@ public class EstadoMorto extends Estado
 {
     public EstadoMorto(Jogador p){
         super(p);
+        System.out.println("Morto");
         morte();
     }
     

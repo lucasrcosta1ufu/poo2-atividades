@@ -11,6 +11,7 @@ public class EstadoForte extends Estado
         super(p);
         p.setC(new CorreRapido());
         p.setA(new AtacaForte());
+        System.out.println("Estado Forte");
     }
     
     public void setLimites(){

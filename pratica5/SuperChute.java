@@ -7,14 +7,14 @@
  */
 public class SuperChute extends Poder
 {
-    private int forca = 17;
+    private int forca = 7;
     
     public SuperChute(Ataca poder) {
-        super(poder,"./res/superChute.png");
+        super(poder);
         super.setForca(forca);
     }
     
     public int atacar(){
-        return forca;
-    }
+        return super.atacar();
+    }  
 }

@@ -21,6 +21,7 @@ public class Jogador extends Observable {
     private int maxX, maxY;
     private int width, height;
     private BufferedImage image;
+    private int numSuccessfulAtacks = 0;
 
     public Jogador(int x, int y, int maxX, int maxY, int width, int height, BufferedImage image) {
         this.x = x;
@@ -40,6 +41,7 @@ public class Jogador extends Observable {
     }
 
     public void setVida(Estado vida) {
+        this.numSuccessfulAtacks = 0;
         this.vida = vida;
     }
 
@@ -160,10 +162,22 @@ public class Jogador extends Observable {
         for (int i = 0; i < robos.size(); i++) {
             robo = robos.get(i);
             if (
-                (Math.abs(this.getX() - robo.getX()) <= 10) &&
-                (Math.abs(this.getY() - robo.getY()) <= 10)
+                (Math.abs(this.getX() - robo.getX()) < 3) &&
+                (Math.abs(this.getY() - robo.getY()) < 3)
             ) {
                 robo.recebeAtaque(this.getA().atacar());
+                this.numSuccessfulAtacks++;
+                if (numSuccessfulAtacks == 5) {
+                    this.setA(new SuperSoco(this.getA())); 
+                    System.out.println("Add super soco:" + this.getA().atacar());   
+                } else if (numSuccessfulAtacks == 8) {
+                    this.setA(new SuperChute(this.getA()));    
+                    System.out.println("Add super chute:" + this.getA().atacar());
+                } else if (numSuccessfulAtacks == 10) {
+                    this.setA(new Special(this.getA()));   
+                    System.out.println("Add Kamehameha:" + this.getA().atacar()); 
+                }
+                
                 robo.getVida().verificaEstado();
                 if (robo.getVida() instanceof RoboMorto) {
                     this.deleteObserver(robo);

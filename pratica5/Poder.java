@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
  */
 public abstract class Poder extends Ataca
 {
-    private int x, y;
+    //private int x, y;
     private int ataque; 
     private Ataca superPoder;
     private InputStream power;
@@ -19,23 +19,13 @@ public abstract class Poder extends Ataca
         this.superPoder = superPoder;
     }
     
-    public Poder(Ataca superPoder, String path) {
-        this.superPoder = superPoder;
-        power = getClass().getResourceAsStream(path);
-        try
-        {
-            this.image = ImageIO.read(power);
-        }
-        catch (java.io.IOException ioe)
-        {
-            ioe.printStackTrace();
-        }
+    public Ataca getSuperPoder() {
+        return this.superPoder;
     }
     
     public int atacar(){
-        return this.superPoder.atacar() + super.atacar();
-    }
-    
+        return this.superPoder.atacar() + super.getForca();
+    }  
     /*
     public void setX (int x) {
         this.x = x;

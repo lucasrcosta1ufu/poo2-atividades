@@ -11,6 +11,7 @@ public class EstadoNormal extends Estado
         super(p);
         p.setC(new CorreRapido());
         p.setA(new AtacaMedio());
+        System.out.println("Estado Normal");
     }
     
     public void setLimites(){

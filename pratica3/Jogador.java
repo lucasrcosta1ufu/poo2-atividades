@@ -108,27 +108,30 @@ public class Jogador extends Observable
     // ------------------------------------------------------- //
           
     public void enviaAtaque(ArrayList<Robo> robos){
+        Robo robo;
         //se estiver em distancia de ataque
-        int numRobos = robos.size();
-        for(int i = 0; i <= numRobos; i ++){
-            if ( ( Math.abs(this.getX() - robos.get(i).getX()) == 0) && (Math.abs(this.getY() - robos.get(i).getY()) == 0) ){
-                robos.get(i).getVida().verificaEstado();
-                if(robos.get(i).getVida() instanceof RoboMorto){
-                    System.out.println("Game is over to "+ robos.get(i).getNome());
-                    this.deleteObserver(robos.get(i));
-                    robos.remove(i);
-                }else{
-                    robos.get(i).recebeAtaque(this.getA().atacar());
-                    System.out.println(robos.get(i).getNome() + "'s LIFE: " + robos.get(i).getQuantidade());
-                    if (Math.random() < 0.5){
-                        robos.get(i).setPos(robos.get(i).getX()+(int)(100*Math.random()), robos.get(i).getY()-(int)(100*Math.random()));
-                    }
-                    else {
-                        robos.get(i).setPos(robos.get(i).getX()-(int)(100*Math.random()), robos.get(i).getY()+(int)(100*Math.random()));
-                    }
+        for(int i = 0; i < robos.size(); i ++){
+            robo = robos.get(i);
+            if ((Math.abs(this.getX() - robos.get(i).getX()) == 0) && (Math.abs(this.getY() - robos.get(i).getY()) == 0)){
+                robo.recebeAtaque(this.getA().atacar());
+                robo.getVida().verificaEstado();
+                if (robo.getVida() instanceof RoboMorto) {
+                    this.deleteObserver(robo);
+                    robos.remove(robo);
+                    continue;
                 }
-                
-                
+
+                if (Math.random() < 0.5) {
+                    robo.setPos(
+                        robo.getX() + (int) (100 * Math.random()),
+                        robo.getY() - (int) (100 * Math.random())
+                    );
+                } else {
+                    robo.setPos(
+                        robo.getX() - (int) (100 * Math.random()),
+                        robo.getY() + (int) (100 * Math.random())
+                    );
+                }
             }
             //se precisar andar em direcao a bola
             else {

@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Ataca
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Ataca\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=forca
+comment1.target=void\ setForca(int)
+comment2.params=
+comment2.target=int\ getForca()
+comment3.params=
+comment3.target=int\ atacar()
+numComments=4

@@ -1,24 +1,26 @@
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
 import javax.imageio.ImageIO;
-import java.util.concurrent.ThreadLocalRandom;
 /**
  * Abstract class Poder - write a description of the class here
  *
  * @author (your name here)
  * @version (version number or date here)
  */
-public abstract class Poder implements Ataca
+public abstract class Poder extends Ataca
 {
     private int x, y;
     private int ataque; 
-    private Ataca next;
+    private Ataca superPoder;
     private InputStream power;
     private BufferedImage image;
 
-    public Poder() {}
+    public Poder(Ataca superPoder) {
+        this.superPoder = superPoder;
+    }
     
-    public Poder(String path) {
+    public Poder(Ataca superPoder, String path) {
+        this.superPoder = superPoder;
         power = getClass().getResourceAsStream(path);
         try
         {
@@ -28,9 +30,13 @@ public abstract class Poder implements Ataca
         {
             ioe.printStackTrace();
         }
-        
     }
     
+    public int atacar(){
+        return this.superPoder.atacar() + super.atacar();
+    }
+    
+    /*
     public void setX (int x) {
         this.x = x;
     }
@@ -45,14 +51,6 @@ public abstract class Poder implements Ataca
     
     public int getY () {
         return this.y;
-    }
-    
-    public void setAtaque(int ataque) {
-        this.ataque = ataque;
-    }
-    
-    public int getAtaque () {
-        return this.ataque;
     }
      
     public void setNext (Ataca proximo) {
@@ -74,5 +72,6 @@ public abstract class Poder implements Ataca
     public void setRandomicPosition(int maxX, int maxY) {
         this.x = ThreadLocalRandom.current().nextInt(0, 800);
         this.y = ThreadLocalRandom.current().nextInt(120, maxY - 20); 
-    }
+    }*/
+    
 }

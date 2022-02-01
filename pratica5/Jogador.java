@@ -155,13 +155,13 @@ public class Jogador extends Observable {
     // ------------------------------------------------------- //
 
     public synchronized void enviaAtaque(ArrayList<Robo> robos) {
-    	Robo robo;
+        Robo robo;
         // se estiver em distancia de ataque
         for (int i = 0; i < robos.size(); i++) {
-        	robo = robos.get(i);
+            robo = robos.get(i);
             if (
-            	(Math.abs(this.getX() - robo.getX()) <= 10) &&
-            	(Math.abs(this.getY() - robo.getY()) <= 10)
+                (Math.abs(this.getX() - robo.getX()) <= 10) &&
+                (Math.abs(this.getY() - robo.getY()) <= 10)
             ) {
                 robo.recebeAtaque(this.getA().atacar());
                 robo.getVida().verificaEstado();
@@ -209,8 +209,8 @@ public class Jogador extends Observable {
     public void coletaEscudo(ArrayList<Escudo> escudos) {
         for (int i = 0; i < escudos.size(); i++) {
             if (
-            	(Math.abs(this.getX() - escudos.get(i).getX()) <= 10) &&
-            	(Math.abs(this.getY() - escudos.get(i).getY()) <= 10)
+                (Math.abs(this.getX() - escudos.get(i).getX()) <= 10) &&
+                (Math.abs(this.getY() - escudos.get(i).getY()) <= 10)
             ) {
                 this.addEscudo(escudos.get(i));
                 escudos.remove(escudos.get(i));

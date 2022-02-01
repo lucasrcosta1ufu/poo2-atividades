@@ -71,6 +71,10 @@ public class Game extends JPanel {
             if (e.getKeyCode() == KeyEvent.VK_P) {
                 jogador.coletaEscudo(escudos);
             }
+            
+            if (e.getKeyCode() == KeyEvent.VK_1) {
+                jogador.coletaEscudo(escudos);
+            }
 
         }
 
@@ -94,11 +98,6 @@ public class Game extends JPanel {
         escudos.forEach((Escudo escudo) -> {
             // g2d.fillOval(((Escudo) escudo).getX(), ((Escudo) escudo).getY(), 30, 30);
             g2d.drawImage(escudo.getImage(), ((Escudo) escudo).getX(), ((Escudo) escudo).getY(), 30, 30, null);
-        });
-        
-        poderes.forEach((Poder poder) -> {
-            // g2d.fillOval(((Escudo) escudo).getX(), ((Escudo) escudo).getY(), 30, 30);
-            g2d.drawImage(poder.getImage(), ((Poder) poder).getX(), ((Poder) poder).getY(), 40, 40, null);
         });
         
         // g2d.drawString(jogador.getQuantidade(), 0 ,0);
@@ -249,17 +248,6 @@ public class Game extends JPanel {
         escudos.add(eFraco);
         escudos.add(eMedio);
         escudos.add(eForte);
-        
-        soco = new SuperSoco();
-        soco.setRandomicPosition(width, height);
-        chute = new SuperChute();
-        chute.setRandomicPosition(width, height);
-        especial = new Special();
-        especial.setRandomicPosition(width, height);
-        
-        poderes.add(soco);
-        poderes.add(chute);
-        poderes.add(especial);
 
         while (true) {
             if (robos.size() == 0) {

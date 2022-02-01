@@ -9,8 +9,9 @@ public class Special extends Poder
 {
     private int forca = 25;
     
-    public Special(){
-        super("./res/special.png");
+    public Special(Ataca poder) {
+        super(poder,"./res/special.png");
+        super.setForca(forca);
     }
     
     public int atacar(){

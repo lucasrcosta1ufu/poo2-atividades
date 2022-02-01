@@ -5,10 +5,13 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class AtacaMedio implements Ataca
+public class AtacaMedio extends Ataca
 {
-    private int forca = 10;
+    public AtacaMedio(){
+        super.setForca(10);
+    }
+    
     public int atacar(){
-        return forca;
+        return super.getForca();
     }
 }

@@ -9,8 +9,9 @@ public class SuperSoco extends Poder
 {
     private int forca = 19;
     
-    public SuperSoco(){
-        super("./res/supersSoco.png");
+    public SuperSoco(Ataca poder) {
+        super(poder,"./res/supersSoco.png");
+        super.setForca(forca);
     }
     
     public int atacar(){

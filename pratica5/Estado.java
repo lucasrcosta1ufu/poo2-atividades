@@ -16,11 +16,6 @@ public abstract class Estado
         setLimites();
     }
     
-    public Estado(Robo R) {
-        this.r = R;
-        setLimites();
-    }
-    
     public Jogador getP(){
         return this.p;
     }

@@ -109,7 +109,7 @@ public abstract class Escudo
     
     public void setRandomicPosition(int maxX, int maxY) {
         this.x = ThreadLocalRandom.current().nextInt(0, 800);
-        this.y = ThreadLocalRandom.current().nextInt(120, maxY - 20); 
+        this.y = ThreadLocalRandom.current().nextInt(120, 550); 
         
         //Random random = new Random();   
         //this.x = random.nextInt(maxX);

@@ -1,0 +1,11 @@
+package Personagens;
+
+public class Sacerdote implements Personagem
+{
+	private String path = "./res/character3.png";
+	
+	public Sacerdote()
+	{
+		super("Sacerdote", path);
+	}
+}

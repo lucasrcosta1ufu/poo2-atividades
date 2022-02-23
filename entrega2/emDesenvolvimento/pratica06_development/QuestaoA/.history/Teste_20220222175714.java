@@ -9,7 +9,7 @@ public class Teste {
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            // TODO: handle exception
         }
     }
 }

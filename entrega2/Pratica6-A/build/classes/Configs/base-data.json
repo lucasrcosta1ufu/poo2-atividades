@@ -1,0 +1,66 @@
+{
+    "window": {
+        "width": 999,
+        "height": 571
+    },
+    "background": "./src/images/map.png",
+    "subjects": {
+        "personagem": {
+            "name": "Jogador",
+            "image": "/images/character0.png",
+            "jlabelName": "Vida Jogador",
+            "posicao": {
+            	"x": 200,
+            	"y": 400
+            },
+            "dimensions": {
+            	"w": 40,
+            	"h": 40
+            }
+        },
+        "enemys": [
+	        {
+	            "name": "Robo 1",
+	            "image": "/images/enemy1.png",
+	            "jlabelName": "Vida Robo 1",
+	            "color": "BLUE",
+	            "posicao": {
+	            	"x": 200,
+	            	"y": 400
+	            },
+	            "dimensions": {
+	            	"w": 70,
+	            	"h": 70
+	            }
+	        },
+	        {
+	            "name": "Robo 2",
+	            "image": "/images/enemy2.png",
+	            "jlabelName": "Vida Robo 2",
+	            "color": "GREEN",
+	            "posicao": {
+	            	"x": 450,
+	            	"y": 10
+	            },
+	            "dimensions": {
+	            	"w": 70,
+	            	"h": 70
+	            }
+	        },
+	        {
+	            "name": "Robo 3",
+	            "image": "/images/enemy3.png",
+	            "jlabelName": "Vida Robo 3",
+	            "color": "ORANGE",
+	            "posicao": {
+	            	"x": 150,
+	            	"y": 50
+	            },
+	            "dimensions": {
+	            	"w": 70,
+	            	"h": 70
+	            }
+	        }
+        ]
+    }
+}

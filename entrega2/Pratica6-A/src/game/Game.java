@@ -6,12 +6,12 @@ import game.Escudo.EscudoForte;
 import game.Escudo.EscudoFraco;
 import game.Escudo.Escudo;
 import game.Ataque.Poder;
-import game.Helpers.Dir;
+import game.Helpers.JLabelData;
 import game.Helpers.Posicao;
 import game.Helpers.RandomGenerator;
 import game.Personagem.Jogador;
 import game.Personagem.SimplePersonagemFactory;
-import java.awt.Color;
+  import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.*;
@@ -22,12 +22,10 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.awt.Font;
 
-import java.awt.image.BufferedImage;
-import java.io.InputStream;
 import java.io.IOException;
+import java.util.Dictionary;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 
 public class Game extends JPanel
 {
@@ -40,7 +38,8 @@ public class Game extends JPanel
     private final Font EnemyStatusFont = new Font("Serif", Font.BOLD, 20);
     private final Font baseFont = new Font("Serif", Font.BOLD, 60);
 
-    public Game() {
+    public Game()
+    {
         KeyListener listener = new MyKeyListener();
         addKeyListener(listener);
         setFocusable(true);
@@ -54,11 +53,11 @@ public class Game extends JPanel
     public class MyKeyListener implements KeyListener
     {
         @Override
-        public void keyTyped(KeyEvent e) {
-        }
+        public void keyTyped(KeyEvent e) {}
 
         @Override
-        public void keyPressed(KeyEvent e) {
+        public void keyPressed(KeyEvent e)
+        {
             // System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
 
             if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A ) {
@@ -92,15 +91,20 @@ public class Game extends JPanel
         }
 
         @Override
-        public void keyReleased(KeyEvent e) {
+        public void keyReleased(KeyEvent e)
+        {
             // System.out.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode()));
         }
     }
 
     @Override
-    public void paint(Graphics g) {
+    public void paint(Graphics g)
+    {
         Robo robo;
         Graphics2D g2d = (Graphics2D) g;
+        JLabelData labelData;
+        JLabelData jogadorLabel = (JLabelData) Utilities
+            .personagemData.get("jlabel");
         
         // The call to "super.paint(g)", cleans the screen
         super.paint(g); 
@@ -117,38 +121,31 @@ public class Game extends JPanel
 
         escudos.forEach((Escudo escudo) -> {
             // g2d.fillOval(((Escudo) escudo).getX(), ((Escudo) escudo).getY(), 30, 30);
-            g2d.drawImage(escudo.getImage(), ((Escudo) escudo).getX(), ((Escudo) escudo).getY(), 30, 30, null);
+            g2d.drawImage(
+                escudo.getImage(),
+                ((Escudo) escudo).getX(),
+                ((Escudo) escudo).getY(),
+                30,
+                30,
+                null
+            );
         });
         
         // g2d.drawString(jogador.getQuantidade(), 0 ,0);
-        this.drawJogador(g2d, jogador, 850, 2);
-        g2d.drawString(getPorcentagemVida(jogador, "Jogador:"), 856, 21);
-
-        // ROBO 1------------ //
-        if (robos.size() >= 1) {
-            robo = robos.get(0);
-            this.drawRobo(g2d, robo, 850, 32);
-            g2d.drawString(getPorcentagemVida(robo, robo.getNome() + ":"), 856, 51);
-
+        this.drawJogador(
+            g2d,
+            jogador,
+            jogadorLabel
+        );
+        
+        for (int i = 0; i < robos.size(); i++) {
+            robo = robos.get(i);            
+            this.drawRobo(g2d, robo, Utilities.enemysData.get(i));
         }
-
-        // ROBO 2------------- //
-        if (robos.size() >= 2) {
-            robo = robos.get(1);
-            this.drawRobo(g2d, robo, 850, 62);
-            g2d.drawString(getPorcentagemVida(robo, robo.getNome() + ":"), 856, 81);
-        }
-
-        // ROBO 3------------- //
-        if (robos.size() == 3) {
-            robo = robos.get(2);
-            this.drawRobo(g2d, robo, 850, 92);
-            g2d.drawString(getPorcentagemVida(robo, robo.getNome() + ":"), 856, 111);
-        }
-
     }
 
-    public void drawJogador(Graphics2D g2d, Jogador jogador, int posX, int posY) {
+    public void drawJogador(Graphics2D g2d, Jogador jogador, JLabelData jogadorLabel)
+    {
         // g2d.fillOval(jogador.getX(), jogador.getY(), 20, 20);        
         g2d.drawImage(
             jogador.getAvatar(),
@@ -157,19 +154,32 @@ public class Game extends JPanel
             jogador.getWidth(),
             jogador.getHeight(),
             null
-        );
-        
+        );        
 
         // -- Jogador -- //
         g2d.setColor(Color.WHITE);
-        g2d.fillRect(posX,posY, 140, 26);
+        g2d.fillRect(
+            jogadorLabel.getBackgroundPosX(),
+            jogadorLabel.getBackgroundPosY(),
+            jogadorLabel.getWidth(),
+            jogadorLabel.getHeight()
+        );
 
         g2d.setColor(Color.RED);
         g2d.setFont(EnemyStatusFont);
+         
+        g2d.drawString(
+            getPorcentagemVida(jogador, "Jogador: "),
+            jogadorLabel.getTextPosX(),
+            jogadorLabel.getTextPosY()
+        );
     }
 
-    public void drawRobo(Graphics2D g2d, Robo robo, int posX, int posY) {
-        // g2d.fillOval(robos.get(2).getX(), robos.get(2).getY(), 20, 20);
+    public void drawRobo(Graphics2D g2d, Robo robo, Dictionary<String, Object> enemyData)
+    {
+        JLabelData labelData = (JLabelData) enemyData.get("jlabel");
+        Color color = (Color) enemyData.get("color");
+        
         g2d.drawImage(
             robo.getAvatar(),
             robo.getX(),
@@ -181,21 +191,36 @@ public class Game extends JPanel
 
         // --- Robo 3 --- //
         g2d.setColor(Color.WHITE);
-        g2d.fillRect(posX, posY, 140, 26);
+        g2d.fillRect(
+            labelData.getBackgroundPosX(),
+            labelData.getBackgroundPosY(),
+            labelData.getWidth(),
+            labelData.getHeight()
+        );
 
-        g2d.setColor(robo.getCor());
+        g2d.setColor(color);
         g2d.setFont(EnemyStatusFont);
+        
+        g2d.drawString(
+            getPorcentagemVida(robo, robo.getNome() + ":"),
+            labelData.getTextPosX(),
+            labelData.getTextPosY()
+        );
     }
 
-    public String getPorcentagemVida(Jogador jogador, String preffix) {
+    public String getPorcentagemVida(Jogador jogador, String preffix)
+    {
         return String.format("%s %d", preffix, jogador.getQuantidade());
     }
 
-    public String getPorcentagemVida(Robo robo, String preffix) {
+    public String getPorcentagemVida(Robo robo, String preffix)
+    {
         return String.format("%s %d", preffix, robo.getQuantidade());
     }
 
-    public void jogar(Game game) throws InterruptedException {
+    public void jogar(Game game)
+        throws InterruptedException
+    {
         System.out.println("------------- Comeca jogo --------------");
         
         Escudo eForte, eMedio, eFraco;
@@ -205,6 +230,7 @@ public class Game extends JPanel
 
         JLabel label = new JLabel();
         JLabel lifeJogador = new JLabel();
+        JLabelData jogadorLabel = (JLabelData) Utilities.personagemData.get("jlabel");
         
         
         background = new ImageIcon(Utilities.backgroundPath);
@@ -213,11 +239,10 @@ public class Game extends JPanel
         
         Utilities.enemysData.forEach(enemy -> {
             JLabel enemyLabel = new JLabel();
+            JLabelData labelData = (JLabelData) enemy.get("jlabel");
             
             enemyLabel.setFont(baseFont);
-            enemyLabel.setText(
-                (String) enemy.get("jlabelName")           
-            );
+            enemyLabel.setText(labelData.getName());
             
             game.add(enemyLabel);
         });
@@ -225,6 +250,7 @@ public class Game extends JPanel
         try {
             jogador = SimplePersonagemFactory
                 .criaPersonagem(RandomGenerator.getFloat());
+            
         } catch (IOException ex) {
             Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
             System.exit(0);
@@ -237,13 +263,14 @@ public class Game extends JPanel
                     (Integer) enemy.get("width"),
                     (Integer) enemy.get("height"),
                     (String) enemy.get("name"),
-                    (Color) enemy.get("color"),
                     (String) enemy.get("image")
                 );
                 robos.add(robo);
                 jogador.addObserver(robo);
             } catch (IOException ex) {
-                Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Game.class.getName())
+                    .log(Level.SEVERE, null, ex);
+                
                 System.exit(0);
             }
         });
@@ -268,7 +295,7 @@ public class Game extends JPanel
         // ------- //
 
         lifeJogador.setFont(baseFont);
-        lifeJogador.setText("Vida Jogador");
+        lifeJogador.setText(jogadorLabel.getName());
         game.add(lifeJogador);
         
         // ------- //
@@ -291,27 +318,4 @@ public class Game extends JPanel
         }
         System.exit(0);
     }
-
-//    private void inputImage() {
-//        InputStream cs = getClass()
-//            .getResourceAsStream(Dir.imagePath() + "/character0.png");
-//        
-//        InputStream es1 = getClass()
-//            .getResourceAsStream(Dir.imagePath() + "/enemy1.png");
-//        
-//        InputStream es2 = getClass()
-//            .getResourceAsStream(Dir.imagePath() + "/enemy2.png");
-//        
-//        InputStream es3 = getClass()
-//            .getResourceAsStream(Dir.imagePath() + "/enemy3.png");
-//        
-//        try {
-//            character = ImageIO.read(cs);
-//            enemy1 = ImageIO.read(es1);
-//            enemy2 = ImageIO.read(es2);
-//            enemy3 = ImageIO.read(es3);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
 }

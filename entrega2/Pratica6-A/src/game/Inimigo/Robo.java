@@ -1,12 +1,10 @@
 package game.Inimigo;
 
 import game.Ataque.Ataque;
-import game.Game;
 import game.Helpers.Posicao;
 import game.Personagem.Jogador;
 import java.util.Observer;
 import java.util.Observable;
-import java.awt.Color;
 import java.awt.image.BufferedImage;
 import game.Movimento.Movimento;
 import game.Utilities;
@@ -22,15 +20,13 @@ public class Robo implements Observer {
     private Movimento movimento;
     private Ataque ataque;
     private Posicao posicao;
-    private Color cor;
     private BufferedImage image;
     private int width, height;
 
-    public Robo(int x, int y, int width, int height, String nome, Color cor, BufferedImage image)
+    public Robo(int x, int y, int width, int height, String nome, BufferedImage image)
     {
         this.posicao = new Posicao(x, y, Utilities.WIDTH - width, Utilities.HEIGHT - height);
         this.nome = nome;
-        this.cor = cor;
         this.image = image;
         this.width = width;
         this.height = height;
@@ -39,11 +35,10 @@ public class Robo implements Observer {
         this.vida = new RoboNormal(this);
     }
 
-    public Robo(Posicao posicao, int width, int height, String nome, Color cor, BufferedImage image)
+    public Robo(Posicao posicao, int width, int height, String nome, BufferedImage image)
     {
         this.posicao = posicao;
         this.nome = nome;
-        this.cor = cor;
         this.image = image;
         this.width = width;
         this.height = height;
@@ -52,12 +47,11 @@ public class Robo implements Observer {
         this.vida = new RoboNormal(this);
     }
 
-    public Robo(int x, int y, int width, int height, String nome, Color cor, String path)
+    public Robo(int x, int y, int width, int height, String nome, String path)
         throws IOException
     {
         this.posicao = new Posicao(x, y, Utilities.WIDTH - width, Utilities.HEIGHT - height);
         this.nome = nome;
-        this.cor = cor;
         this.width = width;
         this.height = height;
         this.quantidade = 70;
@@ -69,12 +63,11 @@ public class Robo implements Observer {
         this.vida = new RoboNormal(this);
     }
 
-    public Robo(Posicao posicao, int width, int height, String nome, Color cor, String path)
+    public Robo(Posicao posicao, int width, int height, String nome, String path)
         throws IOException
     {
         this.posicao = posicao;
         this.nome = nome;
-        this.cor = cor;
         this.width = width;
         this.height = height;
         this.quantidade = 70;
@@ -158,16 +151,6 @@ public class Robo implements Observer {
     public void setPos(int x, int y)
     {
         this.posicao.setPos(x, y);
-    }
-
-    public void setCor(Color cor)
-    {
-        this.cor = cor;
-    }
-
-    public Color getCor()
-    {
-        return this.cor;
     }
 
     public void setAvatar(BufferedImage image)

@@ -33,7 +33,7 @@ public abstract class Jogador extends Observable {
     private final Posicao posicao;
 
     public Jogador(String tipo, int x, int y, int width, int height, BufferedImage image) {
-        this.posicao = new Posicao(x, y, Game.WIDTH - width, Game.HEIGHT - height);
+        this.posicao = new Posicao(x, y, Utilities.WIDTH - width, Utilities.HEIGHT - height);
         this.image = image;
         this.width = width;
         this.height = height;

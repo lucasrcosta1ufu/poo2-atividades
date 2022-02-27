@@ -7,6 +7,7 @@ package game;
 
 import game.Helpers.ColorFinder;
 import game.Helpers.Dir;
+import game.Helpers.JLabelData;
 import game.Helpers.Json;
 import game.Helpers.Posicao;
 import java.io.FileNotFoundException;
@@ -26,7 +27,7 @@ import org.json.JSONObject;
  * @author Usuario
  */
 public class Utilities {
-    private final static String PATH = Dir.configsPath() + "/common-data.json";
+    private final static String PATH = Dir.configsPath() + "/common-properties.json";
     
     public final static int HEIGHT = 571;
     public final static int WIDTH = 999;
@@ -116,6 +117,12 @@ public class Utilities {
         }
         
         personagemData.put(
+            "jlabel",
+            loadJLabelProps(
+                personagem.getJSONObject("jlabel")
+            )
+        );
+        personagemData.put(
             "width",
             dimensions.getInt("w")
         );
@@ -135,6 +142,7 @@ public class Utilities {
         JSONObject enemy = null;
         JSONObject posicao = null;
         JSONObject dimensions = null;
+        JSONObject jlabel = null;
         JSONArray enemys = obj.getJSONArray("enemys");
         Dictionary<String, Object> enemyData = null;        
         
@@ -144,6 +152,7 @@ public class Utilities {
             
             posicao = enemy.getJSONObject("posicao");
             dimensions = enemy.getJSONObject("dimensions");
+            jlabel = enemy.getJSONObject("jlabel");
             
             Posicao pos = new Posicao(
                 posicao.getInt("x"),
@@ -161,8 +170,8 @@ public class Utilities {
                 enemy.getString("image")
             );
             enemyData.put(
-                "jlabelName",
-                enemy.getString("jlabelName")
+                "jlabel",
+                loadJLabelProps(jlabel)
             );
             enemyData.put(
                 "color",
@@ -183,5 +192,27 @@ public class Utilities {
             
             enemysData.add(enemyData);
         }
+    }
+
+    private static JLabelData loadJLabelProps(JSONObject jlabel)
+        throws JSONException
+    {
+        JSONObject background = jlabel.getJSONObject("background")
+            .getJSONObject("posicao");
+        
+        JSONObject text = jlabel.getJSONObject("text")
+            .getJSONObject("posicao");
+        
+        JSONObject dimensoes = jlabel.getJSONObject("dimensions");
+        
+        return new JLabelData(
+            jlabel.getString("name"),
+            background.getInt("x"),
+            background.getInt("y"),
+            text.getInt("x"),
+            text.getInt("y"),
+            dimensoes.getInt("w"),
+            dimensoes.getInt("h")
+        );
     }
 }

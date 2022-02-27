@@ -6,7 +6,10 @@ public class Teste
     static Process pro;
     
     public static void main(String args[])throws InterruptedException {
+        Utilities.readConfigs();
+        
         Game g = new Game();
         g.jogar(g);
+        
     }
 }

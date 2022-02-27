@@ -13,36 +13,43 @@ import game.Personagem.Jogador;
  */
 public abstract class Estado
 {
-    private Jogador p;
-    private Robo r;
+    private Jogador jogador;
+    private Robo robo;
     private int limiteInferior, limiteSuperior;
     
-    public Estado(Jogador P){
-        this.p = P;
+    public Estado(Jogador jogador)
+    {
+        this.jogador = jogador;
         setLimites();
     }
     
-    public Jogador getP(){
-        return this.p;
+    public Jogador getJogador()
+    {
+        return this.jogador;
     }
     
-    public void setP(Jogador p){
-        this.p = p;
+    public void setJogador(Jogador jogador)
+    {
+        this.jogador = jogador;
     }
     
-    public Robo getR(){
-        return this.r;
+    public Robo getRobo()
+    {
+        return this.robo;
     }
     
-    public void set(Robo r){
-        this.r = r;
+    public void setRobo(Robo robo)
+    {
+        this.robo = robo;
     }
     
-    public int getLimiteInferior(){
+    public int getLimiteInferior()
+    {
         return this.limiteInferior;
     }
     
-    public void setLimiteInferior(int limiteInferior){
+    public void setLimiteInferior(int limiteInferior)
+    {
         this.limiteInferior = limiteInferior;
     }
     
@@ -50,20 +57,23 @@ public abstract class Estado
         return this.limiteSuperior;
     }
     
-    public void setLimiteSuperior(int limiteSuperior){
+    public void setLimiteSuperior(int limiteSuperior)
+    {
         this.limiteSuperior = limiteSuperior;
     }
     
-    public void perdeVida(int lostLife){
-        this.p.setQuantidade(this.p.getQuantidade() - lostLife);
+    public void perdeVida(int lostLife)
+    {
+        this.jogador.setQuantidade(this.jogador.getQuantidade() - lostLife);
         verificaEstado();
     }
     
-    public void ganhaVida(){
-         if(this.p.getQuantidade() >= 100){
-            this.p.setQuantidade(100);
-        }else{
-            this.p.setQuantidade(this.p.getQuantidade() + 10);
+    public void ganhaVida()
+    {
+        if(this.jogador.getQuantidade() >= 100){
+            this.jogador.setQuantidade(100);
+        } else {
+            this.jogador.setQuantidade(this.jogador.getQuantidade() + 10);
         }
         verificaEstado();
     }

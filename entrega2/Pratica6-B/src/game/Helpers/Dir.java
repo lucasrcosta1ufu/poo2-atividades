@@ -19,4 +19,9 @@ public class Dir {
     {
         return "/images";
     }
+    
+    public static String configsPath()
+    {
+        return "src/configs";
+    }
 }

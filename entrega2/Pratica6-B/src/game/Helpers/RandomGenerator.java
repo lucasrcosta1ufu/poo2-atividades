@@ -2,8 +2,8 @@ package game.Helpers;
 
 import java.util.Random;
 
-public class RandomFloat {
-    public static Float getRandom() {
+public class RandomGenerator {
+    public static Float getFloat() {
         return (new Random()).nextFloat();
     }
 }

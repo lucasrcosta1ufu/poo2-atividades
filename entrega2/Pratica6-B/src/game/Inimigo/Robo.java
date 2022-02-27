@@ -1,14 +1,15 @@
 package game.Inimigo;
 
 import game.Ataque.Ataque;
-import game.Game;
 import game.Helpers.Posicao;
 import game.Personagem.Jogador;
 import java.util.Observer;
 import java.util.Observable;
-import java.awt.Color;
 import java.awt.image.BufferedImage;
 import game.Movimento.Movimento;
+import game.Utilities;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class Robo implements Observer {
     private RoboEstado vida;
@@ -16,46 +17,95 @@ public class Robo implements Observer {
     private int x;
     private int y;
     private String nome;
-    private Movimento c;
-    private Ataque a;
+    private Movimento movimento;
+    private Ataque ataque;
     private Posicao posicao;
-    private Color cor;
     private BufferedImage image;
     private int width, height;
 
-    public Robo(int x, int y, int width, int height, String nome, Color cor, BufferedImage image) {
-        this.posicao = new Posicao(x, y, Game.WIDTH - width, Game.HEIGHT - height);
+    public Robo(int x, int y, int width, int height, String nome, BufferedImage image)
+    {
+        this.posicao = new Posicao(x, y, Utilities.WIDTH - width, Utilities.HEIGHT - height);
         this.nome = nome;
-        this.cor = cor;
         this.image = image;
         this.width = width;
         this.height = height;
+        this.quantidade = 70;
 
         this.vida = new RoboNormal(this);
-        this.setQuantidade(70);
     }
 
-    public int getWidth() {
+    public Robo(Posicao posicao, int width, int height, String nome, BufferedImage image)
+    {
+        this.posicao = posicao;
+        this.nome = nome;
+        this.image = image;
+        this.width = width;
+        this.height = height;
+        this.quantidade = 70;
+
+        this.vida = new RoboNormal(this);
+    }
+
+    public Robo(int x, int y, int width, int height, String nome, String path)
+        throws IOException
+    {
+        this.posicao = new Posicao(x, y, Utilities.WIDTH - width, Utilities.HEIGHT - height);
+        this.nome = nome;
+        this.width = width;
+        this.height = height;
+        this.quantidade = 70;
+
+        this.image = ImageIO.read(
+            getClass().getResourceAsStream(path)
+        );
+
+        this.vida = new RoboNormal(this);
+    }
+
+    public Robo(Posicao posicao, int width, int height, String nome, String path)
+        throws IOException
+    {
+        this.posicao = posicao;
+        this.nome = nome;
+        this.width = width;
+        this.height = height;
+        this.quantidade = 70;
+
+        this.image = ImageIO.read(
+            getClass().getResourceAsStream(path)
+        );
+        
+        this.vida = new RoboNormal(this);
+    }
+
+    public int getWidth()
+    {
         return width;
     }
 
-    public void setWidth(int width) {
+    public void setWidth(int width)
+    {
         this.width = width;
     }
 
-    public int getHeight() {
+    public int getHeight()
+    {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(int height)
+    {
         this.height = height;
     }
 
-    public RoboEstado getVida() {
+    public RoboEstado getVida()
+    {
         return this.vida;
     }
 
-    public void setVida(RoboEstado vida) {
+    public void setVida(RoboEstado vida)
+    {
         this.vida = vida;
     }
 
@@ -63,63 +113,68 @@ public class Robo implements Observer {
         return this.quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(int quantidade)
+    {
         this.quantidade = quantidade;
     }
 
-    public String getNome() {
+    public String getNome()
+    {
         return this.nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome)
+    {
         this.nome = nome;
     }
 
-    public int getX() {
+    public int getX()
+    {
         return this.posicao.getX();
     }
 
-    public int getY() {
+    public int getY()
+    {
         return this.posicao.getY();
     }
 
-    public void setX(int x) {
+    public void setX(int x)
+    {
         this.posicao.setX(x);
     }
 
-    public void setY(int y) {
+    public void setY(int y)
+    {
         this.posicao.setY(y);
     }
 
-    public void setPos(int x, int y) {
+    public void setPos(int x, int y)
+    {
         this.posicao.setPos(x, y);
     }
 
-    public void setCor(Color cor) {
-        this.cor = cor;
-    }
-
-    public Color getCor() {
-        return this.cor;
-    }
-
-    public void setAvatar(BufferedImage image) {
+    public void setAvatar(BufferedImage image)
+    {
         this.image = image;
     }
 
-    public BufferedImage getAvatar() {
+    public BufferedImage getAvatar()
+    {
         return this.image;
     }
 
-    public void recebeAtaque(int ataque) {
+    public void recebeAtaque(int ataque)
+    {
         vida.dano(ataque);
     }
 
-    public void recompensa() {
+    public void recompensa()
+    {
         vida.ganhaVida();
     }
 
-    public void update(Observable subject, Object arg) {
+    public void update(Observable subject, Object arg)
+    {
         Jogador jogador = (Jogador) subject;
 
         // se estiver em distancia de ataque
@@ -127,7 +182,7 @@ public class Robo implements Observer {
             (Math.abs(this.getX() - jogador.getX()) == 0) &&
             (Math.abs(this.getY() - jogador.getY()) == 0)
         ) {
-            jogador.recebeAtaque(this.getA().atacar());
+            jogador.recebeAtaque(this.getAtaque().atacar());
 
             if (Math.random() < 0.5) {
                 jogador.setPos(
@@ -168,31 +223,38 @@ public class Robo implements Observer {
 
     // ------------------------------------------------ //
 
-    public Movimento getC() {
-        return this.c;
+    public Movimento getMovimento()
+    {
+        return this.movimento;
     }
 
-    public void setC(Movimento c) {
-        this.c = c;
+    public void setMovimento(Movimento movimento)
+    {
+        this.movimento = movimento;
     }
 
-    public Ataque getA() {
-        return this.a;
+    public Ataque getAtaque()
+    {
+        return this.ataque;
     }
 
-    public void setA(Ataque a) {
-        this.a = a;
+    public void setAtaque(Ataque ataque)
+    {
+        this.ataque = ataque;
     }
 
-    public void corrida() {
-        c.correr();
+    public void corrida()
+    {
+        movimento.correr();
     }
 
-    public void ataque() {
-        a.atacar();
+    public void ataque()
+    {
+        ataque.atacar();
     }
 
-    public void moveToUp(int moviment) {
+    public void moveToUp(int moviment)
+    {
         if (this.getY() - moviment >= 0) {
             this.setY(this.getY() - moviment);
         } else {
@@ -200,7 +262,8 @@ public class Robo implements Observer {
         }
     }
 
-    public void moveToDown(int moviment) {
+    public void moveToDown(int moviment)
+    {
         if (this.getY() + moviment <= this.posicao.getMaxY()) {
             this.setY(this.getY() + moviment);
         } else {
@@ -208,7 +271,8 @@ public class Robo implements Observer {
         }
     }
 
-    public void moveToLeft(int moviment) {
+    public void moveToLeft(int moviment)
+    {
         if (this.getX() - moviment >= 0) {
             this.setX(this.getX() - moviment);
         } else {
@@ -216,7 +280,8 @@ public class Robo implements Observer {
         }
     }
 
-    public void moveToRight(int moviment) {
+    public void moveToRight(int moviment)
+    {
         if (this.getX() + moviment <= this.posicao.getMaxX()) {
             this.setX(this.getX() + moviment);
         } else {

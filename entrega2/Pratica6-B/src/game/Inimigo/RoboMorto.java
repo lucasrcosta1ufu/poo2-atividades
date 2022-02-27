@@ -10,35 +10,45 @@ import java.util.Scanner;
  */
 public class RoboMorto extends RoboEstado
 {
-    public RoboMorto(Robo r){
+    public RoboMorto(Robo r)
+    {
         super(r);
         morte();
     }
     
-    public void setLimites(){
+    @Override
+    public void setLimites()
+    {
         this.setLimiteInferior(0);
         this.setLimiteSuperior(0);
     }
     
-    public void verificaEstado(){
-        if(this.getR().getQuantidade() < this.getLimiteInferior()){
-            this.getR().setVida(new RoboMorto(this.getR()));
-        }else if(this.getR().getQuantidade() > this.getLimiteSuperior()){
-            this.getR().setVida(new RoboMorto(this.getR()));
+    @Override
+    public void verificaEstado()
+    {
+        if(this.getRobo().getQuantidade() < this.getLimiteInferior()){
+            this.getRobo().setVida(new RoboMorto(this.getRobo()));
+        }else if(this.getRobo().getQuantidade() > this.getLimiteSuperior()){
+            this.getRobo().setVida(new RoboMorto(this.getRobo()));
         }
     }
     
-    public void perdeVida(int lostLife){
+    @Override
+    public void perdeVida(int lostLife)
+    {
         this.morte();
     }
     
-    public void morte(){ 
-        System.out.printf("Robo %s morto.\n",this.getR().getNome());
+    public void morte()
+    { 
+        System.out.printf("Robo %s morto.\n",this.getRobo().getNome());
         //javax.swing.JOptionPane.showMessageDialog(null, "You win :)");
         //System.exit(0);
     }
     
-    public void dano(int dano){
+    @Override
+    public void dano(int dano)
+    {
         this.morte();
     }
 }

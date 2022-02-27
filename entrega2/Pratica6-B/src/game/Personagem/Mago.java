@@ -1,12 +1,22 @@
 package game.Personagem;
 
 import game.Ataque.AtaqueMedio;
+import game.Helpers.Posicao;
+import game.Utilities;
+import java.io.IOException;
 
-public class Mago extends Personagem {
-    private static final String PATH = "res\\character2.png";
-
-    public Mago() {
-        super("Mago", Mago.PATH);
+public class Mago extends Jogador {
+    public Mago(Posicao posicao, int width, int height)
+        throws IOException
+    {
+        super(
+            "Mago",
+            posicao,
+            width,
+            height,
+            Utilities.characterPaths.get("mago")
+        );
+        
         String descricao = "Mussum Ipsum, cacilds vidis litro abertis."
             + "Si num tem leite então bota uma pinga aí cumpadi!"
             + "Quem num gosta di mim que vai caçá sua turmis!"

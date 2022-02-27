@@ -12,10 +12,10 @@ import game.Movimento.MovimentoRapido;
  */
 public class RoboForte extends RoboEstado
 {
-    public RoboForte(Robo r){
-        super(r);
-        r.setC(new MovimentoRapido());
-        r.setA(new AtaqueForte());
+    public RoboForte(Robo robo){
+        super(robo);
+        robo.setMovimento(new MovimentoRapido());
+        robo.setAtaque(new AtaqueForte());
     }
     
     @Override
@@ -26,10 +26,10 @@ public class RoboForte extends RoboEstado
     
     @Override
     public void verificaEstado(){
-        if(this.getR().getQuantidade() < this.getLimiteInferior()){
-            this.getR().setVida(new RoboNormal(this.getR()));
-        }else if(this.getR().getQuantidade() > this.getLimiteSuperior()){
-            this.getR().setVida(new RoboForte(this.getR()));
+        if(this.getRobo().getQuantidade() < this.getLimiteInferior()){
+            this.getRobo().setVida(new RoboNormal(this.getRobo()));
+        }else if(this.getRobo().getQuantidade() > this.getLimiteSuperior()){
+            this.getRobo().setVida(new RoboForte(this.getRobo()));
         }
     }
     

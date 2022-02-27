@@ -12,27 +12,33 @@ import game.Movimento.MovimentoRapido;
  */
 public class RoboNormal extends RoboEstado
 {    
-    public RoboNormal(Robo r){
-        super(r);
-        r.setC(new MovimentoRapido());
-        r.setA(new AtaqueMedio());
+    public RoboNormal(Robo robo)
+    {
+        super(robo);
+        robo.setMovimento(new MovimentoRapido());
+        robo.setAtaque(new AtaqueMedio());
     }
     
-    public void setLimites(){
+    @Override
+    public void setLimites()
+    {
         this.setLimiteInferior(30);
         this.setLimiteSuperior(70);
     }
     
-    public void verificaEstado(){
-        if(this.getR().getQuantidade() <= this.getLimiteInferior()){
-            this.getR().setVida(new RoboPerigo(this.getR()));
-        }else if(this.getR().getQuantidade() > this.getLimiteSuperior()){
-            this.getR().setVida(new RoboForte(this.getR()));
+    @Override
+    public void verificaEstado()
+    {
+        if(this.getRobo().getQuantidade() <= this.getLimiteInferior()){
+            this.getRobo().setVida(new RoboPerigo(this.getRobo()));
+        }else if(this.getRobo().getQuantidade() > this.getLimiteSuperior()){
+            this.getRobo().setVida(new RoboForte(this.getRobo()));
         }
     }
     
     @Override
-    public void dano(int dano){
+    public void dano(int dano)
+    {
         this.perdeVida(dano);
     }
 }

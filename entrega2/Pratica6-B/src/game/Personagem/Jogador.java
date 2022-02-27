@@ -23,6 +23,7 @@ import javax.imageio.ImageIO;
  * @version (ataque version number or ataque date)
  */
 public abstract class Jogador extends Observable {
+    private boolean bolAtaque;
     private int quantidade, width, height, numSuccessfulAtacks = 0;
     private String nome, tipo, descricao;
     private Movimento movimento;
@@ -55,7 +56,8 @@ public abstract class Jogador extends Observable {
         
     }
 
-    public Jogador(String tipo, Posicao posicao, int width, int height, BufferedImage image) {
+    public Jogador(String tipo, Posicao posicao, int width, int height, BufferedImage image)
+    {
         this.posicao = posicao;
         this.image = image;
         this.width = width;
@@ -129,6 +131,24 @@ public abstract class Jogador extends Observable {
         this.image = ImageIO.read(
             getClass().getResourceAsStream(path)
         );        
+    }
+
+    /**
+     * @return the bolAtaque
+     */
+    public boolean isAttacking() {
+        boolean tmp = bolAtaque;
+            
+        this.setBolAtaque(false);
+            
+        return tmp;
+    }
+
+    /**
+     * @param bolAtaque the bolAtaque to set
+     */
+    public void setBolAtaque(boolean bolAtaque) {
+        this.bolAtaque = bolAtaque;
     }
 
     public int getWidth()
@@ -288,6 +308,8 @@ public abstract class Jogador extends Observable {
     public synchronized void enviaAtaque(ArrayList<Robo> robos)
     {
         Robo robo;
+        
+        setBolAtaque(true);
         // se estiver em distancia de ataque
         for (int i = 0; i < robos.size(); i++) {
             robo = robos.get(i);

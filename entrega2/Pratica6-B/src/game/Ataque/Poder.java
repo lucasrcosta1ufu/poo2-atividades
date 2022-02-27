@@ -1,7 +1,9 @@
 package game.Ataque;
 
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.io.InputStream;
+import javax.imageio.ImageIO;
 /**
  * Abstract class Poder - write a description of the class here
  *
@@ -10,46 +12,38 @@ import java.io.InputStream;
  */
 public abstract class Poder extends Ataque
 {
-    //private int x, y;
     private int ataque; 
     private Ataque superPoder;
-    private InputStream power;
     private BufferedImage image;
 
-    public Poder(Ataque superPoder) {
+    public Poder(Ataque superPoder)
+    {
         this.superPoder = superPoder;
     }
+
+    public Poder(Ataque superPoder, BufferedImage image)
+    {
+        this.superPoder = superPoder;
+        this.image = image;
+    }
+
+    public Poder(Ataque superPoder, String path) throws IOException
+    {
+        this.superPoder = superPoder;
+        this.image = ImageIO.read(
+            getClass().getResourceAsStream(path)
+        );
+    }
     
-    public Ataque getSuperPoder() {
+    public Ataque getSuperPoder()
+    {
         return this.superPoder;
     }
     
-    public int atacar(){
+    @Override
+    public int atacar()
+    {
         return this.superPoder.atacar() + super.getForca();
-    }  
-    /*
-    public void setX (int x) {
-        this.x = x;
-    }
-    
-    public int getX () {
-        return this.x;
-    }
-    
-    public void setY (int y) {
-        this.y = y;
-    }
-    
-    public int getY () {
-        return this.y;
-    }
-     
-    public void setNext (Ataque proximo) {
-        this.next = proximo;
-    }
-     
-    public Ataque getNext () {
-        return this.next;
     }
     
     public void setImage(BufferedImage image) {
@@ -59,10 +53,5 @@ public abstract class Poder extends Ataque
     public BufferedImage getImage() {
         return this.image;
     }
-    
-    public void setRandomicPosition(int maxX, int maxY) {
-        this.x = ThreadLocalRandom.current().nextInt(0, 800);
-        this.y = ThreadLocalRandom.current().nextInt(120, maxY - 20); 
-    }*/
     
 }

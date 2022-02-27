@@ -5,23 +5,20 @@ import java.io.IOException;
 
 
 /**
- * Write a description of class Special here.
+ * Write a description of class Encantamento here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Special extends Poder
+public class Encantamento extends Poder
 {
-    private final int forca = 10;
-    
-    public Special(Ataque poder) throws IOException
-    {
+    public Encantamento(Ataque poder) throws IOException {
         super(poder, ataqueImagesPath.get("special"));
-        super.setForca(forca);
+        super.setForca(7);
     }
     
     @Override
     public int atacar(){
         return super.atacar();
-    }   
+    }  
 }

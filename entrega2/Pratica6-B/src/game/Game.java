@@ -1,17 +1,17 @@
 package game;
 
+import game.Ataque.Poder;
 import game.Inimigo.Robo;
 import game.Escudo.EscudoMedio;
 import game.Escudo.EscudoForte;
 import game.Escudo.EscudoFraco;
 import game.Escudo.Escudo;
-import game.Ataque.Poder;
 import game.Helpers.JLabelData;
 import game.Helpers.Posicao;
 import game.Helpers.RandomGenerator;
 import game.Personagem.Jogador;
 import game.Personagem.SimplePersonagemFactory;
-  import java.awt.Color;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.*;
@@ -21,20 +21,21 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.awt.Font;
+import java.awt.image.BufferedImage;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Dictionary;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 public class Game extends JPanel
 {
     private Jogador jogador = null;
-    private ArrayList<Robo> robos = null;
-//    private BufferedImage character, enemy1, enemy2, enemy3;
     private ImageIcon background;
+    private ArrayList<Robo> robos = null;
     private ArrayList<Escudo> escudos;
-    private ArrayList<Poder> poderes;
     private final Font EnemyStatusFont = new Font("Serif", Font.BOLD, 20);
     private final Font baseFont = new Font("Serif", Font.BOLD, 60);
 
@@ -138,6 +139,24 @@ public class Game extends JPanel
             jogadorLabel
         );
         
+        if (jogador.isAttacking()) {
+            if (jogador.getAtaque() instanceof Poder) {
+                Posicao ataqueDecodadoPosicao = (Posicao) Utilities
+                    .ataqueDecoradoData.get("posicao");
+
+                g2d.drawImage(
+                    ((Poder) jogador.getAtaque()).getImage(),
+                    jogador.getX() +
+                        ataqueDecodadoPosicao.getX(),
+                    jogador.getY() +
+                        ataqueDecodadoPosicao.getY(),
+                    (Integer) Utilities.ataqueDecoradoData.get("width"),
+                    (Integer) Utilities.ataqueDecoradoData.get("height"),
+                    null         
+                );
+            }
+        }
+        
         for (int i = 0; i < robos.size(); i++) {
             robo = robos.get(i);            
             this.drawRobo(g2d, robo, Utilities.enemysData.get(i));
@@ -224,7 +243,6 @@ public class Game extends JPanel
         System.out.println("------------- Comeca jogo --------------");
         
         Escudo eForte, eMedio, eFraco;
-        Poder soco, chute, especial;
 
         JFrame frame = new JFrame("RoboHunt");
 
@@ -252,7 +270,8 @@ public class Game extends JPanel
                 .criaPersonagem(RandomGenerator.getFloat());
             
         } catch (IOException ex) {
-            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Game.class.getName())
+                .log(Level.SEVERE, null, ex);
             System.exit(0);
         }
         

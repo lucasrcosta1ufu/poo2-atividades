@@ -4,12 +4,29 @@
         "height": 571
     },
     "background": "./src/images/map.png",
-    "characters": {
-        "druida": "/images/character0.png",
-        "paladino": "/images/character1.png",
-        "mago": "/images/character2.png",
-        "sacerdote": "/images/character3.png",
-        "assassino": "/images/character4.png"
+    "images": {
+        "characters": {
+	        "druida": "/images/character0.png",
+	        "paladino": "/images/character1.png",
+	        "mago": "/images/character2.png",
+	        "sacerdote": "/images/character3.png",
+	        "assassino": "/images/character4.png"
+	    },
+	    "ataques": {
+	        "special": "/images/special.png",
+	        "superchute": "/images/superChute.png",
+	        "supersoco": "/images/superSoco.png"
+	    }
+    },
+    "ataqueDecorados": {
+        "dimensions": {
+            "w": 50,
+            "h": 50
+        },
+        "posicao": {
+            "x": 25,
+            "y": 0
+        }
     },
     "subjects": {
         "personagem": {

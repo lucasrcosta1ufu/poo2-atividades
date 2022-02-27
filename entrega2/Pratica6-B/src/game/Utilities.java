@@ -34,7 +34,9 @@ public class Utilities {
     public static String backgroundPath;
     
     public static Dictionary<String, Object> personagemData = new Hashtable<>();
+    public static Dictionary<String, Object> ataqueDecoradoData = new Hashtable<>();
     public static Dictionary<String, String> characterPaths = new Hashtable<>();
+    public static Dictionary<String, String> ataqueImagesPath = new Hashtable<>();
     public static ArrayList<Dictionary<String, Object>> enemysData = new ArrayList<>();
 
     public static String getPATH() {
@@ -68,15 +70,25 @@ public class Utilities {
         JSONObject subject = getSubjects(obj);
         
         loadBackground(obj);
-        loadCharacterPaths(obj);
+        loadImages(obj);
         loadPersonagemData(subject);
         loadEnemyData(subject);
+        loadAtaqueDecoradosData(obj);
     }
     
     private static void loadBackground(JSONObject obj)
         throws JSONException
     {
         backgroundPath = obj.getString("background");
+    }
+    
+    private static void loadImages(JSONObject obj)
+        throws JSONException
+    {
+        JSONObject images = obj.getJSONObject("images");
+        
+        loadCharacterPaths(images);
+        loadAtaqueImages(images);
     }
     
     private static void loadCharacterPaths(JSONObject obj)
@@ -89,6 +101,19 @@ public class Utilities {
         while(keys.hasNext()) {
             key = keys.next();
             characterPaths.put(key, characters.getString(key));
+        }
+    }
+    
+    private static void loadAtaqueImages(JSONObject obj)
+        throws JSONException
+    {
+        String key;
+        JSONObject characters = obj.getJSONObject("ataques");
+        Iterator<String> keys = characters.keys();
+        
+        while(keys.hasNext()) {
+            key = keys.next();
+            ataqueImagesPath.put(key, characters.getString(key));
         }
     }
     
@@ -212,6 +237,30 @@ public class Utilities {
             text.getInt("x"),
             text.getInt("y"),
             dimensoes.getInt("w"),
+            dimensoes.getInt("h")
+        );
+    }
+    
+    private static void loadAtaqueDecoradosData(JSONObject obj)
+        throws JSONException
+    {
+        JSONObject ataqueData = obj.getJSONObject("ataqueDecorados");
+        JSONObject posicao = ataqueData.getJSONObject("posicao");
+        JSONObject dimensoes = ataqueData.getJSONObject("dimensions");
+            
+        ataqueDecoradoData.put(
+            "posicao",
+            new Posicao(
+                posicao.getInt("x"),
+                posicao.getInt("y")
+            )
+        );
+        ataqueDecoradoData.put(
+            "width",
+            dimensoes.getInt("w")
+        );
+        ataqueDecoradoData.put(
+            "height",
             dimensoes.getInt("h")
         );
     }

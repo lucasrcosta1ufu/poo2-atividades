@@ -13,30 +13,34 @@ import game.Personagem.Jogador;
  */
 public class EstadoPerigo extends Estado
 {
-    public EstadoPerigo(Jogador p){
-        super(p);
-        p.setC(new MovimentoDevagar());
-        p.setA(new AtaqueFraco());
+    public EstadoPerigo(Jogador jogador)
+    {
+        super(jogador);
+        jogador.setMovimento(new MovimentoDevagar());
+        jogador.setAtaque(new AtaqueFraco());
         System.out.println("Estado Perigo");
     }
     
     @Override
-    public void setLimites(){
+    public void setLimites()
+    {
         this.setLimiteInferior(0);
         this.setLimiteSuperior(29);
     }
     
     @Override
-    public void verificaEstado(){
-        if(this.getP().getQuantidade() <= this.getLimiteInferior()){
-            this.getP().setVida(new EstadoMorto(this.getP()));
-        }else if(this.getP().getQuantidade() > this.getLimiteSuperior()){
-            this.getP().setVida(new EstadoNormal(this.getP()));
+    public void verificaEstado()
+    {
+        if(this.getJogador().getQuantidade() <= this.getLimiteInferior()){
+            this.getJogador().setVida(new EstadoMorto(this.getJogador()));
+        }else if(this.getJogador().getQuantidade() > this.getLimiteSuperior()){
+            this.getJogador().setVida(new EstadoNormal(this.getJogador()));
         }
     }
     
     @Override
-    public void dano(int dano){
+    public void dano(int dano)
+    {
         this.perdeVida(dano);
     }
 }

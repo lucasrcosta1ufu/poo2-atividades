@@ -22,69 +22,122 @@ import javax.imageio.ImageIO;
  * @author (your name)
  * @version (ataque version number or ataque date)
  */
-public class Jogador extends Observable {
+public abstract class Jogador extends Observable {
+    private int quantidade, width, height, numSuccessfulAtacks = 0;
+    private String nome, tipo, descricao;
     private Movimento movimento;
     private Ataque ataque;
     private Estado vida;
-    private int quantidade;
     private Escudo escudo;
-    private String nome;
-    private final Posicao posicao;
     private BufferedImage image;
-    private int numSuccessfulAtacks = 0;
-    private int width, height;
+    private final Posicao posicao;
 
-    public Jogador(int x, int y, int width, int height, BufferedImage image) {
+    public Jogador(String tipo, int x, int y, int width, int height, BufferedImage image) {
         this.posicao = new Posicao(x, y, Game.WIDTH - width, Game.HEIGHT - height);
         this.image = image;
         this.width = width;
         this.height = height;
-
+        this.quantidade = 70;
         this.vida = new EstadoNormal(this);
-        this.setQuantidade(70);
     }
 
-    public Jogador(int x, int y, int width, int height, String path) throws IOException {
+    public Jogador(String tipo, int x, int y, int width, int height, String path)
+        throws IOException
+    {
         this.posicao = new Posicao(x, y, Utilities.WIDTH - width, Utilities.HEIGHT - height);
         this.width = width;
         this.height = height;
-        
+        this.quantidade = 70;  
+        this.vida = new EstadoNormal(this);      
         this.image = ImageIO.read(
             getClass().getResourceAsStream(path)
         );
         
-        this.vida = new EstadoNormal(this);
-        this.setQuantidade(70);
     }
 
-    public Jogador(Posicao posicao, int width, int height, BufferedImage image) {
+    public Jogador(String tipo, Posicao posicao, int width, int height, BufferedImage image) {
         this.posicao = posicao;
         this.image = image;
         this.width = width;
         this.height = height;
-
+        this.quantidade = 70;
         this.vida = new EstadoNormal(this);
-        this.setQuantidade(70);
     }
 
-    public Jogador(Posicao posicao, int width, int height, String path) throws IOException {
+    public Jogador(String tipo, Posicao posicao, int width, int height, String path)
+        throws IOException
+    {
         this.posicao = posicao;
         this.width = width;
         this.height = height;
+        this.quantidade = 70;
+        this.vida = new EstadoNormal(this);
         
         this.image = ImageIO.read(
             getClass().getResourceAsStream(path)
         );
         
-        this.vida = new EstadoNormal(this);
-        this.setQuantidade(70);
     }
 
-    public int getWidth() {
+    public Jogador(int x, int y, int width, int height, BufferedImage image) {
+        this.posicao = new Posicao(
+            x, y, Game.WIDTH - width, Game.HEIGHT - height
+        );
+        this.image = image;
+        this.width = width;
+        this.height = height;
+        this.quantidade = 70;
+        this.vida = new EstadoNormal(this);
+    }
+
+    public Jogador(int x, int y, int width, int height, String path)
+        throws IOException
+    {
+        this.posicao = new Posicao(
+            x, y, Utilities.WIDTH - width, Utilities.HEIGHT - height
+        );
+        this.width = width;
+        this.height = height;
+        this.quantidade = 70;
+        this.vida = new EstadoNormal(this);
+        
+        this.image = ImageIO.read(
+            getClass().getResourceAsStream(path)
+        );
+        
+    }
+
+    public Jogador(Posicao posicao, int width, int height, BufferedImage image)
+    {
+        this.posicao = posicao;
+        this.image = image;
+        this.width = width;
+        this.height = height;
+        this.quantidade = 70;
+        this.vida = new EstadoNormal(this);
+    }
+
+    public Jogador(Posicao posicao, int width, int height, String path)
+        throws IOException
+    {
+        this.posicao = posicao;
+        this.width = width;
+        this.height = height;
+        this.quantidade = 70;
+        this.vida = new EstadoNormal(this);
+        
+        this.image = ImageIO.read(
+            getClass().getResourceAsStream(path)
+        );        
+    }
+
+    public int getWidth()
+    {
         return width;
     }
 
-    public void setWidth(int width) {
+    public void setWidth(int width)
+    {
         this.width = width;
     }
 
@@ -92,55 +145,77 @@ public class Jogador extends Observable {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(int height)
+    {
         this.height = height;
     }
 
-    public Estado getVida() {
+    public Estado getVida()
+    {
         return this.vida;
     }
 
-    public void setVida(Estado vida) {
+    public void setVida(Estado vida)
+    {
         this.numSuccessfulAtacks = 0;
         this.vida = vida;
     }
 
-    public int getQuantidade() {
+    public int getQuantidade()
+    {
         return this.quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(int quantidade)
+    {
         this.quantidade = quantidade;
     }
 
-    public void recebeAtaque(int ataque) {
+    public void recebeAtaque(int ataque)
+    {
         if (this.escudo != null) {
             ataque = this.escudo.processaAtaque(ataque);
         }
         vida.dano(ataque);
     }
 
-    public void recompensa() {
+    public String getDescricao()
+    {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao)
+    {
+        this.descricao = descricao;
+    }
+
+    public void recompensa()
+    {
         vida.ganhaVida();
     }
 
-    public Movimento getC() {
+    public Movimento getMovimento()
+    {
         return this.movimento;
     }
 
-    public void setC(Movimento movimento) {
+    public void setMovimento(Movimento movimento)
+    {
         this.movimento = movimento;
     }
 
-    public Ataque getA() {
+    public Ataque getAtaque()
+    {
         return this.ataque;
     }
 
-    public void setA(Ataque ataque) {
+    public void setAtaque(Ataque ataque)
+    {
         this.ataque = ataque;
     }
 
-    public void setEscudo(Escudo escudo) {
+    public void setEscudo(Escudo escudo)
+    {
         this.escudo = escudo;
     }
 
@@ -148,15 +223,18 @@ public class Jogador extends Observable {
         return this.escudo;
     }
 
-    public void setAvatar(BufferedImage image) {
+    public void setAvatar(BufferedImage image)
+    {
         this.image = image;
     }
 
-    public BufferedImage getAvatar() {
+    public BufferedImage getAvatar()
+    {
         return this.image;
     }
 
-    public void addEscudo(Escudo escudo) {
+    public void addEscudo(Escudo escudo)
+    {
         if (this.escudo != null) {
             this.escudo.setNext(escudo);
         } else {
@@ -164,42 +242,51 @@ public class Jogador extends Observable {
         }
     }
 
-    public void corrida() {
+    public void corrida()
+    {
         movimento.correr();
     }
 
-    public void ataque() {
+    public void ataque()
+    {
         ataque.atacar();
     }
 
-    public int getX() {
+    public int getX()
+    {
         return this.posicao.getX();
     }
 
-    public int getY() {
+    public int getY()
+    {
         return this.posicao.getY();
     }
 
-    public void setX(int x) {
+    public void setX(int x)
+    {
         this.posicao.setX(x);
     }
 
-    public void setY(int y) {
+    public void setY(int y)
+    {
         this.posicao.setY(y);
     }
 
-    public void setPos(int x, int y) {
+    public void setPos(int x, int y)
+    {
         this.posicao.setPos(x, y);
     }
 
-    public void show() {
+    public void show()
+    {
         setChanged();
         notifyObservers();
     }
 
     // ------------------------------------------------------- //
 
-    public synchronized void enviaAtaque(ArrayList<Robo> robos) {
+    public synchronized void enviaAtaque(ArrayList<Robo> robos)
+    {
         Robo robo;
         // se estiver em distancia de ataque
         for (int i = 0; i < robos.size(); i++) {
@@ -208,7 +295,7 @@ public class Jogador extends Observable {
                 (Math.abs(this.getX() - robo.getX()) < 3) &&
                 (Math.abs(this.getY() - robo.getY()) < 3)
             ) {
-                robo.recebeAtaque(this.getA().atacar());               
+                robo.recebeAtaque(this.getAtaque().atacar());               
                 robo.getVida().verificaEstado();
                 
                 if (robo.getVida() instanceof RoboMorto) {
@@ -237,7 +324,7 @@ public class Jogador extends Observable {
 
                 if (robo.getY() > this.getY()) {
                     this.setY(this.getY() + (int) (5 * Math.random()));
-                }                 else {
+                } else {
                     this.setY(this.getY() - (int) (5 * Math.random()));
                 }
 
@@ -252,7 +339,8 @@ public class Jogador extends Observable {
         }
     }
 
-    public void coletaEscudo(ArrayList<Escudo> escudos) {
+    public void coletaEscudo(ArrayList<Escudo> escudos)
+    {
         for (int i = 0; i < escudos.size(); i++) {
             if (
                 (Math.abs(this.getX() - escudos.get(i).getX()) <= 10) &&
@@ -265,37 +353,42 @@ public class Jogador extends Observable {
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return this.nome;
     }
 
-    public void moveToUp() {
-        if (this.getY() - this.getC().correr() >= 0) {
-            this.setY(this.getY() - this.getC().correr());
+    public void moveToUp()
+    {
+        if (this.getY() - this.getMovimento().correr() >= 0) {
+            this.setY(this.getY() - this.getMovimento().correr());
         } else {
             this.setY(0);
         }
     }
 
-    public void moveToDown() {
-        if (this.getY() + this.getC().correr() <= this.posicao.getMaxY()) {
-            this.setY(this.getY() + this.getC().correr());
+    public void moveToDown()
+    {
+        if (this.getY() + this.getMovimento().correr() <= this.posicao.getMaxY()) {
+            this.setY(this.getY() + this.getMovimento().correr());
         } else {
             this.setY(this.posicao.getMaxY());
         }
     }
 
-    public void moveToLeft() {
-        if (this.getX() - this.getC().correr() >= 0) {
-            this.setX(this.getX() - this.getC().correr());
+    public void moveToLeft()
+    {
+        if (this.getX() - this.getMovimento().correr() >= 0) {
+            this.setX(this.getX() - this.getMovimento().correr());
         } else {
             this.setX(0);
         }
     }
 
-    public void moveToRight() {
-        if (this.getX() + this.getC().correr() <= this.posicao.getMaxX()) {
-            this.setX(this.getX() + this.getC().correr());
+    public void moveToRight()
+    {
+        if (this.getX() + this.getMovimento().correr() <= this.posicao.getMaxX()) {
+            this.setX(this.getX() + this.getMovimento().correr());
         } else {
             this.setX(this.posicao.getMaxX());
         }

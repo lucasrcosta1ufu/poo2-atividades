@@ -19,8 +19,8 @@ public class Robo implements Observer {
     private int x;
     private int y;
     private String nome;
-    private Movimento c;
-    private Ataque a;
+    private Movimento movimento;
+    private Ataque ataque;
     private Posicao posicao;
     private Color cor;
     private BufferedImage image;
@@ -34,9 +34,9 @@ public class Robo implements Observer {
         this.image = image;
         this.width = width;
         this.height = height;
+        this.quantidade = 70;
 
         this.vida = new RoboNormal(this);
-        this.setQuantidade(70);
     }
 
     public Robo(Posicao posicao, int width, int height, String nome, Color cor, BufferedImage image)
@@ -47,9 +47,9 @@ public class Robo implements Observer {
         this.image = image;
         this.width = width;
         this.height = height;
+        this.quantidade = 70;
 
         this.vida = new RoboNormal(this);
-        this.setQuantidade(70);
     }
 
     public Robo(int x, int y, int width, int height, String nome, Color cor, String path)
@@ -60,13 +60,13 @@ public class Robo implements Observer {
         this.cor = cor;
         this.width = width;
         this.height = height;
+        this.quantidade = 70;
 
         this.image = ImageIO.read(
             getClass().getResourceAsStream(path)
         );
 
         this.vida = new RoboNormal(this);
-        this.setQuantidade(70);
     }
 
     public Robo(Posicao posicao, int width, int height, String nome, Color cor, String path)
@@ -77,13 +77,13 @@ public class Robo implements Observer {
         this.cor = cor;
         this.width = width;
         this.height = height;
+        this.quantidade = 70;
 
         this.image = ImageIO.read(
             getClass().getResourceAsStream(path)
         );
         
         this.vida = new RoboNormal(this);
-        this.setQuantidade(70);
     }
 
     public int getWidth()
@@ -199,7 +199,7 @@ public class Robo implements Observer {
             (Math.abs(this.getX() - jogador.getX()) == 0) &&
             (Math.abs(this.getY() - jogador.getY()) == 0)
         ) {
-            jogador.recebeAtaque(this.getA().atacar());
+            jogador.recebeAtaque(this.getAtaque().atacar());
 
             if (Math.random() < 0.5) {
                 jogador.setPos(
@@ -240,34 +240,34 @@ public class Robo implements Observer {
 
     // ------------------------------------------------ //
 
-    public Movimento getC()
+    public Movimento getMovimento()
     {
-        return this.c;
+        return this.movimento;
     }
 
-    public void setC(Movimento c)
+    public void setMovimento(Movimento movimento)
     {
-        this.c = c;
+        this.movimento = movimento;
     }
 
-    public Ataque getA()
+    public Ataque getAtaque()
     {
-        return this.a;
+        return this.ataque;
     }
 
-    public void setA(Ataque a)
+    public void setAtaque(Ataque ataque)
     {
-        this.a = a;
+        this.ataque = ataque;
     }
 
     public void corrida()
     {
-        c.correr();
+        movimento.correr();
     }
 
     public void ataque()
     {
-        a.atacar();
+        ataque.atacar();
     }
 
     public void moveToUp(int moviment)

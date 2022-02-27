@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.JSONArray;
@@ -25,33 +26,24 @@ import org.json.JSONObject;
  * @author Usuario
  */
 public class Utilities {
-    private static String PATH;
-    public static String backgroundPath;
-    public static Dictionary<String, Object> personagemData;
-    public static ArrayList<Dictionary<String, Object>> enemysData;
+    private final static String PATH = Dir.configsPath() + "/common-data.json";
+    
     public final static int HEIGHT = 571;
     public final static int WIDTH = 999;
-
-    public Utilities() {
-        PATH = Dir.configsPath() + "/base-data.json";
-    }
+    public static String backgroundPath;
+    
+    public static Dictionary<String, Object> personagemData = new Hashtable<>();
+    public static Dictionary<String, String> characterPaths = new Hashtable<>();
+    public static ArrayList<Dictionary<String, Object>> enemysData = new ArrayList<>();
 
     public static String getPATH() {
         return PATH;
     }
-
-    public Utilities(String path) {
-        PATH = path;
-    } 
     
     @SuppressWarnings("UseOfObsoleteCollectionType")
     public static void readConfigs()
     {
-        try {
-            PATH = Dir.configsPath() + "/base-data.json";
-            personagemData = new Hashtable<>();
-            enemysData = new ArrayList<>();
-            
+        try {            
             Json jsonContent = new Json(PATH);
             JSONObject obj = jsonContent.read();
             
@@ -75,6 +67,7 @@ public class Utilities {
         JSONObject subject = getSubjects(obj);
         
         loadBackground(obj);
+        loadCharacterPaths(obj);
         loadPersonagemData(subject);
         loadEnemyData(subject);
     }
@@ -85,31 +78,43 @@ public class Utilities {
         backgroundPath = obj.getString("background");
     }
     
+    private static void loadCharacterPaths(JSONObject obj)
+        throws JSONException
+    {
+        String key;
+        JSONObject characters = obj.getJSONObject("characters");
+        Iterator<String> keys = characters.keys();
+        
+        while(keys.hasNext()) {
+            key = keys.next();
+            characterPaths.put(key, characters.getString(key));
+        }
+    }
+    
     private static void loadPersonagemData(JSONObject obj)
         throws JSONException
     {
+        String key;
         JSONObject personagem = obj.getJSONObject("personagem");
         JSONObject posicao = personagem.getJSONObject("posicao");
         JSONObject dimensions = personagem.getJSONObject("dimensions");
+        Iterator<String> keys = personagem.keys();
+        
         Posicao pos = new Posicao(
             posicao.getInt("x"),
             posicao.getInt("y"),
             Utilities.WIDTH - dimensions.getInt("w"),
             Utilities.HEIGHT - dimensions.getInt("h")
         );
-                
-        personagemData.put(
-            "name",
-            personagem.getString("name")
-        );
-        personagemData.put(
-            "image",
-            personagem.getString("image")
-        );
-        personagemData.put(
-            "jlabelName",
-            personagem.getString("jlabelName")
-        );
+          
+        while(keys.hasNext()) {
+            key = keys.next();
+            
+            if (personagem.get(key) instanceof String) {
+                personagemData.put(key, personagem.getString(key)); 
+            }
+        }
+        
         personagemData.put(
             "width",
             dimensions.getInt("w")

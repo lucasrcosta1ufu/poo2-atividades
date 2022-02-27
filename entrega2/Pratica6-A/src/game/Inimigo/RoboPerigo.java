@@ -12,26 +12,33 @@ import game.Movimento.MovimentoDevagar;
  */
 public class RoboPerigo extends RoboEstado
 {    
-    public RoboPerigo(Robo r){
-        super(r);
-        r.setC(new MovimentoDevagar());
-        r.setA(new AtaqueFraco());
+    public RoboPerigo(Robo robo)
+    {
+        super(robo);
+        robo.setMovimento(new MovimentoDevagar());
+        robo.setAtaque(new AtaqueFraco());
     }
     
-    public void setLimites(){
+    @Override
+    public void setLimites()
+    {
         this.setLimiteInferior(1);
         this.setLimiteSuperior(29);
     }
     
-    public void verificaEstado(){
-        if(this.getR().getQuantidade() <= this.getLimiteInferior()){
-            this.getR().setVida(new RoboMorto(this.getR()));
-        }else if(this.getR().getQuantidade() > this.getLimiteSuperior()){
-            this.getR().setVida(new RoboNormal(this.getR()));
+    @Override
+    public void verificaEstado()
+    {
+        if(this.getRobo().getQuantidade() <= this.getLimiteInferior()){
+            this.getRobo().setVida(new RoboMorto(this.getRobo()));
+        }else if(this.getRobo().getQuantidade() > this.getLimiteSuperior()){
+            this.getRobo().setVida(new RoboNormal(this.getRobo()));
         }
     }
     
-    public void dano(int dano){
+    @Override
+    public void dano(int dano)
+    {
         this.perdeVida(dano);
     }
 }

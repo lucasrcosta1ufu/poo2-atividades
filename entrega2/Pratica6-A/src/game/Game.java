@@ -8,7 +8,9 @@ import game.Escudo.Escudo;
 import game.Ataque.Poder;
 import game.Helpers.Dir;
 import game.Helpers.Posicao;
+import game.Helpers.RandomGenerator;
 import game.Personagem.Jogador;
+import game.Personagem.SimplePersonagemFactory;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -29,13 +31,14 @@ import javax.imageio.ImageIO;
 
 public class Game extends JPanel
 {
-    private ArrayList<Robo> robos = null;
     private Jogador jogador = null;
-    private ArrayList<Escudo> escudos;
-    private final Font EnemyStatusFont = new Font("Serif", Font.BOLD, 20);
-    private ArrayList<Poder> poderes;
-    private BufferedImage character, enemy1, enemy2, enemy3;
+    private ArrayList<Robo> robos = null;
+//    private BufferedImage character, enemy1, enemy2, enemy3;
     private ImageIcon background;
+    private ArrayList<Escudo> escudos;
+    private ArrayList<Poder> poderes;
+    private final Font EnemyStatusFont = new Font("Serif", Font.BOLD, 20);
+    private final Font baseFont = new Font("Serif", Font.BOLD, 60);
 
     public Game() {
         KeyListener listener = new MyKeyListener();
@@ -195,7 +198,6 @@ public class Game extends JPanel
     public void jogar(Game game) throws InterruptedException {
         System.out.println("------------- Comeca jogo --------------");
         
-        Font baseFont = new Font("Serif", Font.BOLD, 60);
         Escudo eForte, eMedio, eFraco;
         Poder soco, chute, especial;
 
@@ -203,6 +205,7 @@ public class Game extends JPanel
 
         JLabel label = new JLabel();
         JLabel lifeJogador = new JLabel();
+        
         
         background = new ImageIcon(Utilities.backgroundPath);
         robos = new ArrayList<>();
@@ -220,12 +223,8 @@ public class Game extends JPanel
         });
         
         try {
-            jogador = new Jogador(
-                (Posicao) Utilities.personagemData.get("posicao"),
-                (Integer) Utilities.personagemData.get("width"),
-                (Integer) Utilities.personagemData.get("height"),
-                (String) Utilities.personagemData.get("image")
-            );
+            jogador = SimplePersonagemFactory
+                .criaPersonagem(RandomGenerator.getFloat());
         } catch (IOException ex) {
             Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
             System.exit(0);
@@ -293,26 +292,26 @@ public class Game extends JPanel
         System.exit(0);
     }
 
-    private void inputImage() {
-        InputStream cs = getClass()
-            .getResourceAsStream(Dir.imagePath() + "/character0.png");
-        
-        InputStream es1 = getClass()
-            .getResourceAsStream(Dir.imagePath() + "/enemy1.png");
-        
-        InputStream es2 = getClass()
-            .getResourceAsStream(Dir.imagePath() + "/enemy2.png");
-        
-        InputStream es3 = getClass()
-            .getResourceAsStream(Dir.imagePath() + "/enemy3.png");
-        
-        try {
-            character = ImageIO.read(cs);
-            enemy1 = ImageIO.read(es1);
-            enemy2 = ImageIO.read(es2);
-            enemy3 = ImageIO.read(es3);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    private void inputImage() {
+//        InputStream cs = getClass()
+//            .getResourceAsStream(Dir.imagePath() + "/character0.png");
+//        
+//        InputStream es1 = getClass()
+//            .getResourceAsStream(Dir.imagePath() + "/enemy1.png");
+//        
+//        InputStream es2 = getClass()
+//            .getResourceAsStream(Dir.imagePath() + "/enemy2.png");
+//        
+//        InputStream es3 = getClass()
+//            .getResourceAsStream(Dir.imagePath() + "/enemy3.png");
+//        
+//        try {
+//            character = ImageIO.read(cs);
+//            enemy1 = ImageIO.read(es1);
+//            enemy2 = ImageIO.read(es2);
+//            enemy3 = ImageIO.read(es3);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

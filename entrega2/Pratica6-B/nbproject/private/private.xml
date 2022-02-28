@@ -3,20 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Codes/POO2/Trabs/entrega2/Pratica6-B/src/game/Ataque/Encantamento.java</file>
-            <file>file:/D:/Codes/POO2/Trabs/entrega2/Pratica6-B/src/game/Ataque/Poder.java</file>
             <file>file:/D:/Codes/POO2/Trabs/entrega2/Pratica6-B/src/game/Ataque/DisparoMagico.java</file>
             <file>file:/D:/Codes/POO2/Trabs/entrega2/Pratica6-B/src/game/Teste.java</file>
-            <file>file:/D:/Codes/POO2/Trabs/entrega2/Pratica6-B/src/game/Personagem/SimplePersonagemFactory.java</file>
-            <file>file:/D:/Codes/POO2/Trabs/entrega2/Pratica6-B/src/game/Utilities.java</file>
-            <file>file:/D:/Codes/POO2/Trabs/entrega2/Pratica6-B/src/game/Game.java</file>
-            <file>file:/D:/Codes/POO2/Trabs/entrega2/Pratica6-B/src/game/Ataque/ForcaAnimal.java</file>
             <file>file:/D:/Codes/POO2/Trabs/entrega2/Pratica6-B/src/game/Ataque/GolpeSagrado.java</file>
-            <file>file:/D:/Codes/POO2/Trabs/entrega2/Pratica6-B/src/game/Personagem/Paladino.java</file>
-            <file>file:/D:/Codes/POO2/Trabs/entrega2/Pratica6-B/src/game/Ataque/Ataque.java</file>
+            <file>file:/D:/Codes/POO2/Trabs/entrega2/Pratica6-B/src/game/RPGGame.java</file>
+            <file>file:/D:/Codes/POO2/Trabs/entrega2/Pratica6-B/src/game/Ataque/Encantamento.java</file>
+            <file>file:/D:/Codes/POO2/Trabs/entrega2/Pratica6-B/src/game/Ataque/ForcaAnimal.java</file>
+            <file>file:/D:/Codes/POO2/Trabs/entrega2/Pratica6-B/src/game/Game.java</file>
             <file>file:/D:/Codes/POO2/Trabs/entrega2/Pratica6-B/src/game/Ataque/MilLaminasCortantes.java</file>
-            <file>file:/D:/Codes/POO2/Trabs/entrega2/Pratica6-B/src/game/Ataque/Special.java</file>
-            <file>file:/D:/Codes/POO2/Trabs/entrega2/Pratica6-B/src/game/Personagem/Jogador.java</file>
+            <file>file:/D:/Codes/POO2/Trabs/entrega2/Pratica6-B/src/game/Personagem/SimplePersonagemFactory.java</file>
         </group>
     </open-files>
 </project-private>

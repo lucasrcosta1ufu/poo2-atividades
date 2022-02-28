@@ -16,7 +16,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.*;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ import java.util.Dictionary;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Game extends JPanel
+public class RPGGame extends Game
 {
     private Jogador jogador = null;
     private ImageIcon background;
@@ -36,7 +35,7 @@ public class Game extends JPanel
     private final Font EnemyStatusFont = new Font("Serif", Font.BOLD, 20);
     private final Font baseFont = new Font("Serif", Font.BOLD, 60);
 
-    public Game()
+    public RPGGame()
     {
         KeyListener listener = new MyKeyListener();
         addKeyListener(listener);
@@ -234,11 +233,13 @@ public class Game extends JPanel
         return String.format("%s %d", preffix, robo.getQuantidade());
     }
 
-    public void jogar(Game game)
+    @Override
+    public void jogar(Game g)
         throws InterruptedException
     {
         System.out.println("------------- Comeca jogo --------------");
         
+        RPGGame game = (RPGGame) g;
         Escudo eForte, eMedio, eFraco;
 
         JFrame frame = new JFrame("RoboHunt");
@@ -267,7 +268,7 @@ public class Game extends JPanel
                 .criaPersonagem(RandomGenerator.getFloat());
             
         } catch (IOException ex) {
-            Logger.getLogger(Game.class.getName())
+            Logger.getLogger(RPGGame.class.getName())
                 .log(Level.SEVERE, null, ex);
             System.exit(0);
         }
@@ -284,7 +285,7 @@ public class Game extends JPanel
                 robos.add(robo);
                 jogador.addObserver(robo);
             } catch (IOException ex) {
-                Logger.getLogger(Game.class.getName())
+                Logger.getLogger(RPGGame.class.getName())
                     .log(Level.SEVERE, null, ex);
                 
                 System.exit(0);
@@ -333,5 +334,19 @@ public class Game extends JPanel
             Thread.sleep(50);
         }
         System.exit(0);
+    }
+
+    @Override
+    public Jogador criaPersonagem() {
+        Jogador player = null;
+        try {
+            player = SimplePersonagemFactory
+                    .criaPersonagem(RandomGenerator.getFloat());
+        } catch (IOException ex) {
+            Logger.getLogger(RPGGame.class.getName())
+                .log(Level.SEVERE, null, ex);
+        } finally {
+            return player;
+        }
     }
 }

@@ -1,0 +1,161 @@
+{
+    "window": {
+        "width": 999,
+        "height": 571
+    },
+    "background": "./src/images/map.png",
+    "images": {
+        "characters": {
+	        "druida": "/images/character0.png",
+	        "paladino": "/images/character1.png",
+	        "mago": "/images/character2.png",
+	        "sacerdote": "/images/character3.png",
+	        "assassino": "/images/character4.png"
+	    },
+	    "ataques": {
+	        "special": "/images/special.png",
+	        "superchute": "/images/superChute.png",
+	        "supersoco": "/images/superSoco.png"
+	    }
+    },
+    "ataqueDecorados": {
+        "dimensions": {
+            "w": 50,
+            "h": 50
+        },
+        "posicao": {
+            "x": 25,
+            "y": 0
+        }
+    },
+    "subjects": {
+        "personagem": {
+            "name": "Jogador",
+            "jlabel": {
+                "name": "Vida Jogador",
+                "dimensions": {
+                    "w": 140,
+                    "h": 26
+                },
+                "background": {
+                    "posicao": {
+                        "x": 850,
+                        "y": 2
+                    }
+                },
+                "text": {
+                    "posicao": {
+                        "x": 856,
+                        "y": 21
+                    }
+                }
+            },
+            "posicao": {
+            	"x": 200,
+            	"y": 400
+            },
+            "dimensions": {
+            	"w": 40,
+            	"h": 40
+            }
+        },
+        "enemys": [
+            {
+                "name": "Robo 1",
+                "image": "/images/enemy1.png",
+                "jlabel": {
+                    "name": "Vida Robo 1",
+	                "dimensions": {
+	                    "w": 140,
+	                    "h": 26
+	                },
+                    "background": {
+                        "posicao": {
+                            "x": 850,
+                            "y": 32
+                        }
+                    },
+                    "text": {
+                        "posicao": {
+                            "x": 856,
+                            "y": 51
+                        }
+                    }
+                },
+                "color": "BLUE",
+                "posicao": {
+                    "x": 200,
+                    "y": 400
+                },
+                "dimensions": {
+                    "w": 70,
+                    "h": 70
+                }
+            },
+            {
+                "name": "Robo 2",
+                "image": "/images/enemy2.png",
+                "jlabel": {
+                    "name": "Vida Robo 2",
+	                "dimensions": {
+	                    "w": 140,
+	                    "h": 26
+	                },
+                    "background": {
+                        "posicao": {
+                            "x": 850,
+                            "y": 62
+                        }
+                    },
+                    "text": {
+                        "posicao": {
+                            "x": 856,
+                            "y": 81
+                        }
+                    }
+                },
+                "color": "GREEN",
+                "posicao": {
+                    "x": 450,
+                    "y": 10
+                },
+                "dimensions": {
+                    "w": 70,
+                    "h": 70
+                }
+            },
+            {
+                "name": "Robo 3",
+                "image": "/images/enemy3.png",
+                "jlabel": {
+                    "name": "Vida Robo 3",
+	                "dimensions": {
+	                    "w": 140,
+	                    "h": 26
+	                },
+                    "background": {
+                        "posicao": {
+                            "x": 850,
+                            "y": 92
+                        }
+                    },
+                    "text": {
+                        "posicao": {
+                            "x": 856,
+                            "y": 111
+                        }
+                    }
+                },
+                "color": "ORANGE",
+                "posicao": {
+                    "x": 150,
+                    "y": 50
+                },
+                "dimensions": {
+                    "w": 70,
+                    "h": 70
+                }
+            }
+        ]
+    }
+}

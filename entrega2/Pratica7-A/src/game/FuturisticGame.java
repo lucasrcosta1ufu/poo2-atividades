@@ -25,7 +25,7 @@ public class FuturisticGame extends Game
     private ImageIcon background;
     private static FuturisticGame instance = null;
 
-    public FuturisticGame()
+    private FuturisticGame()
     {
         KeyListener listener = new MyKeyListener();
         addKeyListener(listener);

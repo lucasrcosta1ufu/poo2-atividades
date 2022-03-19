@@ -11,17 +11,24 @@ import game.Personagem.Jogador;
  */
 public class EstadoMorto extends Estado
 {
-    private Jogador jogador;
+    private static Jogador jogador;
     private Robo robo;
     private int limiteInferior, limiteSuperior;
     private static EstadoMorto instancia = null;
     
-    public EstadoMorto(Jogador jogador)
+    private EstadoMorto(Jogador jogador)
     {
-        this.jogador = jogador;
+        EstadoMorto.jogador = jogador;
         
         System.out.println("Morto");
         morte();
+    }
+    
+    public static synchronized EstadoMorto getInstance(Jogador jogador) {
+        if(instancia == null) {
+            instancia = new EstadoMorto(jogador);
+        }
+        return instancia;
     }
     
     @Override
@@ -46,7 +53,7 @@ public class EstadoMorto extends Estado
         this.morte();
     }
     
-    public void morte()
+    public final void morte()
     {
         javax.swing.JOptionPane.showMessageDialog(null, "Game Over :/");
         System.exit(0);

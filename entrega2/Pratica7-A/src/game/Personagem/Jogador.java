@@ -40,7 +40,7 @@ public abstract class Jogador extends Observable {
         this.width = width;
         this.height = height;
         this.quantidade = 70;
-        this.vida = new EstadoNormal(this);
+        this.vida = EstadoNormal.getInstance(this);
     }
 
     public Jogador(String tipo, int x, int y, int width, int height, String path)
@@ -50,7 +50,7 @@ public abstract class Jogador extends Observable {
         this.width = width;
         this.height = height;
         this.quantidade = 70;  
-        this.vida = new EstadoNormal(this);      
+        this.vida = EstadoNormal.getInstance(this);     
         this.image = ImageIO.read(
             getClass().getResourceAsStream(path)
         );
@@ -64,7 +64,7 @@ public abstract class Jogador extends Observable {
         this.width = width;
         this.height = height;
         this.quantidade = 70;
-        this.vida = new EstadoNormal(this);
+        this.vida = EstadoNormal.getInstance(this);
     }
 
     public Jogador(String tipo, Posicao posicao, int width, int height, String path)
@@ -74,7 +74,7 @@ public abstract class Jogador extends Observable {
         this.width = width;
         this.height = height;
         this.quantidade = 70;
-        this.vida = new EstadoNormal(this);
+        this.vida = EstadoNormal.getInstance(this);
         
         this.image = ImageIO.read(
             getClass().getResourceAsStream(path)
@@ -91,7 +91,7 @@ public abstract class Jogador extends Observable {
         this.width = width;
         this.height = height;
         this.quantidade = 70;
-        this.vida = new EstadoNormal(this);
+        this.vida = EstadoNormal.getInstance(this);
     }
 
     public Jogador(int x, int y, int width, int height, String path)
@@ -103,7 +103,7 @@ public abstract class Jogador extends Observable {
         this.width = width;
         this.height = height;
         this.quantidade = 70;
-        this.vida = new EstadoNormal(this);
+        this.vida = EstadoNormal.getInstance(this);
         
         this.image = ImageIO.read(
             getClass().getResourceAsStream(path)
@@ -118,7 +118,7 @@ public abstract class Jogador extends Observable {
         this.width = width;
         this.height = height;
         this.quantidade = 70;
-        this.vida = new EstadoNormal(this);
+        this.vida = EstadoNormal.getInstance(this);
     }
 
     public Jogador(Posicao posicao, int width, int height, String path)
@@ -128,7 +128,7 @@ public abstract class Jogador extends Observable {
         this.width = width;
         this.height = height;
         this.quantidade = 70;
-        this.vida = new EstadoNormal(this);
+        this.vida = EstadoNormal.getInstance(this); 
         
         this.image = ImageIO.read(
             getClass().getResourceAsStream(path)

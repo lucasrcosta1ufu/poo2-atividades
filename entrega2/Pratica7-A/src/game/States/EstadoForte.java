@@ -14,23 +14,30 @@ import game.Personagem.Jogador;
  */
 public class EstadoForte extends Estado
 {
-    private Jogador jogador;
+    private static Jogador jogador;
     private Robo robo;
     private int limiteInferior, limiteSuperior;
     private static EstadoForte instancia = null;
     
-    public EstadoForte(Jogador jogador)
+    private EstadoForte(Jogador jogador)
     {
-        this.jogador = jogador;
-        this.jogador.setMovimento(new MovimentoRapido());
-        this.jogador.setAtaque(new AtaqueForte());
+        EstadoForte.jogador = jogador;
+        EstadoForte.jogador.setMovimento(new MovimentoRapido());
+        EstadoForte.jogador.setAtaque(new AtaqueForte());
         
         setLimites();
         System.out.println("Estado Forte");
     }
     
+    public static synchronized EstadoForte getInstance(Jogador jogador) {
+        if(instancia == null) {
+            instancia = new EstadoForte(jogador);
+        }
+        return instancia;
+    }
+    
     @Override
-    public void setLimites()
+    public final void setLimites()
     {
         this.setLimiteInferior(71);
         this.setLimiteSuperior(100);

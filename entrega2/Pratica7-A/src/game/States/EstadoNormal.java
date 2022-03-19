@@ -14,23 +14,30 @@ import game.Personagem.Jogador;
  */
 public class EstadoNormal extends Estado
 {
-    private Jogador jogador;
+    private static Jogador jogador;
     private Robo robo;
     private int limiteInferior, limiteSuperior;
     private static EstadoNormal instancia = null;
     
-    public EstadoNormal(Jogador jogador)
+    private EstadoNormal(Jogador jogador)
     {
-        this.jogador = jogador;
-        this.jogador.setMovimento(new MovimentoRapido());
-        this.jogador.setAtaque(new AtaqueMedio());
+        EstadoNormal.jogador = jogador;
+        EstadoNormal.jogador.setMovimento(new MovimentoRapido());
+        EstadoNormal.jogador.setAtaque(new AtaqueMedio());
         
         setLimites();
         System.out.println("Estado Normal");
     }
     
+    public static synchronized EstadoNormal getInstance(Jogador jogador) {
+        if(instancia == null) {
+            instancia = new EstadoNormal(jogador);
+        }
+        return instancia;
+    }
+    
     @Override
-    public void setLimites()
+    public final void setLimites()
     {
         this.setLimiteInferior(30);
         this.setLimiteSuperior(70);

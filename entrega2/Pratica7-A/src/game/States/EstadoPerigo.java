@@ -39,10 +39,10 @@ public class EstadoPerigo extends Estado
     @Override
     public void verificaEstado()
     {
-        if(this.getJogador().getQuantidade() <= this.getLimiteInferior()){
-            this.getJogador().setVida(new EstadoMorto(this.getJogador()));
-        }else if(this.getJogador().getQuantidade() > this.getLimiteSuperior()){
-            this.getJogador().setVida(new EstadoNormal(this.getJogador()));
+        if(this.getJogador().getQuantidade() <= this.getLimiteInferior()) {
+            this.getJogador().setVida(EstadoMorto.getInstancia(this.getJogador()));
+        } else if(this.getJogador().getQuantidade() > this.getLimiteSuperior()) {
+            this.getJogador().setVida(EstadoNormal.getInstancia(this.getJogador()));
         }
     }
     

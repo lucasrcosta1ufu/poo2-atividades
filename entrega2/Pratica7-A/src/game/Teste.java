@@ -10,7 +10,7 @@ public class Teste
     {
         Utilities.readConfigs();
         
-        MedievalGame g = new MedievalGame();
+        MedievalGame g = MedievalGame.getInstance();
         g.jogar(g);
         
     }

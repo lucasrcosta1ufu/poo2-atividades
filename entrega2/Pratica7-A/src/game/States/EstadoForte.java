@@ -39,10 +39,8 @@ public class EstadoForte extends Estado
     @Override
     public void verificaEstado()
     {
-        if(this.getJogador().getQuantidade() <= this.getLimiteInferior()){
-            this.getJogador().setVida(new EstadoNormal(this.getJogador()));
-        }else if(this.getJogador().getQuantidade() > this.getLimiteSuperior()){
-            this.getJogador().setVida(new EstadoForte(this.getJogador()));
+        if (this.getJogador().getQuantidade() <= this.getLimiteInferior()) {
+            this.getJogador().setVida(EstadoNormal.getInstancia(this.getJogador()));
         }
     }
     
@@ -50,6 +48,13 @@ public class EstadoForte extends Estado
     public void dano(int dano)
     {
         this.perdeVida(dano);
+    }
+    
+    public static synchronized EstadoForte getInstancia(Jogador jogador) {
+        if (instancia == null) {
+            instancia = new EstadoForte(jogador);            
+        }
+        return instancia;
     }
     
     public Jogador getJogador()

@@ -40,9 +40,9 @@ public class EstadoNormal extends Estado
     public void verificaEstado()
     {
         if(this.getJogador().getQuantidade() <= this.getLimiteInferior()){
-            this.getJogador().setVida(new EstadoPerigo(this.getJogador()));
+            this.getJogador().setVida(EstadoPerigo.getInstancia(this.getJogador()));
         }else if(this.getJogador().getQuantidade() > this.getLimiteSuperior()){
-            this.getJogador().setVida(new EstadoForte(this.getJogador()));
+            this.getJogador().setVida(EstadoForte.getInstancia(this.getJogador()));
         }
     }
     

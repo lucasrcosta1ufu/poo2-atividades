@@ -35,9 +35,9 @@ public class EstadoMorto extends Estado
     public void verificaEstado()
     {
         if(this.getJogador().getQuantidade() < this.getLimiteInferior()){
-            this.getJogador().setVida(new EstadoMorto(this.getJogador()));
+            this.getJogador().setVida(EstadoMorto.getInstancia(this.getJogador()));
         }else if(this.getJogador().getQuantidade() > this.getLimiteSuperior()){
-            this.getJogador().setVida(new EstadoMorto(this.getJogador()));
+            this.getJogador().setVida(EstadoMorto.getInstancia(this.getJogador()));
         }
     }
     

@@ -1,0 +1,109 @@
+package game.States;
+
+import game.Ataque.AtaqueForte;
+import game.Inimigo.Robo;
+import game.Movimento.MovimentoRapido;
+import game.Personagem.Jogador;
+
+
+/**
+ * Write a description of class EstadoForte here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
+public class EstadoForte extends Estado
+{
+    private Jogador jogador;
+    private Robo robo;
+    private int limiteInferior, limiteSuperior;
+    private static EstadoForte instancia = null;
+    
+    public EstadoForte(Jogador jogador)
+    {
+        this.jogador = jogador;
+        this.jogador.setMovimento(new MovimentoRapido());
+        this.jogador.setAtaque(new AtaqueForte());
+        
+        setLimites();
+        System.out.println("Estado Forte");
+    }
+    
+    @Override
+    public void setLimites()
+    {
+        this.setLimiteInferior(71);
+        this.setLimiteSuperior(100);
+    }
+    
+    @Override
+    public void verificaEstado()
+    {
+        if(this.getJogador().getQuantidade() <= this.getLimiteInferior()){
+            this.getJogador().setVida(new EstadoNormal(this.getJogador()));
+        }else if(this.getJogador().getQuantidade() > this.getLimiteSuperior()){
+            this.getJogador().setVida(new EstadoForte(this.getJogador()));
+        }
+    }
+    
+    @Override
+    public void dano(int dano)
+    {
+        this.perdeVida(dano);
+    }
+    
+    public Jogador getJogador()
+    {
+        return this.jogador;
+    }
+    
+    public void setJogador(Jogador jogador)
+    {
+        this.jogador = jogador;
+    }
+    
+    public Robo getRobo()
+    {
+        return this.robo;
+    }
+    
+    public void setRobo(Robo robo)
+    {
+        this.robo = robo;
+    }
+    
+    public int getLimiteInferior()
+    {
+        return this.limiteInferior;
+    }
+    
+    public void setLimiteInferior(int limiteInferior)
+    {
+        this.limiteInferior = limiteInferior;
+    }
+    
+    public int getLimiteSuperior(){
+        return this.limiteSuperior;
+    }
+    
+    public void setLimiteSuperior(int limiteSuperior)
+    {
+        this.limiteSuperior = limiteSuperior;
+    }
+    
+    public void perdeVida(int lostLife)
+    {
+        this.jogador.setQuantidade(this.jogador.getQuantidade() - lostLife);
+        verificaEstado();
+    }
+    
+    public void ganhaVida()
+    {
+        if(this.jogador.getQuantidade() >= 100){
+            this.jogador.setQuantidade(100);
+        } else {
+            this.jogador.setQuantidade(this.jogador.getQuantidade() + 10);
+        }
+        verificaEstado();
+    }
+}

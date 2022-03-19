@@ -23,8 +23,9 @@ import java.util.logging.Logger;
 public class MedievalGame extends Game
 {
     private ImageIcon background;
-
-    public MedievalGame()
+    private static MedievalGame instance = null;
+    
+    private MedievalGame()
     {
         KeyListener listener = new MyKeyListener();
         addKeyListener(listener);
@@ -34,6 +35,13 @@ public class MedievalGame extends Game
         // the instruction setFocusable(true), which allows KeyboardExample to receive
         // the focus.
 
+    }
+    
+    public static synchronized MedievalGame getInstance() {
+        if(instance == null) {
+            instance = new MedievalGame();
+        }
+        return instance;
     }
 
     public class MyKeyListener implements KeyListener

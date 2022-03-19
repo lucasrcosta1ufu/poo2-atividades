@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 public class FuturisticGame extends Game
 {
     private ImageIcon background;
+    private static FuturisticGame instance = null;
 
     public FuturisticGame()
     {
@@ -36,6 +37,12 @@ public class FuturisticGame extends Game
 
     }
 
+    public static synchronized FuturisticGame getInstance() {
+        if(instance == null) {
+            instance = new FuturisticGame();
+        }
+        return instance;
+    }
     public class MyKeyListener implements KeyListener
     {
         @Override

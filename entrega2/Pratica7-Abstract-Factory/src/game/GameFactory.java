@@ -5,11 +5,16 @@
  */
 package game;
 
+import game.Inimigo.Robo;
+import game.Personagem.Jogador;
+
 /**
  *
  * @author Usuario
  */
-public class GameFactory
+public abstract class GameFactory
 {
-    
+    public abstract Jogador criarJogador();
+    public abstract Robo criarInimigos();
+    public abstract void criarCenario();
 }

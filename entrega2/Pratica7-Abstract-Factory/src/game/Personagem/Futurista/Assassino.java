@@ -1,20 +1,21 @@
-package game.Personagem;
+package game.Personagem.Futurista;
 
-import game.Ataque.AtaqueMedio;
+import game.Ataque.AtaqueForte;
 import game.Helpers.Posicao;
+import game.Personagem.Jogador;
 import game.Utilities;
 import java.io.IOException;
 
-public class Mago extends Jogador {
-    public Mago(Posicao posicao, int width, int height)
+public class Assassino extends Jogador {
+    public Assassino(Posicao posicao, int width, int height)
         throws IOException
     {
         super(
-            "Mago",
+            "Assassino",
             posicao,
             width,
             height,
-            Utilities.characterPaths.get("mago")
+            Utilities.characterPaths.get("assassino")
         );
         
         String descricao = "Mussum Ipsum, cacilds vidis litro abertis."
@@ -23,7 +24,7 @@ public class Mago extends Jogador {
             + "Delegadis gente finis, bibendum egestas augue arcu ut est."
             + "Per aumento de cachacis, eu reclamis.";
         
-        super.setAtaque(AtaqueMedio.getInstance());
+        super.setAtaque(AtaqueForte.getInstance());
         super.setDescricao(descricao);
     }
 }

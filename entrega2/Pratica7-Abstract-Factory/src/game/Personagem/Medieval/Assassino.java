@@ -1,21 +1,23 @@
-package game.Personagem;
+package game.Personagem.Medieval;
 
 import game.Ataque.AtaqueForte;
 import game.Helpers.Posicao;
+import game.Personagem.Jogador;
 import game.Utilities;
 import java.io.IOException;
 
-public class Paladino extends Jogador {
-    public Paladino(Posicao posicao, int width, int height)
+public class Assassino extends Jogador {
+    public Assassino(Posicao posicao, int width, int height)
         throws IOException
     {
         super(
-            "Paladino",
+            "Assassino",
             posicao,
             width,
             height,
-            Utilities.characterPaths.get("paladino")
+            Utilities.characterPaths.get("assassino")
         );
+        
         String descricao = "Mussum Ipsum, cacilds vidis litro abertis."
             + "Si num tem leite então bota uma pinga aí cumpadi!"
             + "Quem num gosta di mim que vai caçá sua turmis!"

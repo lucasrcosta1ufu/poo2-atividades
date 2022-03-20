@@ -1,4 +1,4 @@
-package game.Personagem;
+package game.Personagem.Medieval;
 
 import game.Ataque.DisparoMagico;
 import game.Ataque.ForcaAnimal;
@@ -7,7 +7,9 @@ import game.Ataque.MilLaminasCortantes;
 import game.Ataque.Encantamento;
 import game.Helpers.Posicao;
 import game.Utilities;
+import game.Personagem.Jogador;
 import java.io.IOException;
+
 
 public class SimplePersonagemFactory {
     public static Jogador criaPersonagem(float valor)

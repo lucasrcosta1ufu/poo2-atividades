@@ -26,7 +26,8 @@ import org.json.JSONObject;
  *
  * @author Usuario
  */
-public class Utilities {
+public class Utilities
+{
     private final static String PATH = Dir.configsPath() + "/common-properties.json";
     
     public final static int HEIGHT = 571;

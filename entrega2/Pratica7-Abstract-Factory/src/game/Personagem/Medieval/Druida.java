@@ -1,20 +1,21 @@
-package game.Personagem;
+package game.Personagem.Medieval;
 
 import game.Ataque.AtaqueFraco;
 import game.Helpers.Posicao;
+import game.Personagem.Jogador;
 import game.Utilities;
 import java.io.IOException;
 
-public class Sacerdote extends Jogador {
-    public Sacerdote(Posicao posicao, int width, int height)
+public class Druida extends Jogador {
+    public Druida(Posicao posicao, int width, int height)
         throws IOException
     {
         super(
-            "Sacerdote",
+            "Druida",
             posicao,
             width,
-            height,            
-            Utilities.characterPaths.get("sacerdote")
+            height,
+            Utilities.characterPaths.get("druida")
         );
         
         String descricao = "Mussum Ipsum, cacilds vidis litro abertis."

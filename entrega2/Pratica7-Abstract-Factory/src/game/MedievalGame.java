@@ -9,7 +9,7 @@ import game.Helpers.JLabelData;
 import game.Helpers.Posicao;
 import game.Helpers.RandomGenerator;
 import game.Personagem.Jogador;
-import game.Personagem.SimplePersonagemFactory;
+import game.Personagem.Medieval.SimplePersonagemFactory;
 import javax.swing.*;
 import javax.swing.JFrame;
 import java.awt.event.KeyEvent;

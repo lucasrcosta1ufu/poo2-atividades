@@ -9,8 +9,20 @@ package game.Movimento;
  */
 public class MovimentoDevagar implements Movimento
 {
-    private int velocidade = 5;
+    private static MovimentoDevagar instancia = new MovimentoDevagar();
+    private int velocidade;
+    
+    private MovimentoDevagar()
+    {
+        velocidade = 5;
+    }
+    
     public int correr() {
         return velocidade;
+    }
+    
+    public static MovimentoDevagar getInstance()
+    {
+        return instancia;
     }
 }

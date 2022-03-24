@@ -1,21 +1,21 @@
 package game.Personagem.Futurista;
 
-import game.Ataque.AtaqueFraco;
+import game.Ataque.AtaqueForte;
 import game.Helpers.Posicao;
 import game.Personagem.Jogador;
 import game.Utilities;
 import java.io.IOException;
 
-public class Druida extends Jogador {
-    public Druida(Posicao posicao, int width, int height)
+public class Fuzileiro extends Jogador {
+    public Fuzileiro(Posicao posicao, int width, int height)
         throws IOException
     {
         super(
-            "Druida",
+            "Assassino",
             posicao,
             width,
             height,
-            Utilities.characterPaths.get("druida")
+            Utilities.futuristicData.characterPaths.get("assassino")
         );
         
         String descricao = "Mussum Ipsum, cacilds vidis litro abertis."
@@ -24,7 +24,7 @@ public class Druida extends Jogador {
             + "Delegadis gente finis, bibendum egestas augue arcu ut est."
             + "Per aumento de cachacis, eu reclamis.";
         
-        super.setAtaque(AtaqueFraco.getInstance());
+        super.setAtaque(AtaqueForte.getInstance());
         super.setDescricao(descricao);
     }
 }

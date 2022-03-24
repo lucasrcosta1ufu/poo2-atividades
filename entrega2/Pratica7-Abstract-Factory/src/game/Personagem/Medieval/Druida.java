@@ -15,7 +15,7 @@ public class Druida extends Jogador {
             posicao,
             width,
             height,
-            Utilities.characterPaths.get("druida")
+            Utilities.medievalData.characterPaths.get("druida")
         );
         
         String descricao = "Mussum Ipsum, cacilds vidis litro abertis."

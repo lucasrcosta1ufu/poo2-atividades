@@ -14,16 +14,16 @@ import game.Personagem.Jogador;
  */
 public class EstadoNormal extends Estado
 {
-    private static Jogador jogador;
+    private Jogador jogador;
     private Robo robo;
     private int limiteInferior, limiteSuperior;
     private static EstadoNormal instancia = null;
     
     private EstadoNormal(Jogador jogador)
     {
-        EstadoNormal.jogador = jogador;
-        EstadoNormal.jogador.setMovimento(new MovimentoRapido());
-        EstadoNormal.jogador.setAtaque(AtaqueMedio.getInstance());
+        this.jogador = jogador;
+        this.jogador.setMovimento(MovimentoRapido.getInstance());
+        this.jogador.setAtaque(AtaqueMedio.getInstance());
         
         setLimites();
         System.out.println("Estado Normal");
@@ -39,7 +39,7 @@ public class EstadoNormal extends Estado
     @Override
     public final void setLimites()
     {
-        this.setLimiteInferior(30);
+        this.setLimiteInferior(35);
         this.setLimiteSuperior(70);
     }
     
@@ -57,13 +57,6 @@ public class EstadoNormal extends Estado
     public void dano(int dano)
     {
         this.perdeVida(dano);
-    }
-    
-    public static synchronized EstadoNormal getInstancia(Jogador jogador) {
-        if (instancia == null) {
-            instancia = new EstadoNormal(jogador);            
-        }
-        return instancia;
     }
     
     public Jogador getJogador()
@@ -107,8 +100,10 @@ public class EstadoNormal extends Estado
     
     public void perdeVida(int lostLife)
     {
-        this.jogador.setQuantidade(this.jogador.getQuantidade() - lostLife);
-        verificaEstado();
+        this.jogador.setQuantidade(
+            this.jogador.getQuantidade() - lostLife
+        );
+        this.verificaEstado();
     }
     
     public void ganhaVida()
@@ -118,6 +113,6 @@ public class EstadoNormal extends Estado
         } else {
             this.jogador.setQuantidade(this.jogador.getQuantidade() + 10);
         }
-        verificaEstado();
+        this.verificaEstado();
     }
 }

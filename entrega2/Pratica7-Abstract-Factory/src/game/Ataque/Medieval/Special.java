@@ -1,6 +1,8 @@
-package game.Ataque;
+package game.Ataque.Medieval;
 
-import static game.Utilities.ataqueImagesPath;
+import game.Ataque.Ataque;
+import game.Ataque.Poder;
+import static game.Utilities.medievalData;
 import java.io.IOException;
 
 
@@ -16,7 +18,7 @@ public class Special extends Poder
     
     public Special(Ataque poder) throws IOException
     {
-        super(poder, ataqueImagesPath.get("special"));
+        super(poder, medievalData.ataqueImagesPath.get("special"));
         super.setForca(10);
     }
     

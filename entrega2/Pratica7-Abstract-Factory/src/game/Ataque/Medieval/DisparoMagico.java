@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package game.Ataque;
+package game.Ataque.Medieval;
 
-import static game.Utilities.ataqueImagesPath;
+import game.Ataque.Ataque;
+import game.Ataque.Poder;
+import static game.Utilities.medievalData;
 import java.io.IOException;
 
 /**
@@ -19,7 +21,7 @@ public class DisparoMagico extends Poder
     private int forca = 10;
     
     public DisparoMagico(Ataque poder) throws IOException {
-        super(poder, ataqueImagesPath.get("special"));
+        super(poder, medievalData.ataqueImagesPath.get("special"));
         super.setForca(forca);
     }
     

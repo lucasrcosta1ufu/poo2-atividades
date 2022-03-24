@@ -15,7 +15,7 @@ public class Assassino extends Jogador {
             posicao,
             width,
             height,
-            Utilities.characterPaths.get("assassino")
+            Utilities.medievalData.characterPaths.get("assassino")
         );
         
         String descricao = "Mussum Ipsum, cacilds vidis litro abertis."

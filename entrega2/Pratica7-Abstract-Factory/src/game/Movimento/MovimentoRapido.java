@@ -9,10 +9,19 @@ package game.Movimento;
  */
 public class MovimentoRapido implements Movimento
 {
-    private int velocidade = 15;
+    private static MovimentoRapido instancia = new MovimentoRapido();
+    private int velocidade;
+    
+    private MovimentoRapido()
+    {
+        velocidade = 15;
+    }
     public int correr() {
         return velocidade;
     }
     
-    
+    public static MovimentoRapido getInstance()
+    {
+        return instancia;
+    }
 }

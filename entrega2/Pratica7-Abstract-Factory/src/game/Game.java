@@ -7,6 +7,10 @@ package game;
 
 import game.Ataque.Poder;
 import game.Escudo.Escudo;
+import game.Escudo.EscudoForte;
+import game.Escudo.EscudoFraco;
+import game.Escudo.EscudoMedio;
+import game.Helpers.DataManager;
 import game.Helpers.JLabelData;
 import game.Helpers.Posicao;
 import game.Inimigo.Robo;
@@ -15,47 +19,150 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Dictionary;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
  *
  * @author Usuario
  */
-public abstract class Game extends JPanel
+public class Game extends JPanel
 {
     private Jogador jogador = null;
     private ArrayList<Robo> enemy = null;
     private ArrayList<Escudo> escudos;
+    private ImageIcon background;
+    
     protected final Font EnemyStatusFont = new Font("Serif", Font.BOLD, 20);
     protected final Font baseFont = new Font("Serif", Font.BOLD, 60);
     
-    public abstract void jogar(Game game) throws InterruptedException;
-    public abstract Jogador criaPersonagem();
+    private DataManager configs;
+    private int gameType;
+    
+    private static Game instancia = null;
+    
+    public static Game getInstance(int gameType)
+    {
+        if (instancia == null) {
+            instancia = new Game(gameType);
+        }
+        
+        return instancia;
+    }
 
-    public Jogador getJogador() {
+    private Game(int gameType)
+    {
+        KeyListener listener = new MyKeyListener();
+        addKeyListener(listener);
+        setFocusable(true);
+        
+        this.gameType = gameType;
+        if (gameType == 0) {
+            this.configs = Utilities.medievalData;
+            
+        } else if (gameType == 1) {
+            this.configs = Utilities.futuristicData;
+            
+        }
+        // So that the JPanel object receives the keyboard notifications it is necessary
+        // to include
+        // the instruction setFocusable(true), which allows KeyboardExample to receive
+        // the focus.
+
+    }   
+
+    public class MyKeyListener implements KeyListener
+    {
+        @Override
+        public void keyTyped(KeyEvent e) {}
+
+        @Override
+        public void keyPressed(KeyEvent e)
+        {
+            // System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
+
+            if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A ) {
+                getJogador().moveToLeft();
+            }
+
+            if (e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
+                getJogador().moveToRight();
+            }
+
+            if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
+                getJogador().moveToUp();
+            }
+
+            if (e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
+                getJogador().moveToDown();
+            }
+
+            if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                getJogador().enviaAtaque(getEnemys());
+            }
+
+            if (e.getKeyCode() == KeyEvent.VK_P) {
+                getJogador().coletaEscudo(getEscudos());
+            }
+            
+            if (e.getKeyCode() == KeyEvent.VK_1) {
+                getJogador().coletaEscudo(getEscudos());
+            }
+
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e)
+        {
+            // System.out.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode()));
+        }
+    }
+
+    public Jogador getJogador()
+    {
         return jogador;
     }
 
-    public void setJogador(Jogador jogador) {
+    public void setJogador(Jogador jogador)
+    {
         this.jogador = jogador;
     }
 
-    public ArrayList<Robo> getRobos() {
-        return enemy;
-    }
-
-    public void setRobos(ArrayList<Robo> enemy) {
-        this.enemy = enemy;
-    }
-
-    public ArrayList<Escudo> getEscudos() {
+    public ArrayList<Escudo> getEscudos()
+    {
         return escudos;
     }
 
-    public void setEscudos(ArrayList<Escudo> escudos) {
+    public void setEscudos(ArrayList<Escudo> escudos)
+    {
         this.escudos = escudos;
+    }
+
+    public ArrayList<Robo> getEnemys()
+    {
+        return enemy;
+    }
+
+    public void setEnemys(ArrayList<Robo> enemys)
+    {
+        this.enemy = enemys;
+    }
+
+    public ImageIcon getBackgroundGame()
+    {
+        return background;
+    }
+
+    public void setBackgroundGame(ImageIcon background)
+    {
+        this.background = background;
     }
 
     @Override
@@ -64,7 +171,7 @@ public abstract class Game extends JPanel
         Robo robo;
         Graphics2D g2d = (Graphics2D) g;
         JLabelData labelData;
-        JLabelData jogadorLabel = (JLabelData) Utilities
+        JLabelData jogadorLabel = (JLabelData) configs
             .personagemData.get("jlabel");
         
         // The call to "super.paint(g)", cleans the screen
@@ -77,7 +184,7 @@ public abstract class Game extends JPanel
         // RenderingHints.VALUE_ANTIALIAS_ON);
         
         if (jogador == null || enemy == null) {
-            return;
+            System.exit(0);
         }
 
         escudos.forEach((Escudo escudo) -> {
@@ -101,7 +208,7 @@ public abstract class Game extends JPanel
         
         if (jogador.isAttacking()) {
             if (jogador.getAtaque() instanceof Poder) {
-                Posicao ataqueDecodadoPosicao = (Posicao) Utilities
+                Posicao ataqueDecodadoPosicao = (Posicao) configs
                     .ataqueDecoradoData.get("posicao");
 
                 g2d.drawImage(
@@ -110,8 +217,8 @@ public abstract class Game extends JPanel
                         ataqueDecodadoPosicao.getX(),
                     jogador.getY() +
                         ataqueDecodadoPosicao.getY(),
-                    (Integer) Utilities.ataqueDecoradoData.get("width"),
-                    (Integer) Utilities.ataqueDecoradoData.get("height"),
+                    (Integer) configs.ataqueDecoradoData.get("width"),
+                    (Integer) configs.ataqueDecoradoData.get("height"),
                     null         
                 );
             }
@@ -119,7 +226,7 @@ public abstract class Game extends JPanel
         
         for (int i = 0; i < enemy.size(); i++) {
             robo = enemy.get(i);            
-            this.drawRobo(g2d, robo, Utilities.enemysData.get(i));
+            this.drawRobo(g2d, robo, configs.enemysData.get(i));
         }
     }
 
@@ -195,5 +302,83 @@ public abstract class Game extends JPanel
     public String getPorcentagemVida(Robo robo, String preffix)
     {
         return String.format("%s %d", preffix, robo.getQuantidade());
+    }
+
+    public void jogar(Game game)
+        throws InterruptedException
+    {
+        if (jogador == null || enemy == null) {
+            System.exit(0);
+        }
+        
+        System.out.println("------------- Comeca jogo --------------");
+        
+        Escudo eForte, eMedio, eFraco;
+
+        JFrame frame = new JFrame("RoboHunt");
+
+        JLabel label = new JLabel();
+        JLabel lifeJogador = new JLabel();
+        JLabelData jogadorLabel = (JLabelData) configs.personagemData.get("jlabel");
+        
+        setEscudos(new ArrayList<>());
+        
+        configs.enemysData.forEach(enemy -> {
+            JLabel enemyLabel = new JLabel();
+            JLabelData labelData = (JLabelData) enemy.get("jlabel");
+            
+            enemyLabel.setFont(baseFont);
+            enemyLabel.setText(labelData.getName());
+            
+            game.add(enemyLabel);
+        });
+        
+        getEnemys().forEach(enemy -> {
+            jogador.addObserver(enemy);
+        });
+
+        eFraco = new EscudoFraco();
+        eFraco.setRandomicPosition();
+        eMedio = new EscudoMedio();
+        eMedio.setRandomicPosition();
+        eForte = new EscudoForte();
+        eForte.setRandomicPosition();
+
+        getEscudos().add(eFraco);
+        getEscudos().add(eMedio);
+        getEscudos().add(eForte);
+
+        label.setBounds(0, 0, Utilities.WIDTH, Utilities.HEIGHT);
+        label.setIcon(background);
+
+        game.setLayout(null);
+        game.add(label);
+
+        // ------- //
+
+        lifeJogador.setFont(baseFont);
+        lifeJogador.setText(jogadorLabel.getName());
+        game.add(lifeJogador);
+        
+        // ------- //
+
+        frame.add(game);
+        frame.setSize(Utilities.WIDTH, Utilities.HEIGHT + 29);
+        frame.setVisible(true);
+        frame.setResizable(false);   
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        while (true) {
+            if (getEnemys().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Voce ganhou!");
+                break;
+                
+            }
+            getJogador().show();
+            game.repaint();
+            Thread.sleep(50);
+        }
+        
+        System.exit(0);
     }
 }

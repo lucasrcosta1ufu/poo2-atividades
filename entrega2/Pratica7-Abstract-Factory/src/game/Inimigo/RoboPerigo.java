@@ -15,7 +15,7 @@ public class RoboPerigo extends RoboEstado
     public RoboPerigo(Robo robo)
     {
         super(robo);
-        robo.setMovimento(new MovimentoDevagar());
+        robo.setMovimento(MovimentoDevagar.getInstance());
         robo.setAtaque(AtaqueFraco.getInstance());
     }
     

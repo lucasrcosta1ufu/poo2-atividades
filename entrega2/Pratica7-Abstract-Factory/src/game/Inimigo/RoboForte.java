@@ -14,7 +14,7 @@ public class RoboForte extends RoboEstado
 {
     public RoboForte(Robo robo){
         super(robo);
-        robo.setMovimento(new MovimentoRapido());
+        robo.setMovimento(MovimentoRapido.getInstance());
         robo.setAtaque(AtaqueForte.getInstance());
     }
     

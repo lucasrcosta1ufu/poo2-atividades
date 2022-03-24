@@ -3,21 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package game.Ataque;
+package game.Ataque.Futuristic;
 
-import static game.Utilities.ataqueImagesPath;
+import game.Ataque.Ataque;
+import game.Ataque.Poder;
+import static game.Utilities.futuristicData;
 import java.io.IOException;
 
 /**
  *
  * @author Usuario
  */
-public class ForcaAnimal extends Poder
+public class MilVolts extends Poder
 {
-    private static ForcaAnimal instancia = null;
+    private static MilVolts instancia = null;
     
-    public ForcaAnimal(Ataque superPoder) throws IOException {
-        super(superPoder, ataqueImagesPath.get("supersoco"));
+    public MilVolts(Ataque superPoder) throws IOException {
+        super(superPoder, futuristicData.ataqueImagesPath.get("supersoco"));
         super.setForca(10);
     }
     
@@ -26,11 +28,11 @@ public class ForcaAnimal extends Poder
         return super.atacar();
     }       
     
-    public static synchronized ForcaAnimal getInstance(Ataque poder)
+    public static synchronized MilVolts getInstance(Ataque poder)
         throws IOException
     {
         if (instancia == null) {
-            instancia = new ForcaAnimal(poder);
+            instancia = new MilVolts(poder);
         }
         return instancia;
     }

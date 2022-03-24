@@ -15,7 +15,7 @@ public class Mago extends Jogador {
             posicao,
             width,
             height,
-            Utilities.characterPaths.get("mago")
+            Utilities.medievalData.characterPaths.get("mago")
         );
         
         String descricao = "Mussum Ipsum, cacilds vidis litro abertis."

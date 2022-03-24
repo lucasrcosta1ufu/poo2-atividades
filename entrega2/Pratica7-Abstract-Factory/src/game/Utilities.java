@@ -6,6 +6,7 @@
 package game;
 
 import game.Helpers.ColorFinder;
+import game.Helpers.DataManager;
 import game.Helpers.Dir;
 import game.Helpers.JLabelData;
 import game.Helpers.Json;
@@ -30,15 +31,11 @@ public class Utilities
 {
     private final static String PATH = Dir.configsPath() + "/common-properties.json";
     
+    public static DataManager medievalData = new DataManager();
+    public static DataManager futuristicData = new DataManager();
+    
     public final static int HEIGHT = 571;
     public final static int WIDTH = 999;
-    public static String backgroundPath;
-    
-    public static Dictionary<String, Object> personagemData = new Hashtable<>();
-    public static Dictionary<String, Object> ataqueDecoradoData = new Hashtable<>();
-    public static Dictionary<String, String> characterPaths = new Hashtable<>();
-    public static Dictionary<String, String> ataqueImagesPath = new Hashtable<>();
-    public static ArrayList<Dictionary<String, Object>> enemysData = new ArrayList<>();
 
     public static String getPATH() {
         return PATH;
@@ -47,11 +44,22 @@ public class Utilities
     @SuppressWarnings("UseOfObsoleteCollectionType")
     public static void readConfigs()
     {
+        String medievalPATH, futuristicPATH;
         try {            
-            Json jsonContent = new Json(PATH);
-            JSONObject obj = jsonContent.read();
+            JSONObject obj = new Json(PATH).read();
+            JSONObject paths = obj.getJSONObject("paths");
             
-            load(obj);
+            medievalPATH = Dir.configsPath() + "/" + paths.getString("medieval");
+            futuristicPATH = Dir.configsPath() + "/" + paths.getString("futuristic");
+            
+            Json jsonContentMedieval = new Json(medievalPATH);
+            Json jsonContentFuturistic = new Json(futuristicPATH);
+            
+            JSONObject medievalObj = jsonContentMedieval.read();             
+            JSONObject futuristicObj = jsonContentFuturistic.read();
+            
+            load(medievalData, medievalObj); 
+            load(futuristicData, futuristicObj);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Teste.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException | JSONException ex) {
@@ -65,34 +73,34 @@ public class Utilities
         return (JSONObject) obj.get("subjects");
     }
    
-    private static void load(JSONObject obj)
+    private static void load(DataManager manager, JSONObject obj)
         throws JSONException
     {
         JSONObject subject = getSubjects(obj);
         
-        loadBackground(obj);
-        loadImages(obj);
-        loadPersonagemData(subject);
-        loadEnemyData(subject);
-        loadAtaqueDecoradosData(obj);
+        loadBackground(manager, obj);
+        loadImages(manager, obj);
+        loadPersonagemData(manager, subject);
+        loadEnemyData(manager, subject);
+        loadAtaqueDecoradosData(manager, obj);
     }
     
-    private static void loadBackground(JSONObject obj)
+    private static void loadBackground(DataManager manager, JSONObject obj)
         throws JSONException
     {
-        backgroundPath = obj.getString("background");
+        manager.backgroundPath = obj.getString("background");
     }
     
-    private static void loadImages(JSONObject obj)
+    private static void loadImages(DataManager manager, JSONObject obj)
         throws JSONException
     {
         JSONObject images = obj.getJSONObject("images");
         
-        loadCharacterPaths(images);
-        loadAtaqueImages(images);
+        loadCharacterPaths(manager, images);
+        loadAtaqueImages(manager, images);
     }
     
-    private static void loadCharacterPaths(JSONObject obj)
+    private static void loadCharacterPaths(DataManager manager, JSONObject obj)
         throws JSONException
     {
         String key;
@@ -101,11 +109,11 @@ public class Utilities
         
         while(keys.hasNext()) {
             key = keys.next();
-            characterPaths.put(key, characters.getString(key));
+            manager.characterPaths.put(key, characters.getString(key));
         }
     }
     
-    private static void loadAtaqueImages(JSONObject obj)
+    private static void loadAtaqueImages(DataManager manager, JSONObject obj)
         throws JSONException
     {
         String key;
@@ -114,11 +122,11 @@ public class Utilities
         
         while(keys.hasNext()) {
             key = keys.next();
-            ataqueImagesPath.put(key, characters.getString(key));
+            manager.ataqueImagesPath.put(key, characters.getString(key));
         }
     }
     
-    private static void loadPersonagemData(JSONObject obj)
+    private static void loadPersonagemData(DataManager manager, JSONObject obj)
         throws JSONException
     {
         String key;
@@ -138,31 +146,31 @@ public class Utilities
             key = keys.next();
             
             if (personagem.get(key) instanceof String) {
-                personagemData.put(key, personagem.getString(key)); 
+                manager.personagemData.put(key, personagem.getString(key)); 
             }
         }
         
-        personagemData.put(
+        manager.personagemData.put(
             "jlabel",
             loadJLabelProps(
                 personagem.getJSONObject("jlabel")
             )
         );
-        personagemData.put(
+        manager.personagemData.put(
             "width",
             dimensions.getInt("w")
         );
-        personagemData.put(
+        manager.personagemData.put(
             "height",
             dimensions.getInt("h")
         );
-        personagemData.put(
+        manager.personagemData.put(
             "posicao",
             pos
         );
     }
     
-    private static void loadEnemyData(JSONObject obj)
+    private static void loadEnemyData(DataManager manager, JSONObject obj)
         throws JSONException
     {
         JSONObject enemy = null;
@@ -216,7 +224,7 @@ public class Utilities
                 pos
             );
             
-            enemysData.add(enemyData);
+            manager.enemysData.add(enemyData);
         }
     }
 
@@ -242,25 +250,25 @@ public class Utilities
         );
     }
     
-    private static void loadAtaqueDecoradosData(JSONObject obj)
+    private static void loadAtaqueDecoradosData(DataManager manager, JSONObject obj)
         throws JSONException
     {
         JSONObject ataqueData = obj.getJSONObject("ataqueDecorados");
         JSONObject posicao = ataqueData.getJSONObject("posicao");
         JSONObject dimensoes = ataqueData.getJSONObject("dimensions");
             
-        ataqueDecoradoData.put(
+        manager.ataqueDecoradoData.put(
             "posicao",
             new Posicao(
                 posicao.getInt("x"),
                 posicao.getInt("y")
             )
         );
-        ataqueDecoradoData.put(
+        manager.ataqueDecoradoData.put(
             "width",
             dimensoes.getInt("w")
         );
-        ataqueDecoradoData.put(
+        manager.ataqueDecoradoData.put(
             "height",
             dimensoes.getInt("h")
         );

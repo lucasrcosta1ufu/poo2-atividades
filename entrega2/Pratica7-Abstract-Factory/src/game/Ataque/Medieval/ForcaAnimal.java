@@ -3,21 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package game.Ataque;
+package game.Ataque.Medieval;
 
-import static game.Utilities.ataqueImagesPath;
+import game.Ataque.Ataque;
+import game.Ataque.Poder;
+import static game.Utilities.medievalData;
 import java.io.IOException;
 
 /**
  *
  * @author Usuario
  */
-public class MilLaminasCortantes extends Poder
+public class ForcaAnimal extends Poder
 {
-    private static MilLaminasCortantes instancia = null;
+    private static ForcaAnimal instancia = null;
     
-    public MilLaminasCortantes(Ataque superPoder) throws IOException {
-        super(superPoder, ataqueImagesPath.get("supersoco"));
+    public ForcaAnimal(Ataque superPoder) throws IOException {
+        super(superPoder, medievalData.ataqueImagesPath.get("supersoco"));
         super.setForca(10);
     }
     
@@ -26,11 +28,11 @@ public class MilLaminasCortantes extends Poder
         return super.atacar();
     }       
     
-    public static synchronized MilLaminasCortantes getInstance(Ataque poder)
+    public static synchronized ForcaAnimal getInstance(Ataque poder)
         throws IOException
     {
         if (instancia == null) {
-            instancia = new MilLaminasCortantes(poder);
+            instancia = new ForcaAnimal(poder);
         }
         return instancia;
     }

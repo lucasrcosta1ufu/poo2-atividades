@@ -11,14 +11,14 @@ import game.Personagem.Jogador;
  */
 public class EstadoMorto extends Estado
 {
-    private static Jogador jogador;
+    private Jogador jogador;
     private Robo robo;
     private int limiteInferior, limiteSuperior;
     private static EstadoMorto instancia = null;
     
     private EstadoMorto(Jogador jogador)
     {
-        EstadoMorto.jogador = jogador;
+        this.jogador = jogador;
         
         System.out.println("Morto");
         morte();

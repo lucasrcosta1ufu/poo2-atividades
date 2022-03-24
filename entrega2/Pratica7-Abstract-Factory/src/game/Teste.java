@@ -9,8 +9,26 @@ public class Teste
         throws InterruptedException
     {
         Utilities.readConfigs();
+        GameFactory factory = getFactory("0");
         
-        MedievalGame g = MedievalGame.getInstance();
+        Game g = Game.getInstance(0);
+        
+        g.setJogador(factory.criarJogador());
+        g.setEnemys(factory.criarInimigos());
+        g.setBackgroundGame(factory.criarCenario());
+        
         g.jogar(g);
     }
+    
+    public static GameFactory getFactory(String s)
+    {
+        if(s.equals("1")){
+            return new FuturisticGameFactory();
+        } else if(s.equals("0")) {
+            return new MedievalGameFactory();
+        }
+        
+        return null;
+    }
+
 }

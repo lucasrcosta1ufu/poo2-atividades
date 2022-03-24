@@ -15,7 +15,7 @@ public class Sacerdote extends Jogador {
             posicao,
             width,
             height,            
-            Utilities.characterPaths.get("sacerdote")
+            Utilities.medievalData.characterPaths.get("sacerdote")
         );
         
         String descricao = "Mussum Ipsum, cacilds vidis litro abertis."

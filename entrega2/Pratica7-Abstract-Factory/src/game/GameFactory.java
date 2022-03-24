@@ -7,6 +7,8 @@ package game;
 
 import game.Inimigo.Robo;
 import game.Personagem.Jogador;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -15,6 +17,6 @@ import game.Personagem.Jogador;
 public abstract class GameFactory
 {
     public abstract Jogador criarJogador();
-    public abstract Robo criarInimigos();
-    public abstract void criarCenario();
+    public abstract ArrayList<Robo> criarInimigos();
+    public abstract ImageIcon criarCenario();
 }

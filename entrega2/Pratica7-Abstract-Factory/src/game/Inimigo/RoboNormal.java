@@ -15,7 +15,7 @@ public class RoboNormal extends RoboEstado
     public RoboNormal(Robo robo)
     {
         super(robo);
-        robo.setMovimento(new MovimentoRapido());
+        robo.setMovimento(MovimentoRapido.getInstance());
         robo.setAtaque(AtaqueMedio.getInstance());
     }
     

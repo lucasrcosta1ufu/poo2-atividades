@@ -6,7 +6,6 @@ import game.States.EstadoNormal;
 import game.Inimigo.Robo;
 import game.Inimigo.RoboMorto;
 import game.Escudo.Escudo;
-import game.MedievalGame;
 import game.Helpers.Posicao;
 import java.util.Observable;
 import java.util.ArrayList;
@@ -74,8 +73,7 @@ public abstract class Jogador extends Observable {
         this.width = width;
         this.height = height;
         this.quantidade = 70;
-        this.vida = EstadoNormal.getInstance(this);
-        
+        this.vida = EstadoNormal.getInstance(this);        
         this.image = ImageIO.read(
             getClass().getResourceAsStream(path)
         );
@@ -85,7 +83,7 @@ public abstract class Jogador extends Observable {
     public Jogador(int x, int y, int width, int height, BufferedImage image)
     {
         this.posicao = new Posicao(
-            x, y, MedievalGame.WIDTH - width, MedievalGame.HEIGHT - height
+            x, y, Utilities.WIDTH - width, Utilities.HEIGHT - height
         );
         this.image = image;
         this.width = width;
@@ -417,5 +415,4 @@ public abstract class Jogador extends Observable {
             this.setX(this.posicao.getMaxX());
         }
     }
-
 }

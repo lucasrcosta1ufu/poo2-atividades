@@ -15,7 +15,7 @@ public class Paladino extends Jogador {
             posicao,
             width,
             height,
-            Utilities.characterPaths.get("paladino")
+            Utilities.medievalData.characterPaths.get("paladino")
         );
         String descricao = "Mussum Ipsum, cacilds vidis litro abertis."
             + "Si num tem leite então bota uma pinga aí cumpadi!"

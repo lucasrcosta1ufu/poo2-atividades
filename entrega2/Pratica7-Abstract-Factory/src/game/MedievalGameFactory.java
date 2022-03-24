@@ -6,8 +6,9 @@
 package game;
 
 import game.Helpers.Posicao;
+import game.Helpers.RandomGenerator;
 import game.Inimigo.Robo;
-import game.Personagem.Futurista.SimplePersonagemFuturisticFactory;
+import game.Personagem.Medieval.SimplePersonagemMedievalFactory;
 import game.Personagem.Jogador;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,13 +22,14 @@ import javax.swing.ImageIcon;
  *
  * @author Usuario
  */
-public class FuturisticGameFactory extends GameFactory
+public class MedievalGameFactory extends GameFactory
 {
     @Override
     public Jogador criarJogador()
     {
         try {
-            return SimplePersonagemFuturisticFactory.criaPersonagem((float) .5);
+            return SimplePersonagemMedievalFactory
+                .criaPersonagem(RandomGenerator.getFloat());
         } catch (IOException ex) {
             Logger.getLogger(FuturisticGameFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -39,7 +41,7 @@ public class FuturisticGameFactory extends GameFactory
     {
         ArrayList<Robo> enemys = new ArrayList<>();
         
-        Utilities.futuristicData.enemysData.forEach(new Consumer<Dictionary<String, Object>>() {
+        Utilities.medievalData.enemysData.forEach(new Consumer<Dictionary<String, Object>>() {
             @Override
             public void accept(Dictionary<String, Object> enemy) {
                 try {

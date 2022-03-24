@@ -14,16 +14,16 @@ import game.Personagem.Jogador;
  */
 public class EstadoForte extends Estado
 {
-    private static Jogador jogador;
+    private Jogador jogador;
     private Robo robo;
     private int limiteInferior, limiteSuperior;
     private static EstadoForte instancia = null;
     
     private EstadoForte(Jogador jogador)
     {
-        EstadoForte.jogador = jogador;
-        EstadoForte.jogador.setMovimento(new MovimentoRapido());
-        EstadoForte.jogador.setAtaque(AtaqueForte.getInstance());
+        this.jogador = jogador;
+        this.jogador.setMovimento(MovimentoRapido.getInstance());
+        this.jogador.setAtaque(AtaqueForte.getInstance());
         
         setLimites();
         System.out.println("Estado Forte");
@@ -55,13 +55,6 @@ public class EstadoForte extends Estado
     public void dano(int dano)
     {
         this.perdeVida(dano);
-    }
-    
-    public static synchronized EstadoForte getInstancia(Jogador jogador) {
-        if (instancia == null) {
-            instancia = new EstadoForte(jogador);            
-        }
-        return instancia;
     }
     
     public Jogador getJogador()

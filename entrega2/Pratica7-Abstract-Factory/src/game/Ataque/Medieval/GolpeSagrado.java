@@ -1,6 +1,8 @@
-package game.Ataque;
+package game.Ataque.Medieval;
 
-import static game.Utilities.ataqueImagesPath;
+import game.Ataque.Ataque;
+import game.Ataque.Poder;
+import static game.Utilities.medievalData;
 import java.io.IOException;
 
 
@@ -15,7 +17,7 @@ public class GolpeSagrado extends Poder
     private static GolpeSagrado instancia = null;
     
     public GolpeSagrado(Ataque poder) throws IOException {
-        super(poder, ataqueImagesPath.get("superchute"));
+        super(poder, medievalData.ataqueImagesPath.get("superchute"));
         super.setForca(5);
     }
     

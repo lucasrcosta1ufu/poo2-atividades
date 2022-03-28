@@ -3,14 +3,14 @@
         "width": 999,
         "height": 571
     },
-    "background": "./src/images/map.png",
+    "background": "./src/images/medieval.png",
     "images": {
         "characters": {
-            "druida": "/images/character0.png",
-            "paladino": "/images/character1.png",
-            "mago": "/images/character2.png",
-            "sacerdote": "/images/character3.png",
-            "assassino": "/images/character4.png"
+            "druida": "/images/Druida.png",
+            "paladino": "/images/Paladino.png",
+            "mago": "/images/Mago.png",
+            "sacerdote": "/images/Arqueiro.png",
+            "assassino": "/images/Assassino.png"
         },
         "ataques": {
             "special": "/images/special.png",
@@ -55,8 +55,8 @@
             	"y": 400
             },
             "dimensions": {
-            	"w": 40,
-            	"h": 40
+            	"w": 70,
+            	"h": 50
             }
         },
         "enemys": [
@@ -88,8 +88,8 @@
                     "y": 400
                 },
                 "dimensions": {
-                    "w": 70,
-                    "h": 70
+                    "w": 80,
+                    "h": 80
                 }
             },
             {

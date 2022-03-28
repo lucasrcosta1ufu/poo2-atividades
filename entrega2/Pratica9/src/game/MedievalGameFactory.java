@@ -28,6 +28,8 @@ public class MedievalGameFactory extends GameFactory
 {
     private static MedievalGameFactory instance = new MedievalGameFactory();
 
+    private MedievalGameFactory() {}    
+
     public static MedievalGameFactory getInstance()
     {
         return instance;

@@ -175,6 +175,7 @@ public class Inimigo implements Observer {
 
     public void update(Observable subject, Object arg)
     {
+        double randomFloat;
         Jogador jogador = (Jogador) subject;
 
         // se estiver em distancia de ataque
@@ -184,15 +185,16 @@ public class Inimigo implements Observer {
         ) {
             jogador.recebeAtaque(this.getAtaque().atacar());
 
-            if (Math.random() < 0.5) {
+            randomFloat = Math.random();
+            if (randomFloat < 0.5) {
                 jogador.setPos(
-                    jogador.getX() + (int) (100 * Math.random()),
-                    jogador.getY() - (int) (100 * Math.random())
+                    jogador.getX() + (int) (100 * randomFloat),
+                    jogador.getY() - (int) (100 * randomFloat)
                 );
             } else {
                 jogador.setPos(
-                    jogador.getX() - (int) (100 * Math.random()),
-                    jogador.getY() + (int) (100 * Math.random())
+                    jogador.getX() - (int) (100 * randomFloat),
+                    jogador.getY() + (int) (100 * randomFloat)
                 );
             }
 

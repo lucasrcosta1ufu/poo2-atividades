@@ -28,6 +28,8 @@ public class FuturisticGameFactory extends GameFactory
 {
     private static FuturisticGameFactory instance = new FuturisticGameFactory();
 
+    private FuturisticGameFactory() {}    
+
     public static FuturisticGameFactory getInstance()
     {
         return instance;

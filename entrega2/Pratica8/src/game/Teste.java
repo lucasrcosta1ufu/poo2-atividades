@@ -11,7 +11,7 @@ public class Teste
         throws InterruptedException
     {
         Utilities.readConfigs();
-        GameFactory factory = getFactory(1);
+        GameFactory factory = getFactory(0);
         
         Game g = PrimeiraFase.getInstance(0);
         

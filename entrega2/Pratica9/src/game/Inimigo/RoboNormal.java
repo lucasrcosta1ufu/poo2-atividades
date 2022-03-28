@@ -1,7 +1,7 @@
 package game.Inimigo;
 
 import game.Ataque.AtaqueMedio;
-import game.Movimento.MovimentoRapido;
+import game.Movimento.MovimentoMedio;
 
 
 /**
@@ -15,7 +15,7 @@ public class RoboNormal extends RoboEstado
     public RoboNormal(Inimigo robo)
     {
         super(robo);
-        robo.setMovimento(MovimentoRapido.getInstance());
+        robo.setMovimento(MovimentoMedio.getInstance());
         robo.setAtaque(AtaqueMedio.getInstance());
     }
     

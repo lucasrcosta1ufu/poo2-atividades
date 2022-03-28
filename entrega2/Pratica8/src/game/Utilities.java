@@ -88,7 +88,10 @@ public class Utilities
     private static void loadBackground(DataManager manager, JSONObject obj)
         throws JSONException
     {
-        manager.setBackgroundPath(obj.getString("background"));
+        JSONObject backgrounds = obj.getJSONObject("backgrounds");
+        manager.backgroundPathFase1 = backgrounds.getString("fase1");
+        manager.backgroundPathFase2 = backgrounds.getString("fase2");
+        manager.backgroundPathFase3 = backgrounds.getString("fase3");
     }
     
     private static void loadImages(DataManager manager, JSONObject obj)

@@ -66,6 +66,6 @@ public class FuturisticGameFactory extends GameFactory
     @Override
     public ImageIcon criarCenario() 
     {
-        return new ImageIcon(Utilities.futuristicData.backgroundPath);
+        return new ImageIcon(Utilities.futuristicData.getBackgroundPath());
     }
 }

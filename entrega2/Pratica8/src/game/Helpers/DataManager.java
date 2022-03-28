@@ -20,7 +20,9 @@ public class DataManager
     public Dictionary<String, String> characterPaths = new Hashtable<>();
     public Dictionary<String, String> ataqueImagesPath = new Hashtable<>();
     public ArrayList<Dictionary<String, Object>> enemysData = new ArrayList<>();
-    private String backgroundPath;
+    public static String backgroundPathFase1;
+    public static String backgroundPathFase2;
+    public static String backgroundPathFase3;
 
     public Dictionary<String, Object> getPersonagemData() {
         return personagemData;
@@ -62,13 +64,27 @@ public class DataManager
         this.enemysData = enemysData;
     }
 
-    public String getBackgroundPath() {
-        return backgroundPath;
+    public static String getBackgroundPathFase1() {
+        return backgroundPathFase1;
     }
 
-    public void setBackgroundPath(String backgroundPath) {
-        this.backgroundPath = backgroundPath;
+    public static void setBackgroundPathFase1(String backgroundPathFase1) {
+        DataManager.backgroundPathFase1 = backgroundPathFase1;
     }
-        
-    
+
+    public static String getBackgroundPathFase2() {
+        return backgroundPathFase2;
+    }
+
+    public static void setBackgroundPathFase2(String backgroundPathFase2) {
+        DataManager.backgroundPathFase2 = backgroundPathFase2;
+    }
+
+    public static String getBackgroundPathFase3() {
+        return backgroundPathFase3;
+    }
+
+    public static void setBackgroundPathFase3(String backgroundPathFase3) {
+        DataManager.backgroundPathFase3 = backgroundPathFase3;
+    }
 }

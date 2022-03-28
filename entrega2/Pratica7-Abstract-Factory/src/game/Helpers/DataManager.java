@@ -20,7 +20,7 @@ public class DataManager
     public Dictionary<String, String> characterPaths = new Hashtable<>();
     public Dictionary<String, String> ataqueImagesPath = new Hashtable<>();
     public ArrayList<Dictionary<String, Object>> enemysData = new ArrayList<>();
-    public static String backgroundPath;
+    private String backgroundPath;
 
     public Dictionary<String, Object> getPersonagemData() {
         return personagemData;
@@ -62,14 +62,13 @@ public class DataManager
         this.enemysData = enemysData;
     }
 
-    public static String getBackgroundPath() {
+    public String getBackgroundPath() {
         return backgroundPath;
     }
 
-    public static void setBackgroundPath(String backgroundPath) {
-        DataManager.backgroundPath = backgroundPath;
+    public void setBackgroundPath(String backgroundPath) {
+        this.backgroundPath = backgroundPath;
     }
-    
-    
+        
     
 }

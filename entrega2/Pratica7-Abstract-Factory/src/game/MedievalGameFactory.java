@@ -68,6 +68,6 @@ public class MedievalGameFactory extends GameFactory
     @Override
     public ImageIcon criarCenario() 
     {
-        return new ImageIcon(Utilities.medievalData.backgroundPath);
+        return new ImageIcon(Utilities.medievalData.getBackgroundPath());
     }
 }

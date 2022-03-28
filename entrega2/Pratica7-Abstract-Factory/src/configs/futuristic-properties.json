@@ -6,11 +6,11 @@
     "background": "./src/images/futuristic.png",
     "images": {
         "characters": {
-            "druida": "/images/Cyborg.png",
-            "paladino": "/images/Sentinela.png",
-            "mago": "/images/Android.png",
-            "sacerdote": "/images/Atirador.png",
-            "assassino": "/images/Fuzileiro.png"
+            "cyborg": "/images/cyborg.png",
+            "sentinela": "/images/sentinela.png",
+            "android": "/images/android.png",
+            "atirador": "/images/atirador.png",
+            "fuzileiro": "/images/fuzileiro.png"
         },
         "ataques": {
             "special": "/images/special.png",
@@ -55,8 +55,8 @@
             	"y": 400
             },
             "dimensions": {
-            	"w": 70,
-            	"h": 50
+            	"w": 120,
+            	"h": 60
             }
         },
         "enemys": [

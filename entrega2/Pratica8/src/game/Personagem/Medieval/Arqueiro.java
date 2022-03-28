@@ -6,16 +6,16 @@ import game.Personagem.Jogador;
 import game.Utilities;
 import java.io.IOException;
 
-public class Sacerdote extends Jogador {
-    public Sacerdote(Posicao posicao, int width, int height)
+public class Arqueiro extends Jogador {
+    public Arqueiro(Posicao posicao, int width, int height)
         throws IOException
     {
         super(
-            "Sacerdote",
+            "arqueiro",
             posicao,
             width,
             height,            
-            Utilities.medievalData.characterPaths.get("sacerdote")
+            Utilities.medievalData.characterPaths.get("arqueiro")
         );
         
         String descricao = "Mussum Ipsum, cacilds vidis litro abertis."

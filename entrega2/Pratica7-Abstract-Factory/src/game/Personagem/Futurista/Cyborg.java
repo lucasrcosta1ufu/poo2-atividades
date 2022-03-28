@@ -11,11 +11,11 @@ public class Cyborg extends Jogador {
         throws IOException
     {
         super(
-            "Druida",
+            "cyborg",
             posicao,
             width,
             height,
-            Utilities.futuristicData.characterPaths.get("druida")
+            Utilities.futuristicData.characterPaths.get("cyborg")
         );
         
         String descricao = "Mussum Ipsum, cacilds vidis litro abertis."

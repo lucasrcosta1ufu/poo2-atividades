@@ -11,11 +11,11 @@ public class Sentinela extends Jogador {
         throws IOException
     {
         super(
-            "Paladino",
+            "Sentinela",
             posicao,
             width,
             height,
-            Utilities.futuristicData.characterPaths.get("paladino")
+            Utilities.futuristicData.characterPaths.get("sentinela")
         );
         String descricao = "Mussum Ipsum, cacilds vidis litro abertis."
             + "Si num tem leite então bota uma pinga aí cumpadi!"

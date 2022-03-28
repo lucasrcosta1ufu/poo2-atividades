@@ -223,18 +223,18 @@ public class MedievalGameFactory extends GameFactory
     @Override
     public ImageIcon criarCenario() 
     {
-        return new ImageIcon(Utilities.medievalData.backgroundPathFase1);
+        return new ImageIcon(Utilities.medievalData.getBackgroundPathFase1());
     }
     
     @Override
     public ImageIcon criarCenarioFase2() 
     {
-        return new ImageIcon(Utilities.medievalData.backgroundPathFase2);
+        return new ImageIcon(Utilities.medievalData.getBackgroundPathFase2());
     }
     
     @Override
     public ImageIcon criarCenarioFase3() 
     {
-        return new ImageIcon(Utilities.medievalData.backgroundPathFase3);
+        return new ImageIcon(Utilities.medievalData.getBackgroundPathFase3());
     }
 }

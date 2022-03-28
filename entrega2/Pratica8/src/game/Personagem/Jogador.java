@@ -38,7 +38,7 @@ public abstract class Jogador extends Observable {
         this.image = image;
         this.width = width;
         this.height = height;
-        this.quantidade = 70;
+        this.quantidade = 75;
         this.vida = EstadoNormal.getInstance(this);
     }
 
@@ -48,7 +48,7 @@ public abstract class Jogador extends Observable {
         this.posicao = new Posicao(x, y, Utilities.WIDTH - width, Utilities.HEIGHT - height);
         this.width = width;
         this.height = height;
-        this.quantidade = 70;  
+        this.quantidade = 75;  
         this.vida = EstadoNormal.getInstance(this);     
         this.image = ImageIO.read(
             getClass().getResourceAsStream(path)
@@ -62,7 +62,7 @@ public abstract class Jogador extends Observable {
         this.image = image;
         this.width = width;
         this.height = height;
-        this.quantidade = 70;
+        this.quantidade = 75;
         this.vida = EstadoNormal.getInstance(this);
     }
 
@@ -72,7 +72,7 @@ public abstract class Jogador extends Observable {
         this.posicao = posicao;
         this.width = width;
         this.height = height;
-        this.quantidade = 70;
+        this.quantidade = 75;
         this.vida = EstadoNormal.getInstance(this);        
         this.image = ImageIO.read(
             getClass().getResourceAsStream(path)
@@ -88,7 +88,7 @@ public abstract class Jogador extends Observable {
         this.image = image;
         this.width = width;
         this.height = height;
-        this.quantidade = 70;
+        this.quantidade = 75;
         this.vida = EstadoNormal.getInstance(this);
     }
 
@@ -100,7 +100,7 @@ public abstract class Jogador extends Observable {
         );
         this.width = width;
         this.height = height;
-        this.quantidade = 70;
+        this.quantidade = 75;
         this.vida = EstadoNormal.getInstance(this);
         
         this.image = ImageIO.read(
@@ -115,7 +115,7 @@ public abstract class Jogador extends Observable {
         this.image = image;
         this.width = width;
         this.height = height;
-        this.quantidade = 70;
+        this.quantidade = 75;
         this.vida = EstadoNormal.getInstance(this);
     }
 
@@ -125,7 +125,7 @@ public abstract class Jogador extends Observable {
         this.posicao = posicao;
         this.width = width;
         this.height = height;
-        this.quantidade = 70;
+        this.quantidade = 75;
         this.vida = EstadoNormal.getInstance(this); 
         
         this.image = ImageIO.read(
@@ -307,6 +307,7 @@ public abstract class Jogador extends Observable {
 
     public synchronized void enviaAtaque(ArrayList<Inimigo> robos)
     {
+        double randomFloat;
         Inimigo robo;
         
         setBolAtaque(true);
@@ -326,15 +327,16 @@ public abstract class Jogador extends Observable {
                     continue;
                 }
 
-                if (Math.random() < 0.5) {
+                randomFloat = Math.random();
+                if (randomFloat < 0.5) {
                     robo.setPos(
-                        robo.getX() + (int) (100 * Math.random()),
-                        robo.getY() - (int) (100 * Math.random())
+                        robo.getX() + (int) (100 * randomFloat),
+                        robo.getY() - (int) (100 * randomFloat)
                     );
                 } else {
                     robo.setPos(
-                        robo.getX() - (int) (100 * Math.random()),
-                        robo.getY() + (int) (100 * Math.random())
+                        robo.getX() - (int) (100 * randomFloat),
+                        robo.getY() + (int) (100 * randomFloat)
                     );
                 }
             } else {
@@ -365,8 +367,8 @@ public abstract class Jogador extends Observable {
     {
         for (int i = 0; i < escudos.size(); i++) {
             if (
-                (Math.abs(this.getX() - escudos.get(i).getX()) <= 10) &&
-                (Math.abs(this.getY() - escudos.get(i).getY()) <= 10)
+                (Math.abs(this.getX() - escudos.get(i).getX()) <= 30) &&
+                (Math.abs(this.getY() - escudos.get(i).getY()) <= 30)
             ) {
                 this.addEscudo(escudos.get(i));
                 escudos.remove(escudos.get(i));

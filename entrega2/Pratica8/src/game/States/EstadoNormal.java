@@ -40,7 +40,7 @@ public class EstadoNormal extends Estado
     public final void setLimites()
     {
         this.setLimiteInferior(35);
-        this.setLimiteSuperior(70);
+        this.setLimiteSuperior(75);
     }
     
     @Override

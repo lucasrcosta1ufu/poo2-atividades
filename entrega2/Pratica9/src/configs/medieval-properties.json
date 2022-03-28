@@ -4,9 +4,9 @@
         "height": 571
     },
     "backgrounds": {
-        "fase1": "./src/images/medieval.png",
-        "fase2": "./src/images/medieval.png",
-        "fase3": "./src/images/medieval.png"
+        "fase1": "./src/images/medieval1.png",
+        "fase2": "./src/images/medieval2.png",
+        "fase3": "./src/images/medieval3.png"
     },
     "images": {
         "characters": {
@@ -55,8 +55,8 @@
                 }
             },
             "posicao": {
-            	"x": 200,
-            	"y": 400
+            	"x": 600,
+            	"y": 500
             },
             "dimensions": {
             	"w": 80,

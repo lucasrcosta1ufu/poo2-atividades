@@ -257,6 +257,7 @@ public class Inimigo implements Observer {
 
     public void moveToUp(int moviment)
     {
+        moviment *= this.getMovimento().correr() * .15;
         if (this.getY() - moviment >= 0) {
             this.setY(this.getY() - moviment);
         } else {
@@ -266,6 +267,7 @@ public class Inimigo implements Observer {
 
     public void moveToDown(int moviment)
     {
+        moviment *= this.getMovimento().correr() * .15;
         if (this.getY() + moviment <= this.posicao.getMaxY()) {
             this.setY(this.getY() + moviment);
         } else {
@@ -275,6 +277,7 @@ public class Inimigo implements Observer {
 
     public void moveToLeft(int moviment)
     {
+        moviment *= this.getMovimento().correr() * .15;
         if (this.getX() - moviment >= 0) {
             this.setX(this.getX() - moviment);
         } else {
@@ -284,6 +287,7 @@ public class Inimigo implements Observer {
 
     public void moveToRight(int moviment)
     {
+        moviment *= this.getMovimento().correr() * .15;
         if (this.getX() + moviment <= this.posicao.getMaxX()) {
             this.setX(this.getX() + moviment);
         } else {

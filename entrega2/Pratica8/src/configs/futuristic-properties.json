@@ -4,9 +4,9 @@
         "height": 571
     },
     "backgrounds": {
-        "fase1": "./src/images/futuristic.png",
-        "fase2": "./src/images/futuristic.png",
-        "fase3": "./src/images/futuristic.png"
+        "fase1": "./src/images/futuristic1.png",
+        "fase2": "./src/images/futuristic2.png",
+        "fase3": "./src/images/futuristic3.png"
     },
     "images": {
         "characters": {

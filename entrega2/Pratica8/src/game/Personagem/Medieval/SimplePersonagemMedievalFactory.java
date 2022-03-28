@@ -27,7 +27,7 @@ public class SimplePersonagemMedievalFactory {
             personagem = createMago();
 
         } else if (valor <= 0.8f) {
-            personagem = createSacerdote();
+            personagem = createArqueiro();
 
         } else if (valor <= 1f) {
             personagem = createAssassino();
@@ -65,10 +65,10 @@ public class SimplePersonagemMedievalFactory {
         return (Paladino) p;
     }
 
-    public static Sacerdote createSacerdote()
+    public static Arqueiro createArqueiro()
         throws IOException
     {
-        Jogador p = new Sacerdote(
+        Jogador p = new Arqueiro(
             (Posicao) Utilities.medievalData.personagemData.get("posicao"),
             (Integer) Utilities.medievalData.personagemData.get("width"),
             (Integer) Utilities.medievalData.personagemData.get("height")
@@ -76,7 +76,7 @@ public class SimplePersonagemMedievalFactory {
         
         p.setAtaque(Encantamento.getInstance(p.getAtaque())); 
         
-        return (Sacerdote) p;
+        return (Arqueiro) p;
     }
 
     public static Assassino createAssassino()

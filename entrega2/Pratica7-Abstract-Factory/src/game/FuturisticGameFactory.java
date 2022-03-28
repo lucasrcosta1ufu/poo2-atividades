@@ -6,6 +6,7 @@
 package game;
 
 import game.Helpers.Posicao;
+import game.Helpers.RandomGenerator;
 import game.Inimigo.Robo;
 import game.Personagem.Futurista.SimplePersonagemFuturisticFactory;
 import game.Personagem.Jogador;
@@ -27,7 +28,8 @@ public class FuturisticGameFactory extends GameFactory
     public Jogador criarJogador()
     {
         try {
-            return SimplePersonagemFuturisticFactory.criaPersonagem((float) .5);
+            return SimplePersonagemFuturisticFactory
+                .criaPersonagem(RandomGenerator.getFloat());
         } catch (IOException ex) {
             Logger.getLogger(FuturisticGameFactory.class.getName()).log(Level.SEVERE, null, ex);
         }

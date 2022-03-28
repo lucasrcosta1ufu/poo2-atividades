@@ -11,11 +11,11 @@ public class Android extends Jogador {
         throws IOException
     {
         super(
-            "Mago",
+            "Android",
             posicao,
             width,
             height,
-            Utilities.futuristicData.characterPaths.get("mago")
+            Utilities.futuristicData.characterPaths.get("android")
         );
         
         String descricao = "Mussum Ipsum, cacilds vidis litro abertis."

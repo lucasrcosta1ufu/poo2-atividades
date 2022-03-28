@@ -11,11 +11,11 @@ public class Atirador extends Jogador {
         throws IOException
     {
         super(
-            "Sacerdote",
+            "atirador",
             posicao,
             width,
             height,            
-            Utilities.futuristicData.characterPaths.get("sacerdote")
+            Utilities.futuristicData.characterPaths.get("atirador")
         );
         
         String descricao = "Mussum Ipsum, cacilds vidis litro abertis."

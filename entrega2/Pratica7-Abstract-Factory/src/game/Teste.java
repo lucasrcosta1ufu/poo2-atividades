@@ -9,7 +9,7 @@ public class Teste
         throws InterruptedException
     {
         Utilities.readConfigs();
-        GameFactory factory = getFactory("0");
+        GameFactory factory = getFactory("1");
         
         Game g = Game.getInstance(0);
         

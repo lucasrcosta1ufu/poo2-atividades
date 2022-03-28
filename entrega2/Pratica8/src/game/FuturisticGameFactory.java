@@ -6,6 +6,7 @@
 package game;
 
 import game.Helpers.Posicao;
+import game.Helpers.RandomGenerator;
 import game.Inimigo.Inimigo;
 import game.Inimigo.RoboForte;
 import game.Movimento.MovimentoRapido;
@@ -36,7 +37,8 @@ public class FuturisticGameFactory extends GameFactory
     public Jogador criarJogador()
     {
         try {
-            return SimplePersonagemFuturisticFactory.criaPersonagem((float) .5);
+            return SimplePersonagemFuturisticFactory
+                .criaPersonagem(RandomGenerator.getFloat());
         } catch (IOException ex) {
             Logger.getLogger(FuturisticGameFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -221,18 +223,18 @@ public class FuturisticGameFactory extends GameFactory
     @Override
     public ImageIcon criarCenario() 
     {
-        return new ImageIcon(Utilities.futuristicData.backgroundPathFase1);
+        return new ImageIcon(Utilities.futuristicData.getBackgroundPathFase1());
     }
     
     @Override
     public ImageIcon criarCenarioFase2() 
     {
-        return new ImageIcon(Utilities.futuristicData.backgroundPathFase2);
+        return new ImageIcon(Utilities.futuristicData.getBackgroundPathFase2());
     }
     
     @Override
     public ImageIcon criarCenarioFase3() 
     {
-        return new ImageIcon(Utilities.futuristicData.backgroundPathFase3);
+        return new ImageIcon(Utilities.futuristicData.getBackgroundPathFase3());
     }
 }

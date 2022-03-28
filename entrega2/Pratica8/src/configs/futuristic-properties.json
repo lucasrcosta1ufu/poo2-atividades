@@ -4,17 +4,17 @@
         "height": 571
     },
     "backgrounds": {
-        "fase1": "./src/images/map.png",
-        "fase2": "./src/images/map.png",
-        "fase3": "./src/images/map.png"
+        "fase1": "./src/images/futuristic.png",
+        "fase2": "./src/images/futuristic.png",
+        "fase3": "./src/images/futuristic.png"
     },
     "images": {
         "characters": {
-            "druida": "/images/character0.png",
-            "paladino": "/images/character1.png",
-            "mago": "/images/character2.png",
-            "sacerdote": "/images/character3.png",
-            "assassino": "/images/character4.png"
+            "cyborg": "/images/cyborg.png",
+            "sentinela": "/images/sentinela.png",
+            "android": "/images/android.png",
+            "atirador": "/images/atirador.png",
+            "fuzileiro": "/images/fuzileiro.png"
         },
         "ataques": {
             "special": "/images/special.png",
@@ -59,8 +59,8 @@
             	"y": 400
             },
             "dimensions": {
-            	"w": 40,
-            	"h": 40
+            	"w": 150,
+            	"h": 60
             }
         },        
         "enemys": [

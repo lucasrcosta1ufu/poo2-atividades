@@ -175,6 +175,7 @@ public class Inimigo implements Observer {
 
     public void update(Observable subject, Object arg)
     {
+        double randomFloat;
         Jogador jogador = (Jogador) subject;
 
         // se estiver em distancia de ataque
@@ -184,15 +185,16 @@ public class Inimigo implements Observer {
         ) {
             jogador.recebeAtaque(this.getAtaque().atacar());
 
-            if (Math.random() < 0.5) {
+            randomFloat = Math.random();
+            if (randomFloat < 0.5) {
                 jogador.setPos(
-                    jogador.getX() + (int) (100 * Math.random()),
-                    jogador.getY() - (int) (100 * Math.random())
+                    jogador.getX() + (int) (100 * randomFloat),
+                    jogador.getY() - (int) (100 * randomFloat)
                 );
             } else {
                 jogador.setPos(
-                    jogador.getX() - (int) (100 * Math.random()),
-                    jogador.getY() + (int) (100 * Math.random())
+                    jogador.getX() - (int) (100 * randomFloat),
+                    jogador.getY() + (int) (100 * randomFloat)
                 );
             }
 
@@ -255,6 +257,7 @@ public class Inimigo implements Observer {
 
     public void moveToUp(int moviment)
     {
+        moviment *= this.getMovimento().correr() * .15;
         if (this.getY() - moviment >= 0) {
             this.setY(this.getY() - moviment);
         } else {
@@ -264,6 +267,7 @@ public class Inimigo implements Observer {
 
     public void moveToDown(int moviment)
     {
+        moviment *= this.getMovimento().correr() * .15;
         if (this.getY() + moviment <= this.posicao.getMaxY()) {
             this.setY(this.getY() + moviment);
         } else {
@@ -273,6 +277,7 @@ public class Inimigo implements Observer {
 
     public void moveToLeft(int moviment)
     {
+        moviment *= this.getMovimento().correr() * .15;
         if (this.getX() - moviment >= 0) {
             this.setX(this.getX() - moviment);
         } else {
@@ -282,6 +287,7 @@ public class Inimigo implements Observer {
 
     public void moveToRight(int moviment)
     {
+        moviment *= this.getMovimento().correr() * .15;
         if (this.getX() + moviment <= this.posicao.getMaxX()) {
             this.setX(this.getX() + moviment);
         } else {

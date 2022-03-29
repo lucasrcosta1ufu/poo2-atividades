@@ -1,0 +1,1909 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Pratica6-C">
+  <ClassDiagramComponents>
+    <Class name="Ataque" package="game.Ataque" visibility="public" isAbstract="true" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="forca" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="setForca" returnType="void" visibility="public">
+          <Argument type="int" name="forca"/>
+        </Method>
+        <Method name="getForca" returnType="int" visibility="public"/>
+        <Method name="atacar" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AtaqueForte" package="game.Ataque" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="atacar" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AtaqueFraco" package="game.Ataque" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="atacar" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AtaqueMedio" package="game.Ataque" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="atacar" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DisparoMagico" package="game.Ataque" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="forca" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Ataque" name="poder"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="atacar" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Encantamento" package="game.Ataque" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Ataque" name="poder"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="atacar" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ForcaAnimal" package="game.Ataque" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Ataque" name="superPoder"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="atacar" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="GolpeSagrado" package="game.Ataque" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Ataque" name="poder"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="atacar" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MilLaminasCortantes" package="game.Ataque" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Ataque" name="superPoder"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="atacar" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Poder" package="game.Ataque" visibility="public" isAbstract="true" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="ataque" type="int" visibility="private"/>
+        <Field name="superPoder" type="Ataque" visibility="private"/>
+        <Field name="image" type="BufferedImage" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Ataque" name="superPoder"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Ataque" name="superPoder"/>
+          <Argument type="BufferedImage" name="image"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Ataque" name="superPoder"/>
+          <Argument type="String" name="path"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getSuperPoder" returnType="Ataque" visibility="public"/>
+        <Method name="atacar" returnType="int" visibility="public"/>
+        <Method name="setImage" returnType="void" visibility="public">
+          <Argument type="BufferedImage" name="image"/>
+        </Method>
+        <Method name="getImage" returnType="BufferedImage" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Special" package="game.Ataque" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="forca" type="int" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Ataque" name="poder"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="atacar" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Escudo" package="game.Escudo" visibility="public" isAbstract="true" xPosition="920.0" yPosition="420.0">
+      <Fields>
+        <Field name="defesa" type="int" visibility="private"/>
+        <Field name="next" type="Escudo" visibility="private"/>
+        <Field name="x" type="int" visibility="private"/>
+        <Field name="cor" type="Color" visibility="private"/>
+        <Field name="shield" type="InputStream" visibility="private"/>
+        <Field name="image" type="BufferedImage" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="path"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="path"/>
+          <Argument type="int" name="defesa"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setDefesa" returnType="void" visibility="public">
+          <Argument type="int" name="defesa"/>
+        </Method>
+        <Method name="getDefesa" returnType="int" visibility="public"/>
+        <Method name="setNext" returnType="void" visibility="public">
+          <Argument type="Escudo" name="escudo"/>
+        </Method>
+        <Method name="getNext" returnType="Escudo" visibility="public"/>
+        <Method name="setX" returnType="void" visibility="public">
+          <Argument type="int" name="x"/>
+        </Method>
+        <Method name="getX" returnType="int" visibility="public"/>
+        <Method name="setY" returnType="void" visibility="public">
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="getY" returnType="int" visibility="public"/>
+        <Method name="setCor" returnType="void" visibility="public">
+          <Argument type="Color" name="cor"/>
+        </Method>
+        <Method name="getCor" returnType="Color" visibility="public"/>
+        <Method name="setImage" returnType="void" visibility="public">
+          <Argument type="BufferedImage" name="image"/>
+        </Method>
+        <Method name="getImage" returnType="BufferedImage" visibility="public"/>
+        <Method name="processaAtaque" returnType="int" visibility="public">
+          <Argument type="int" name="ataque"/>
+        </Method>
+        <Method name="setRandomicPosition" returnType="void" visibility="public">
+          <Argument type="int" name="maxX"/>
+          <Argument type="int" name="maxY"/>
+        </Method>
+        <Method name="setRandomicPosition" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="EscudoForte" package="game.Escudo" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="EscudoFraco" package="game.Escudo" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="EscudoMedio" package="game.Escudo" visibility="public" xPosition="1820.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Game" package="game" visibility="public" isAbstract="true" xPosition="2120.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="jogar" returnType="void" visibility="public" isAbstract="true">
+          <Argument type="Game" name="game"/>
+        </Method>
+        <Method name="criaPersonagem" returnType="Jogador" visibility="public" isAbstract="true"/>
+      </Methods>
+    </Class>
+    <Class name="ColorFinder" package="game.Helpers" visibility="public" xPosition="20.0" yPosition="820.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getColorByName" returnType="Color" visibility="public" isStatic="true">
+          <Argument type="String" name="name"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Dir" package="game.Helpers" visibility="public" xPosition="320.0" yPosition="820.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="pwd" returnType="String" visibility="public" isStatic="true"/>
+        <Method name="imagePath" returnType="String" visibility="public" isStatic="true"/>
+        <Method name="configsPath" returnType="String" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="FileManipulator" package="game.Helpers" visibility="public" xPosition="620.0" yPosition="820.0">
+      <Fields>
+        <Field name="path" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="path"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPath" returnType="String" visibility="public"/>
+        <Method name="setPath" returnType="void" visibility="public">
+          <Argument type="String" name="path"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="read" returnType="String" visibility="public"/>
+        <Method name="read" returnType="String" visibility="public">
+          <Argument type="String" name="path"/>
+        </Method>
+        <Method name="getContent" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="path"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Image" package="game.Helpers" visibility="public" isFinal="true" xPosition="920.0" yPosition="820.0">
+      <Fields>
+        <Field name="path" type="String" visibility="private"/>
+        <Field name="width" type="int" visibility="private"/>
+        <Field name="height" type="int" visibility="private"/>
+        <Field name="descricao" type="String" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="path"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="path"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="path"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+          <Argument type="String" name="descricao"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPath" returnType="String" visibility="public"/>
+        <Method name="setPath" returnType="void" visibility="public">
+          <Argument type="String" name="path"/>
+        </Method>
+        <Method name="getWidth" returnType="int" visibility="public"/>
+        <Method name="setWidth" returnType="void" visibility="public">
+          <Argument type="int" name="width"/>
+        </Method>
+        <Method name="getHeight" returnType="int" visibility="public"/>
+        <Method name="setHeight" returnType="void" visibility="public">
+          <Argument type="int" name="height"/>
+        </Method>
+        <Method name="getDescricao" returnType="String" visibility="public"/>
+        <Method name="setDescricao" returnType="void" visibility="public">
+          <Argument type="String" name="descricao"/>
+        </Method>
+        <Method name="setDimensions" returnType="void" visibility="private"/>
+        <Method name="getPwd" returnType="String" visibility="public"/>
+        <Method name="getPathSuffix" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="JLabelData" package="game.Helpers" visibility="public" xPosition="1220.0" yPosition="820.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="backgroundPosX" type="int" visibility="private"/>
+        <Field name="backgroundPosY" type="int" visibility="private"/>
+        <Field name="textPosX" type="int" visibility="private"/>
+        <Field name="textPosY" type="int" visibility="private"/>
+        <Field name="width" type="int" visibility="private"/>
+        <Field name="height" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="backgroundPosX"/>
+          <Argument type="int" name="backgroundPosY"/>
+          <Argument type="int" name="textPosX"/>
+          <Argument type="int" name="textPosY"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="backgroundPosX"/>
+          <Argument type="int" name="backgroundPosY"/>
+          <Argument type="int" name="textPosX"/>
+          <Argument type="int" name="textPosY"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="backgroundPosX"/>
+          <Argument type="int" name="backgroundPosY"/>
+          <Argument type="int" name="textPosX"/>
+          <Argument type="int" name="textPosY"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getBackgroundPosX" returnType="int" visibility="public"/>
+        <Method name="setBackgroundPosX" returnType="void" visibility="public">
+          <Argument type="int" name="backgroundPosX"/>
+        </Method>
+        <Method name="getBackgroundPosY" returnType="int" visibility="public"/>
+        <Method name="setBackgroundPosY" returnType="void" visibility="public">
+          <Argument type="int" name="backgroundPosY"/>
+        </Method>
+        <Method name="getTextPosX" returnType="int" visibility="public"/>
+        <Method name="setTextPosX" returnType="void" visibility="public">
+          <Argument type="int" name="textPosX"/>
+        </Method>
+        <Method name="getTextPosY" returnType="int" visibility="public"/>
+        <Method name="setTextPosY" returnType="void" visibility="public">
+          <Argument type="int" name="textPosY"/>
+        </Method>
+        <Method name="getWidth" returnType="int" visibility="public"/>
+        <Method name="setWidth" returnType="void" visibility="public">
+          <Argument type="int" name="width"/>
+        </Method>
+        <Method name="getHeight" returnType="int" visibility="public"/>
+        <Method name="setHeight" returnType="void" visibility="public">
+          <Argument type="int" name="height"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Json" package="game.Helpers" visibility="public" xPosition="1520.0" yPosition="820.0">
+      <Fields>
+        <Field name="path" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="path"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPath" returnType="String" visibility="public"/>
+        <Method name="setPath" returnType="void" visibility="public">
+          <Argument type="String" name="path"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="read" returnType="JSONObject" visibility="public"/>
+        <Method name="read" returnType="JSONObject" visibility="public">
+          <Argument type="String" name="path"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Posicao" package="game.Helpers" visibility="public" xPosition="1820.0" yPosition="820.0">
+      <Fields>
+        <Field name="x" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+          <Argument type="int" name="maxX"/>
+          <Argument type="int" name="maxY"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getX" returnType="int" visibility="public"/>
+        <Method name="setX" returnType="void" visibility="public">
+          <Argument type="int" name="x"/>
+        </Method>
+        <Method name="getY" returnType="int" visibility="public"/>
+        <Method name="setY" returnType="void" visibility="public">
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="getMaxX" returnType="int" visibility="public"/>
+        <Method name="setMaxX" returnType="void" visibility="public">
+          <Argument type="int" name="maxX"/>
+        </Method>
+        <Method name="getMaxY" returnType="int" visibility="public"/>
+        <Method name="setMaxY" returnType="void" visibility="public">
+          <Argument type="int" name="maxY"/>
+        </Method>
+        <Method name="setPos" returnType="void" visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RandomGenerator" package="game.Helpers" visibility="public" xPosition="2120.0" yPosition="820.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getFloat" returnType="Float" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="Robo" package="game.Inimigo" visibility="public" xPosition="20.0" yPosition="1220.0">
+      <Fields>
+        <Field name="vida" type="RoboEstado" visibility="private"/>
+        <Field name="quantidade" type="int" visibility="private"/>
+        <Field name="x" type="int" visibility="private"/>
+        <Field name="y" type="int" visibility="private"/>
+        <Field name="nome" type="String" visibility="private"/>
+        <Field name="movimento" type="Movimento" visibility="private"/>
+        <Field name="ataque" type="Ataque" visibility="private"/>
+        <Field name="posicao" type="Posicao" visibility="private"/>
+        <Field name="image" type="BufferedImage" visibility="private"/>
+        <Field name="width" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+          <Argument type="String" name="nome"/>
+          <Argument type="BufferedImage" name="image"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Posicao" name="posicao"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+          <Argument type="String" name="nome"/>
+          <Argument type="BufferedImage" name="image"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+          <Argument type="String" name="nome"/>
+          <Argument type="String" name="path"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Posicao" name="posicao"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+          <Argument type="String" name="nome"/>
+          <Argument type="String" name="path"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getWidth" returnType="int" visibility="public"/>
+        <Method name="setWidth" returnType="void" visibility="public">
+          <Argument type="int" name="width"/>
+        </Method>
+        <Method name="getHeight" returnType="int" visibility="public"/>
+        <Method name="setHeight" returnType="void" visibility="public">
+          <Argument type="int" name="height"/>
+        </Method>
+        <Method name="getVida" returnType="RoboEstado" visibility="public"/>
+        <Method name="setVida" returnType="void" visibility="public">
+          <Argument type="RoboEstado" name="vida"/>
+        </Method>
+        <Method name="getQuantidade" returnType="int" visibility="public"/>
+        <Method name="setQuantidade" returnType="void" visibility="public">
+          <Argument type="int" name="quantidade"/>
+        </Method>
+        <Method name="getNome" returnType="String" visibility="public"/>
+        <Method name="setNome" returnType="void" visibility="public">
+          <Argument type="String" name="nome"/>
+        </Method>
+        <Method name="getX" returnType="int" visibility="public"/>
+        <Method name="getY" returnType="int" visibility="public"/>
+        <Method name="setX" returnType="void" visibility="public">
+          <Argument type="int" name="x"/>
+        </Method>
+        <Method name="setY" returnType="void" visibility="public">
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="setPos" returnType="void" visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="setAvatar" returnType="void" visibility="public">
+          <Argument type="BufferedImage" name="image"/>
+        </Method>
+        <Method name="getAvatar" returnType="BufferedImage" visibility="public"/>
+        <Method name="recebeAtaque" returnType="void" visibility="public">
+          <Argument type="int" name="ataque"/>
+        </Method>
+        <Method name="recompensa" returnType="void" visibility="public"/>
+        <Method name="update" returnType="void" visibility="public">
+          <Argument type="Observable" name="subject"/>
+          <Argument type="Object" name="arg"/>
+        </Method>
+        <Method name="getMovimento" returnType="Movimento" visibility="public"/>
+        <Method name="setMovimento" returnType="void" visibility="public">
+          <Argument type="Movimento" name="movimento"/>
+        </Method>
+        <Method name="getAtaque" returnType="Ataque" visibility="public"/>
+        <Method name="setAtaque" returnType="void" visibility="public">
+          <Argument type="Ataque" name="ataque"/>
+        </Method>
+        <Method name="corrida" returnType="void" visibility="public"/>
+        <Method name="ataque" returnType="void" visibility="public"/>
+        <Method name="moveToUp" returnType="void" visibility="public">
+          <Argument type="int" name="moviment"/>
+        </Method>
+        <Method name="moveToDown" returnType="void" visibility="public">
+          <Argument type="int" name="moviment"/>
+        </Method>
+        <Method name="moveToLeft" returnType="void" visibility="public">
+          <Argument type="int" name="moviment"/>
+        </Method>
+        <Method name="moveToRight" returnType="void" visibility="public">
+          <Argument type="int" name="moviment"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RoboEstado" package="game.Inimigo" visibility="public" isAbstract="true" xPosition="320.0" yPosition="1220.0">
+      <Fields>
+        <Field name="robo" type="Robo" visibility="private"/>
+        <Field name="limiteInferior" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Robo" name="robo"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getRobo" returnType="Robo" visibility="public"/>
+        <Method name="setRobo" returnType="void" visibility="public">
+          <Argument type="Robo" name="robo"/>
+        </Method>
+        <Method name="getLimiteInferior" returnType="int" visibility="public"/>
+        <Method name="setLimiteInferior" returnType="void" visibility="public">
+          <Argument type="int" name="limiteInferior"/>
+        </Method>
+        <Method name="getLimiteSuperior" returnType="int" visibility="public"/>
+        <Method name="setLimiteSuperior" returnType="void" visibility="public">
+          <Argument type="int" name="limiteSuperior"/>
+        </Method>
+        <Method name="perdeVida" returnType="void" visibility="public">
+          <Argument type="int" name="lostLife"/>
+        </Method>
+        <Method name="ganhaVida" returnType="void" visibility="public"/>
+        <Method name="setLimites" returnType="void" visibility="public" isAbstract="true"/>
+        <Method name="dano" returnType="void" visibility="public" isAbstract="true">
+          <Argument type="int" name="dano"/>
+        </Method>
+        <Method name="verificaEstado" returnType="void" visibility="public" isAbstract="true"/>
+      </Methods>
+    </Class>
+    <Class name="RoboForte" package="game.Inimigo" visibility="public" xPosition="620.0" yPosition="1220.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Robo" name="robo"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setLimites" returnType="void" visibility="public"/>
+        <Method name="verificaEstado" returnType="void" visibility="public"/>
+        <Method name="dano" returnType="void" visibility="public">
+          <Argument type="int" name="dano"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RoboMorto" package="game.Inimigo" visibility="public" xPosition="920.0" yPosition="1220.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Robo" name="r"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setLimites" returnType="void" visibility="public"/>
+        <Method name="verificaEstado" returnType="void" visibility="public"/>
+        <Method name="perdeVida" returnType="void" visibility="public">
+          <Argument type="int" name="lostLife"/>
+        </Method>
+        <Method name="morte" returnType="void" visibility="public"/>
+        <Method name="dano" returnType="void" visibility="public">
+          <Argument type="int" name="dano"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RoboNormal" package="game.Inimigo" visibility="public" xPosition="1220.0" yPosition="1220.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Robo" name="robo"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setLimites" returnType="void" visibility="public"/>
+        <Method name="verificaEstado" returnType="void" visibility="public"/>
+        <Method name="dano" returnType="void" visibility="public">
+          <Argument type="int" name="dano"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RoboPerigo" package="game.Inimigo" visibility="public" xPosition="1520.0" yPosition="1220.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Robo" name="robo"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setLimites" returnType="void" visibility="public"/>
+        <Method name="verificaEstado" returnType="void" visibility="public"/>
+        <Method name="dano" returnType="void" visibility="public">
+          <Argument type="int" name="dano"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="Movimento" package="game.Movimento" visibility="public" xPosition="1820.0" yPosition="1220.0">
+      <Methods>
+        <Method name="correr" returnType="int" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Class name="MovimentoDevagar" package="game.Movimento" visibility="public" xPosition="2120.0" yPosition="1220.0">
+      <Fields>
+        <Field name="velocidade" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="correr" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MovimentoMedio" package="game.Movimento" visibility="public" xPosition="20.0" yPosition="1620.0">
+      <Fields>
+        <Field name="velocidade" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="correr" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MovimentoRapido" package="game.Movimento" visibility="public" xPosition="320.0" yPosition="1620.0">
+      <Fields>
+        <Field name="velocidade" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="correr" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Assassino" package="game.Personagem" visibility="public" xPosition="620.0" yPosition="1620.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Posicao" name="posicao"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Druida" package="game.Personagem" visibility="public" xPosition="920.0" yPosition="1620.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Posicao" name="posicao"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Jogador" package="game.Personagem" visibility="public" isAbstract="true" xPosition="1220.0" yPosition="1620.0">
+      <Fields>
+        <Field name="bolAtaque" type="boolean" visibility="private"/>
+        <Field name="quantidade" type="int" visibility="private"/>
+        <Field name="nome" type="String" visibility="private"/>
+        <Field name="movimento" type="Movimento" visibility="private"/>
+        <Field name="ataque" type="Ataque" visibility="private"/>
+        <Field name="vida" type="Estado" visibility="private"/>
+        <Field name="escudo" type="Escudo" visibility="private"/>
+        <Field name="image" type="BufferedImage" visibility="private"/>
+        <Field name="posicao" type="Posicao" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="tipo"/>
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+          <Argument type="BufferedImage" name="image"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="tipo"/>
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+          <Argument type="String" name="path"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="tipo"/>
+          <Argument type="Posicao" name="posicao"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+          <Argument type="BufferedImage" name="image"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="tipo"/>
+          <Argument type="Posicao" name="posicao"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+          <Argument type="String" name="path"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+          <Argument type="BufferedImage" name="image"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+          <Argument type="String" name="path"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Posicao" name="posicao"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+          <Argument type="BufferedImage" name="image"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Posicao" name="posicao"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+          <Argument type="String" name="path"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="isAttacking" returnType="boolean" visibility="public"/>
+        <Method name="setBolAtaque" returnType="void" visibility="public">
+          <Argument type="boolean" name="bolAtaque"/>
+        </Method>
+        <Method name="getWidth" returnType="int" visibility="public"/>
+        <Method name="setWidth" returnType="void" visibility="public">
+          <Argument type="int" name="width"/>
+        </Method>
+        <Method name="getHeight" returnType="int" visibility="public"/>
+        <Method name="setHeight" returnType="void" visibility="public">
+          <Argument type="int" name="height"/>
+        </Method>
+        <Method name="getVida" returnType="Estado" visibility="public"/>
+        <Method name="setVida" returnType="void" visibility="public">
+          <Argument type="Estado" name="vida"/>
+        </Method>
+        <Method name="getQuantidade" returnType="int" visibility="public"/>
+        <Method name="setQuantidade" returnType="void" visibility="public">
+          <Argument type="int" name="quantidade"/>
+        </Method>
+        <Method name="recebeAtaque" returnType="void" visibility="public">
+          <Argument type="int" name="ataque"/>
+        </Method>
+        <Method name="getDescricao" returnType="String" visibility="public"/>
+        <Method name="setDescricao" returnType="void" visibility="public">
+          <Argument type="String" name="descricao"/>
+        </Method>
+        <Method name="recompensa" returnType="void" visibility="public"/>
+        <Method name="getMovimento" returnType="Movimento" visibility="public"/>
+        <Method name="setMovimento" returnType="void" visibility="public">
+          <Argument type="Movimento" name="movimento"/>
+        </Method>
+        <Method name="getAtaque" returnType="Ataque" visibility="public"/>
+        <Method name="setAtaque" returnType="void" visibility="public">
+          <Argument type="Ataque" name="ataque"/>
+        </Method>
+        <Method name="setEscudo" returnType="void" visibility="public">
+          <Argument type="Escudo" name="escudo"/>
+        </Method>
+        <Method name="getEscudo" returnType="Escudo" visibility="public"/>
+        <Method name="setAvatar" returnType="void" visibility="public">
+          <Argument type="BufferedImage" name="image"/>
+        </Method>
+        <Method name="getAvatar" returnType="BufferedImage" visibility="public"/>
+        <Method name="addEscudo" returnType="void" visibility="public">
+          <Argument type="Escudo" name="escudo"/>
+        </Method>
+        <Method name="corrida" returnType="void" visibility="public"/>
+        <Method name="ataque" returnType="void" visibility="public"/>
+        <Method name="getX" returnType="int" visibility="public"/>
+        <Method name="getY" returnType="int" visibility="public"/>
+        <Method name="setX" returnType="void" visibility="public">
+          <Argument type="int" name="x"/>
+        </Method>
+        <Method name="setY" returnType="void" visibility="public">
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="setPos" returnType="void" visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="show" returnType="void" visibility="public"/>
+        <Method name="enviaAtaque" returnType="void" visibility="public" isSynchronized="true">
+          <Argument type="ArrayList&lt;Robo&gt;" name="robos"/>
+        </Method>
+        <Method name="coletaEscudo" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Escudo&gt;" name="escudos"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="moveToUp" returnType="void" visibility="public"/>
+        <Method name="moveToDown" returnType="void" visibility="public"/>
+        <Method name="moveToLeft" returnType="void" visibility="public"/>
+        <Method name="moveToRight" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Mago" package="game.Personagem" visibility="public" xPosition="1520.0" yPosition="1620.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Posicao" name="posicao"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Paladino" package="game.Personagem" visibility="public" xPosition="1820.0" yPosition="1620.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Posicao" name="posicao"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Sacerdote" package="game.Personagem" visibility="public" xPosition="2120.0" yPosition="1620.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Posicao" name="posicao"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="SimplePersonagemFactory" package="game.Personagem" visibility="public" xPosition="20.0" yPosition="2020.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="criaPersonagem" returnType="Jogador" visibility="public" isStatic="true">
+          <Argument type="float" name="valor"/>
+        </Method>
+        <Method name="createMago" returnType="Mago" visibility="public" isStatic="true"/>
+        <Method name="createPaladino" returnType="Paladino" visibility="public" isStatic="true"/>
+        <Method name="createSacerdote" returnType="Sacerdote" visibility="public" isStatic="true"/>
+        <Method name="createAssassino" returnType="Assassino" visibility="public" isStatic="true"/>
+        <Method name="createDruida" returnType="Druida" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="RPGGame" package="game" visibility="public" xPosition="320.0" yPosition="2020.0">
+      <Fields>
+        <Field name="jogador" type="Jogador" visibility="private"/>
+        <Field name="background" type="ImageIcon" visibility="private"/>
+        <Field name="robos" type="ArrayList&lt;Robo&gt;" visibility="private"/>
+        <Field name="escudos" type="ArrayList&lt;Escudo&gt;" visibility="private"/>
+        <Field name="EnemyStatusFont" type="Font" visibility="private" isFinal="true"/>
+        <Field name="baseFont" type="Font" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="paint" returnType="void" visibility="public">
+          <Argument type="Graphics" name="g"/>
+        </Method>
+        <Method name="drawJogador" returnType="void" visibility="public">
+          <Argument type="Graphics2D" name="g2d"/>
+          <Argument type="Jogador" name="jogador"/>
+          <Argument type="JLabelData" name="jogadorLabel"/>
+        </Method>
+        <Method name="drawRobo" returnType="void" visibility="public">
+          <Argument type="Graphics2D" name="g2d"/>
+          <Argument type="Robo" name="robo"/>
+          <Argument type="Dictionary&lt;String, Object&gt;" name="enemyData"/>
+        </Method>
+        <Method name="getPorcentagemVida" returnType="String" visibility="public">
+          <Argument type="Jogador" name="jogador"/>
+          <Argument type="String" name="preffix"/>
+        </Method>
+        <Method name="getPorcentagemVida" returnType="String" visibility="public">
+          <Argument type="Robo" name="robo"/>
+          <Argument type="String" name="preffix"/>
+        </Method>
+        <Method name="jogar" returnType="void" visibility="public">
+          <Argument type="Game" name="g"/>
+        </Method>
+        <Method name="criaPersonagem" returnType="Jogador" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Estado" package="game.States" visibility="public" isAbstract="true" xPosition="620.0" yPosition="2020.0">
+      <Fields>
+        <Field name="jogador" type="Jogador" visibility="private"/>
+        <Field name="robo" type="Robo" visibility="private"/>
+        <Field name="limiteInferior" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Jogador" name="jogador"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getJogador" returnType="Jogador" visibility="public"/>
+        <Method name="setJogador" returnType="void" visibility="public">
+          <Argument type="Jogador" name="jogador"/>
+        </Method>
+        <Method name="getRobo" returnType="Robo" visibility="public"/>
+        <Method name="setRobo" returnType="void" visibility="public">
+          <Argument type="Robo" name="robo"/>
+        </Method>
+        <Method name="getLimiteInferior" returnType="int" visibility="public"/>
+        <Method name="setLimiteInferior" returnType="void" visibility="public">
+          <Argument type="int" name="limiteInferior"/>
+        </Method>
+        <Method name="getLimiteSuperior" returnType="int" visibility="public"/>
+        <Method name="setLimiteSuperior" returnType="void" visibility="public">
+          <Argument type="int" name="limiteSuperior"/>
+        </Method>
+        <Method name="perdeVida" returnType="void" visibility="public">
+          <Argument type="int" name="lostLife"/>
+        </Method>
+        <Method name="ganhaVida" returnType="void" visibility="public"/>
+        <Method name="setLimites" returnType="void" visibility="public" isAbstract="true"/>
+        <Method name="dano" returnType="void" visibility="public" isAbstract="true">
+          <Argument type="int" name="dano"/>
+        </Method>
+        <Method name="verificaEstado" returnType="void" visibility="public" isAbstract="true"/>
+      </Methods>
+    </Class>
+    <Class name="EstadoForte" package="game.States" visibility="public" xPosition="920.0" yPosition="2020.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Jogador" name="jogador"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setLimites" returnType="void" visibility="public"/>
+        <Method name="verificaEstado" returnType="void" visibility="public"/>
+        <Method name="dano" returnType="void" visibility="public">
+          <Argument type="int" name="dano"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EstadoMorto" package="game.States" visibility="public" xPosition="1220.0" yPosition="2020.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Jogador" name="jogador"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setLimites" returnType="void" visibility="public"/>
+        <Method name="verificaEstado" returnType="void" visibility="public"/>
+        <Method name="perdeVida" returnType="void" visibility="public">
+          <Argument type="int" name="lostLife"/>
+        </Method>
+        <Method name="morte" returnType="void" visibility="public"/>
+        <Method name="dano" returnType="void" visibility="public">
+          <Argument type="int" name="dano"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EstadoNormal" package="game.States" visibility="public" xPosition="1520.0" yPosition="2020.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Jogador" name="jogador"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setLimites" returnType="void" visibility="public"/>
+        <Method name="verificaEstado" returnType="void" visibility="public"/>
+        <Method name="dano" returnType="void" visibility="public">
+          <Argument type="int" name="dano"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EstadoPerigo" package="game.States" visibility="public" xPosition="1820.0" yPosition="2020.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Jogador" name="jogador"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setLimites" returnType="void" visibility="public"/>
+        <Method name="verificaEstado" returnType="void" visibility="public"/>
+        <Method name="dano" returnType="void" visibility="public">
+          <Argument type="int" name="dano"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Teste" package="game" visibility="public" xPosition="2120.0" yPosition="2020.0">
+      <Fields>
+        <Field name="run" type="Runtime" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="pro" type="Process" visibility="package" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Utilities" package="game" visibility="public" xPosition="20.0" yPosition="2420.0">
+      <Fields>
+        <Field name="PATH" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="HEIGHT" type="int" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="WIDTH" type="int" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="backgroundPath" type="String" visibility="public" isStatic="true"/>
+        <Field name="personagemData" type="Dictionary&lt;String, Object&gt;" visibility="public" isStatic="true"/>
+        <Field name="ataqueDecoradoData" type="Dictionary&lt;String, Object&gt;" visibility="public" isStatic="true"/>
+        <Field name="characterPaths" type="Dictionary&lt;String, String&gt;" visibility="public" isStatic="true"/>
+        <Field name="ataqueImagesPath" type="Dictionary&lt;String, String&gt;" visibility="public" isStatic="true"/>
+        <Field name="enemysData" type="ArrayList&lt;Dictionary&lt;String, Object&gt;&gt;" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getPATH" returnType="String" visibility="public" isStatic="true"/>
+        <Method name="readConfigs" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="getSubjects" returnType="JSONObject" visibility="private" isStatic="true">
+          <Argument type="JSONObject" name="obj"/>
+        </Method>
+        <Method name="load" returnType="void" visibility="private" isStatic="true">
+          <Argument type="JSONObject" name="obj"/>
+        </Method>
+        <Method name="loadBackground" returnType="void" visibility="private" isStatic="true">
+          <Argument type="JSONObject" name="obj"/>
+        </Method>
+        <Method name="loadImages" returnType="void" visibility="private" isStatic="true">
+          <Argument type="JSONObject" name="obj"/>
+        </Method>
+        <Method name="loadCharacterPaths" returnType="void" visibility="private" isStatic="true">
+          <Argument type="JSONObject" name="obj"/>
+        </Method>
+        <Method name="loadAtaqueImages" returnType="void" visibility="private" isStatic="true">
+          <Argument type="JSONObject" name="obj"/>
+        </Method>
+        <Method name="loadPersonagemData" returnType="void" visibility="private" isStatic="true">
+          <Argument type="JSONObject" name="obj"/>
+        </Method>
+        <Method name="loadEnemyData" returnType="void" visibility="private" isStatic="true">
+          <Argument type="JSONObject" name="obj"/>
+        </Method>
+        <Method name="loadJLabelProps" returnType="JLabelData" visibility="private" isStatic="true">
+          <Argument type="JSONObject" name="jlabel"/>
+        </Method>
+        <Method name="loadAtaqueDecoradosData" returnType="void" visibility="private" isStatic="true">
+          <Argument type="JSONObject" name="obj"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CDL" package="org.json" visibility="public" xPosition="320.0" yPosition="2420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getValue" returnType="String" visibility="private" isStatic="true">
+          <Argument type="JSONTokener" name="x"/>
+        </Method>
+        <Method name="rowToJSONArray" returnType="JSONArray" visibility="public" isStatic="true">
+          <Argument type="JSONTokener" name="x"/>
+        </Method>
+        <Method name="rowToJSONObject" returnType="JSONObject" visibility="public" isStatic="true">
+          <Argument type="JSONArray" name="names"/>
+          <Argument type="JSONTokener" name="x"/>
+        </Method>
+        <Method name="rowToString" returnType="String" visibility="public" isStatic="true">
+          <Argument type="JSONArray" name="ja"/>
+        </Method>
+        <Method name="toJSONArray" returnType="JSONArray" visibility="public" isStatic="true">
+          <Argument type="String" name="string"/>
+        </Method>
+        <Method name="toJSONArray" returnType="JSONArray" visibility="public" isStatic="true">
+          <Argument type="JSONTokener" name="x"/>
+        </Method>
+        <Method name="toJSONArray" returnType="JSONArray" visibility="public" isStatic="true">
+          <Argument type="JSONArray" name="names"/>
+          <Argument type="String" name="string"/>
+        </Method>
+        <Method name="toJSONArray" returnType="JSONArray" visibility="public" isStatic="true">
+          <Argument type="JSONArray" name="names"/>
+          <Argument type="JSONTokener" name="x"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public" isStatic="true">
+          <Argument type="JSONArray" name="ja"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public" isStatic="true">
+          <Argument type="JSONArray" name="names"/>
+          <Argument type="JSONArray" name="ja"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Cookie" package="org.json" visibility="public" xPosition="620.0" yPosition="2420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="escape" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="string"/>
+        </Method>
+        <Method name="toJSONObject" returnType="JSONObject" visibility="public" isStatic="true">
+          <Argument type="String" name="string"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public" isStatic="true">
+          <Argument type="JSONObject" name="jo"/>
+        </Method>
+        <Method name="unescape" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="string"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CookieList" package="org.json" visibility="public" xPosition="920.0" yPosition="2420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="toJSONObject" returnType="JSONObject" visibility="public" isStatic="true">
+          <Argument type="String" name="string"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public" isStatic="true">
+          <Argument type="JSONObject" name="jo"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="HTTP" package="org.json" visibility="public" xPosition="1220.0" yPosition="2420.0">
+      <Fields>
+        <Field name="CRLF" type="String" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="toJSONObject" returnType="JSONObject" visibility="public" isStatic="true">
+          <Argument type="String" name="string"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public" isStatic="true">
+          <Argument type="JSONObject" name="jo"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="HTTPTokener" package="org.json" visibility="public" xPosition="1520.0" yPosition="2420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="string"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="nextToken" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="JSONArray" package="org.json" visibility="public" xPosition="1820.0" yPosition="2420.0">
+      <Fields>
+        <Field name="myArrayList" type="ArrayList" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="JSONTokener" name="x"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="source"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Collection" name="collection"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Object" name="array"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="get" returnType="Object" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="getBoolean" returnType="boolean" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="getDouble" returnType="double" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="getInt" returnType="int" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="getJSONArray" returnType="JSONArray" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="getJSONObject" returnType="JSONObject" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="getLong" returnType="long" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="getString" returnType="String" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="isNull" returnType="boolean" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="join" returnType="String" visibility="public">
+          <Argument type="String" name="separator"/>
+        </Method>
+        <Method name="length" returnType="int" visibility="public"/>
+        <Method name="opt" returnType="Object" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="optBoolean" returnType="boolean" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="optBoolean" returnType="boolean" visibility="public">
+          <Argument type="int" name="index"/>
+          <Argument type="boolean" name="defaultValue"/>
+        </Method>
+        <Method name="optDouble" returnType="double" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="optDouble" returnType="double" visibility="public">
+          <Argument type="int" name="index"/>
+          <Argument type="double" name="defaultValue"/>
+        </Method>
+        <Method name="optInt" returnType="int" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="optInt" returnType="int" visibility="public">
+          <Argument type="int" name="index"/>
+          <Argument type="int" name="defaultValue"/>
+        </Method>
+        <Method name="optJSONArray" returnType="JSONArray" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="optJSONObject" returnType="JSONObject" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="optLong" returnType="long" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="optLong" returnType="long" visibility="public">
+          <Argument type="int" name="index"/>
+          <Argument type="long" name="defaultValue"/>
+        </Method>
+        <Method name="optString" returnType="String" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="optString" returnType="String" visibility="public">
+          <Argument type="int" name="index"/>
+          <Argument type="String" name="defaultValue"/>
+        </Method>
+        <Method name="put" returnType="JSONArray" visibility="public">
+          <Argument type="boolean" name="value"/>
+        </Method>
+        <Method name="put" returnType="JSONArray" visibility="public">
+          <Argument type="Collection" name="value"/>
+        </Method>
+        <Method name="put" returnType="JSONArray" visibility="public">
+          <Argument type="double" name="value"/>
+        </Method>
+        <Method name="put" returnType="JSONArray" visibility="public">
+          <Argument type="int" name="value"/>
+        </Method>
+        <Method name="put" returnType="JSONArray" visibility="public">
+          <Argument type="long" name="value"/>
+        </Method>
+        <Method name="put" returnType="JSONArray" visibility="public">
+          <Argument type="Map" name="value"/>
+        </Method>
+        <Method name="put" returnType="JSONArray" visibility="public">
+          <Argument type="Object" name="value"/>
+        </Method>
+        <Method name="put" returnType="JSONArray" visibility="public">
+          <Argument type="int" name="index"/>
+          <Argument type="boolean" name="value"/>
+        </Method>
+        <Method name="put" returnType="JSONArray" visibility="public">
+          <Argument type="int" name="index"/>
+          <Argument type="Collection" name="value"/>
+        </Method>
+        <Method name="put" returnType="JSONArray" visibility="public">
+          <Argument type="int" name="index"/>
+          <Argument type="double" name="value"/>
+        </Method>
+        <Method name="put" returnType="JSONArray" visibility="public">
+          <Argument type="int" name="index"/>
+          <Argument type="int" name="value"/>
+        </Method>
+        <Method name="put" returnType="JSONArray" visibility="public">
+          <Argument type="int" name="index"/>
+          <Argument type="long" name="value"/>
+        </Method>
+        <Method name="put" returnType="JSONArray" visibility="public">
+          <Argument type="int" name="index"/>
+          <Argument type="Map" name="value"/>
+        </Method>
+        <Method name="put" returnType="JSONArray" visibility="public">
+          <Argument type="int" name="index"/>
+          <Argument type="Object" name="value"/>
+        </Method>
+        <Method name="remove" returnType="Object" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="toJSONObject" returnType="JSONObject" visibility="public">
+          <Argument type="JSONArray" name="names"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public">
+          <Argument type="int" name="indentFactor"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="package">
+          <Argument type="int" name="indentFactor"/>
+          <Argument type="int" name="indent"/>
+        </Method>
+        <Method name="write" returnType="Writer" visibility="public">
+          <Argument type="Writer" name="writer"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="JSONException" package="org.json" visibility="public" xPosition="2120.0" yPosition="2420.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="cause" type="Throwable" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Throwable" name="cause"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCause" returnType="Throwable" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="JSONML" package="org.json" visibility="public" xPosition="20.0" yPosition="2820.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="parse" returnType="Object" visibility="private" isStatic="true">
+          <Argument type="XMLTokener" name="x"/>
+          <Argument type="boolean" name="arrayForm"/>
+          <Argument type="JSONArray" name="ja"/>
+        </Method>
+        <Method name="toJSONArray" returnType="JSONArray" visibility="public" isStatic="true">
+          <Argument type="String" name="string"/>
+        </Method>
+        <Method name="toJSONArray" returnType="JSONArray" visibility="public" isStatic="true">
+          <Argument type="XMLTokener" name="x"/>
+        </Method>
+        <Method name="toJSONObject" returnType="JSONObject" visibility="public" isStatic="true">
+          <Argument type="XMLTokener" name="x"/>
+        </Method>
+        <Method name="toJSONObject" returnType="JSONObject" visibility="public" isStatic="true">
+          <Argument type="String" name="string"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public" isStatic="true">
+          <Argument type="JSONArray" name="ja"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public" isStatic="true">
+          <Argument type="JSONObject" name="jo"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="JSONObject" package="org.json" visibility="public" xPosition="320.0" yPosition="2820.0">
+      <Fields>
+        <Field name="map" type="Map" visibility="private"/>
+        <Field name="NULL" type="Object" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="JSONObject" name="jo"/>
+          <Argument type="String[]" name="names"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="JSONTokener" name="x"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Map" name="map"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Object" name="bean"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Object" name="object"/>
+          <Argument type="String" name="names"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="source"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="baseName"/>
+          <Argument type="Locale" name="locale"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="accumulate" returnType="JSONObject" visibility="public">
+          <Argument type="String" name="key"/>
+          <Argument type="Object" name="value"/>
+        </Method>
+        <Method name="append" returnType="JSONObject" visibility="public">
+          <Argument type="String" name="key"/>
+          <Argument type="Object" name="value"/>
+        </Method>
+        <Method name="doubleToString" returnType="String" visibility="public" isStatic="true">
+          <Argument type="double" name="d"/>
+        </Method>
+        <Method name="get" returnType="Object" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="getBoolean" returnType="boolean" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="getDouble" returnType="double" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="getInt" returnType="int" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="getJSONArray" returnType="JSONArray" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="getJSONObject" returnType="JSONObject" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="getLong" returnType="long" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="getNames" returnType="String[]" visibility="public" isStatic="true">
+          <Argument type="JSONObject" name="jo"/>
+        </Method>
+        <Method name="getNames" returnType="String[]" visibility="public" isStatic="true">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="getString" returnType="String" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="has" returnType="boolean" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="increment" returnType="JSONObject" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="isNull" returnType="boolean" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="keys" returnType="Iterator" visibility="public"/>
+        <Method name="length" returnType="int" visibility="public"/>
+        <Method name="names" returnType="JSONArray" visibility="public"/>
+        <Method name="numberToString" returnType="String" visibility="public" isStatic="true">
+          <Argument type="Number" name="number"/>
+        </Method>
+        <Method name="opt" returnType="Object" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="optBoolean" returnType="boolean" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="optBoolean" returnType="boolean" visibility="public">
+          <Argument type="String" name="key"/>
+          <Argument type="boolean" name="defaultValue"/>
+        </Method>
+        <Method name="optDouble" returnType="double" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="optDouble" returnType="double" visibility="public">
+          <Argument type="String" name="key"/>
+          <Argument type="double" name="defaultValue"/>
+        </Method>
+        <Method name="optInt" returnType="int" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="optInt" returnType="int" visibility="public">
+          <Argument type="String" name="key"/>
+          <Argument type="int" name="defaultValue"/>
+        </Method>
+        <Method name="optJSONArray" returnType="JSONArray" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="optJSONObject" returnType="JSONObject" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="optLong" returnType="long" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="optLong" returnType="long" visibility="public">
+          <Argument type="String" name="key"/>
+          <Argument type="long" name="defaultValue"/>
+        </Method>
+        <Method name="optString" returnType="String" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="optString" returnType="String" visibility="public">
+          <Argument type="String" name="key"/>
+          <Argument type="String" name="defaultValue"/>
+        </Method>
+        <Method name="populateMap" returnType="void" visibility="private">
+          <Argument type="Object" name="bean"/>
+        </Method>
+        <Method name="put" returnType="JSONObject" visibility="public">
+          <Argument type="String" name="key"/>
+          <Argument type="boolean" name="value"/>
+        </Method>
+        <Method name="put" returnType="JSONObject" visibility="public">
+          <Argument type="String" name="key"/>
+          <Argument type="Collection" name="value"/>
+        </Method>
+        <Method name="put" returnType="JSONObject" visibility="public">
+          <Argument type="String" name="key"/>
+          <Argument type="double" name="value"/>
+        </Method>
+        <Method name="put" returnType="JSONObject" visibility="public">
+          <Argument type="String" name="key"/>
+          <Argument type="int" name="value"/>
+        </Method>
+        <Method name="put" returnType="JSONObject" visibility="public">
+          <Argument type="String" name="key"/>
+          <Argument type="long" name="value"/>
+        </Method>
+        <Method name="put" returnType="JSONObject" visibility="public">
+          <Argument type="String" name="key"/>
+          <Argument type="Map" name="value"/>
+        </Method>
+        <Method name="put" returnType="JSONObject" visibility="public">
+          <Argument type="String" name="key"/>
+          <Argument type="Object" name="value"/>
+        </Method>
+        <Method name="putOnce" returnType="JSONObject" visibility="public">
+          <Argument type="String" name="key"/>
+          <Argument type="Object" name="value"/>
+        </Method>
+        <Method name="putOpt" returnType="JSONObject" visibility="public">
+          <Argument type="String" name="key"/>
+          <Argument type="Object" name="value"/>
+        </Method>
+        <Method name="quote" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="string"/>
+        </Method>
+        <Method name="remove" returnType="Object" visibility="public">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="stringToValue" returnType="Object" visibility="public" isStatic="true">
+          <Argument type="String" name="string"/>
+        </Method>
+        <Method name="testValidity" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Object" name="o"/>
+        </Method>
+        <Method name="toJSONArray" returnType="JSONArray" visibility="public">
+          <Argument type="JSONArray" name="names"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public">
+          <Argument type="int" name="indentFactor"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="package">
+          <Argument type="int" name="indentFactor"/>
+          <Argument type="int" name="indent"/>
+        </Method>
+        <Method name="valueToString" returnType="String" visibility="public" isStatic="true">
+          <Argument type="Object" name="value"/>
+        </Method>
+        <Method name="valueToString" returnType="String" visibility="package" isStatic="true">
+          <Argument type="Object" name="value"/>
+          <Argument type="int" name="indentFactor"/>
+          <Argument type="int" name="indent"/>
+        </Method>
+        <Method name="wrap" returnType="Object" visibility="public" isStatic="true">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="write" returnType="Writer" visibility="public">
+          <Argument type="Writer" name="writer"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="JSONString" package="org.json" visibility="public" xPosition="620.0" yPosition="2820.0">
+      <Methods>
+        <Method name="toJSONString" returnType="String" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Class name="JSONStringer" package="org.json" visibility="public" xPosition="920.0" yPosition="2820.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="JSONTokener" package="org.json" visibility="public" xPosition="1220.0" yPosition="2820.0">
+      <Fields>
+        <Field name="character" type="int" visibility="private"/>
+        <Field name="eof" type="boolean" visibility="private"/>
+        <Field name="index" type="int" visibility="private"/>
+        <Field name="line" type="int" visibility="private"/>
+        <Field name="previous" type="char" visibility="private"/>
+        <Field name="reader" type="Reader" visibility="private"/>
+        <Field name="usePrevious" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Reader" name="reader"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="InputStream" name="inputStream"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="s"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="back" returnType="void" visibility="public"/>
+        <Method name="dehexchar" returnType="int" visibility="public" isStatic="true">
+          <Argument type="char" name="c"/>
+        </Method>
+        <Method name="end" returnType="boolean" visibility="public"/>
+        <Method name="more" returnType="boolean" visibility="public"/>
+        <Method name="next" returnType="char" visibility="public"/>
+        <Method name="next" returnType="char" visibility="public">
+          <Argument type="char" name="c"/>
+        </Method>
+        <Method name="next" returnType="String" visibility="public">
+          <Argument type="int" name="n"/>
+        </Method>
+        <Method name="nextClean" returnType="char" visibility="public"/>
+        <Method name="nextString" returnType="String" visibility="public">
+          <Argument type="char" name="quote"/>
+        </Method>
+        <Method name="nextTo" returnType="String" visibility="public">
+          <Argument type="char" name="delimiter"/>
+        </Method>
+        <Method name="nextTo" returnType="String" visibility="public">
+          <Argument type="String" name="delimiters"/>
+        </Method>
+        <Method name="nextValue" returnType="Object" visibility="public"/>
+        <Method name="skipTo" returnType="char" visibility="public">
+          <Argument type="char" name="to"/>
+        </Method>
+        <Method name="syntaxError" returnType="JSONException" visibility="public">
+          <Argument type="String" name="message"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="JSONWriter" package="org.json" visibility="public" xPosition="1520.0" yPosition="2820.0">
+      <Fields>
+        <Field name="maxdepth" type="int" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="comma" type="boolean" visibility="private"/>
+        <Field name="mode" type="char" visibility="protected"/>
+        <Field name="stack" type="JSONObject" visibility="private"/>
+        <Field name="top" type="int" visibility="private"/>
+        <Field name="writer" type="Writer" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Writer" name="w"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="append" returnType="JSONWriter" visibility="private">
+          <Argument type="String" name="string"/>
+        </Method>
+        <Method name="array" returnType="JSONWriter" visibility="public"/>
+        <Method name="end" returnType="JSONWriter" visibility="private">
+          <Argument type="char" name="mode"/>
+          <Argument type="char" name="c"/>
+        </Method>
+        <Method name="endArray" returnType="JSONWriter" visibility="public"/>
+        <Method name="endObject" returnType="JSONWriter" visibility="public"/>
+        <Method name="key" returnType="JSONWriter" visibility="public">
+          <Argument type="String" name="string"/>
+        </Method>
+        <Method name="object" returnType="JSONWriter" visibility="public"/>
+        <Method name="pop" returnType="void" visibility="private">
+          <Argument type="char" name="c"/>
+        </Method>
+        <Method name="push" returnType="void" visibility="private">
+          <Argument type="JSONObject" name="jo"/>
+        </Method>
+        <Method name="value" returnType="JSONWriter" visibility="public">
+          <Argument type="boolean" name="b"/>
+        </Method>
+        <Method name="value" returnType="JSONWriter" visibility="public">
+          <Argument type="double" name="d"/>
+        </Method>
+        <Method name="value" returnType="JSONWriter" visibility="public">
+          <Argument type="long" name="l"/>
+        </Method>
+        <Method name="value" returnType="JSONWriter" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="XML" package="org.json" visibility="public" xPosition="1820.0" yPosition="2820.0">
+      <Fields>
+        <Field name="AMP" type="Character" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="APOS" type="Character" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="BANG" type="Character" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="EQ" type="Character" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GT" type="Character" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="LT" type="Character" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="QUEST" type="Character" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="QUOT" type="Character" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="SLASH" type="Character" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="escape" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="string"/>
+        </Method>
+        <Method name="noSpace" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="string"/>
+        </Method>
+        <Method name="parse" returnType="boolean" visibility="private" isStatic="true">
+          <Argument type="XMLTokener" name="x"/>
+          <Argument type="JSONObject" name="context"/>
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="stringToValue" returnType="Object" visibility="public" isStatic="true">
+          <Argument type="String" name="string"/>
+        </Method>
+        <Method name="toJSONObject" returnType="JSONObject" visibility="public" isStatic="true">
+          <Argument type="String" name="string"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public" isStatic="true">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public" isStatic="true">
+          <Argument type="Object" name="object"/>
+          <Argument type="String" name="tagName"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="XMLTokener" package="org.json" visibility="public" xPosition="2120.0" yPosition="2820.0">
+      <Fields>
+        <Field name="entity" type="java.util.HashMap" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="s"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="nextCDATA" returnType="String" visibility="public"/>
+        <Method name="nextContent" returnType="Object" visibility="public"/>
+        <Method name="nextEntity" returnType="Object" visibility="public">
+          <Argument type="char" name="ampersand"/>
+        </Method>
+        <Method name="nextMeta" returnType="Object" visibility="public"/>
+        <Method name="nextToken" returnType="Object" visibility="public"/>
+        <Method name="skipPast" returnType="boolean" visibility="public">
+          <Argument type="String" name="to"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="game.Escudo.EscudoForte" target="game.Escudo.Escudo"/>
+    <HasRelation name="jogador" source="game.RPGGame" target="game.Personagem.Jogador" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.json.JSONML" target="org.json.JSONArray" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="game.Personagem.Sacerdote" target="game.Personagem.Jogador"/>
+    <UseRelation source="game.Game" target="game.Personagem.Jogador" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="game.Personagem.Mago" target="game.Personagem.Jogador"/>
+    <UseRelation source="game.Helpers.Json" target="org.json.JSONObject" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.RPGGame" target="game.Inimigo.Robo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="robo" source="game.Inimigo.RoboEstado" target="game.Inimigo.Robo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="vida" source="game.Personagem.Jogador" target="game.States.Estado" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.json.XML" target="org.json.JSONObject" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="game.Inimigo.RoboForte" target="game.Inimigo.RoboEstado"/>
+    <HasRelation name="superPoder" source="game.Ataque.Poder" target="game.Ataque.Ataque" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.Personagem.Jogador" target="game.Helpers.Image" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="org.json.HTTPTokener" target="org.json.JSONTokener"/>
+    <IsRelation name="is" source="game.States.EstadoMorto" target="game.States.Estado"/>
+    <UseRelation source="game.Personagem.Jogador" target="game.Movimento.Movimento" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="game.Ataque.AtaqueFraco" target="game.Ataque.Ataque"/>
+    <UseRelation source="game.Personagem.Jogador" target="game.Escudo.Escudo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="game.Ataque.Encantamento" target="game.Ataque.Poder"/>
+    <HasRelation name="movimento" source="game.Inimigo.Robo" target="game.Movimento.Movimento" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="game.Personagem.Paladino" target="game.Personagem.Jogador"/>
+    <IsRelation name="is" source="game.Inimigo.RoboNormal" target="game.Inimigo.RoboEstado"/>
+    <UseRelation source="org.json.JSONArray" target="org.json.JSONObject" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.Utilities" target="org.json.JSONObject" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="posicao" source="game.Inimigo.Robo" target="game.Helpers.Posicao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.json.JSONWriter" target="org.json.JSONObject" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="game.States.EstadoPerigo" target="game.States.Estado"/>
+    <IsRelation name="is" source="game.Escudo.EscudoFraco" target="game.Escudo.Escudo"/>
+    <UseRelation source="org.json.JSONTokener" target="org.json.JSONException" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.RPGGame" target="game.Game" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="org.json.JSONStringer" target="org.json.JSONWriter"/>
+    <UseRelation source="org.json.JSONML" target="org.json.XMLTokener" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="next" source="game.Escudo.Escudo" target="game.Escudo.Escudo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.json.JSONML" target="org.json.JSONObject" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.json.CDL" target="org.json.JSONTokener" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="jogador" source="game.States.Estado" target="game.Personagem.Jogador" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="game.Ataque.AtaqueForte" target="game.Ataque.Ataque"/>
+    <HasRelation name="vida" source="game.Inimigo.Robo" target="game.Inimigo.RoboEstado" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="game.Ataque.GolpeSagrado" target="game.Ataque.Poder"/>
+    <UseRelation source="game.Personagem.Jogador" target="game.States.Estado" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.json.XML" target="org.json.XMLTokener" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.Personagem.SimplePersonagemFactory" target="game.Personagem.Sacerdote" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.Personagem.SimplePersonagemFactory" target="game.Personagem.Jogador" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.Escudo.Escudo" target="game.Escudo.Escudo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="escudo" source="game.Personagem.Jogador" target="game.Escudo.Escudo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.Inimigo.Robo" target="game.Ataque.Ataque" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ataque" source="game.Inimigo.Robo" target="game.Ataque.Ataque" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="game.Ataque.Special" target="game.Ataque.Poder"/>
+    <IsRelation name="is" source="org.json.XMLTokener" target="org.json.JSONTokener"/>
+    <UseRelation source="org.json.JSONWriter" target="org.json.JSONWriter" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.Personagem.SimplePersonagemFactory" target="game.Personagem.Mago" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="game.Inimigo.RoboPerigo" target="game.Inimigo.RoboEstado"/>
+    <UseRelation source="org.json.CDL" target="org.json.JSONArray" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="game.Inimigo.RoboMorto" target="game.Inimigo.RoboEstado"/>
+    <UseRelation source="game.Game" target="game.Game" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="game.Personagem.Assassino" target="game.Personagem.Jogador"/>
+    <UseRelation source="org.json.Cookie" target="org.json.JSONObject" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.Ataque.Poder" target="game.Helpers.Image" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.Escudo.Escudo" target="game.Helpers.Image" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="game.States.EstadoNormal" target="game.States.Estado"/>
+    <IsRelation name="is" source="game.Personagem.Druida" target="game.Personagem.Jogador"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="game.Movimento.MovimentoRapido" target="game.Movimento.Movimento"/>
+    <IsRelation name="is" source="game.Ataque.MilLaminasCortantes" target="game.Ataque.Poder"/>
+    <UseRelation source="game.Personagem.SimplePersonagemFactory" target="game.Personagem.Assassino" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.Inimigo.Robo" target="game.Helpers.Image" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="game.States.EstadoForte" target="game.States.Estado"/>
+    <UseRelation source="org.json.HTTP" target="org.json.JSONObject" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="posicao" source="game.Personagem.Jogador" target="game.Helpers.Posicao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.Inimigo.Robo" target="game.Movimento.Movimento" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="robo" source="game.States.Estado" target="game.Inimigo.Robo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="game.Ataque.ForcaAnimal" target="game.Ataque.Poder"/>
+    <IsRelation name="is" source="game.Ataque.DisparoMagico" target="game.Ataque.Poder"/>
+    <IsRelation name="is" source="game.Ataque.AtaqueMedio" target="game.Ataque.Ataque"/>
+    <HasRelation name="movimento" source="game.Personagem.Jogador" target="game.Movimento.Movimento" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ataque" source="game.Personagem.Jogador" target="game.Ataque.Ataque" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.json.JSONArray" target="org.json.JSONArray" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="game.Escudo.EscudoMedio" target="game.Escudo.Escudo"/>
+    <UseRelation source="game.Personagem.Jogador" target="game.Ataque.Ataque" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="game.RPGGame" target="game.Game"/>
+    <UseRelation source="org.json.JSONObject" target="org.json.JSONArray" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="game.Movimento.MovimentoMedio" target="game.Movimento.Movimento"/>
+    <IsRelation name="is" source="game.Ataque.Poder" target="game.Ataque.Ataque"/>
+    <UseRelation source="game.Inimigo.RoboEstado" target="game.Inimigo.Robo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="escudos" source="game.RPGGame" target="game.Escudo.Escudo" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Escudo&gt;"/>
+    <UseRelation source="game.RPGGame" target="game.Personagem.Jogador" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.States.Estado" target="game.Personagem.Jogador" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.json.JSONObject" target="org.json.JSONObject" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.Inimigo.Robo" target="game.States.Estado" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.Personagem.SimplePersonagemFactory" target="game.Personagem.Druida" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.States.Estado" target="game.Inimigo.Robo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.Personagem.SimplePersonagemFactory" target="game.Personagem.Paladino" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="stack" source="org.json.JSONWriter" target="org.json.JSONObject" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="robos" source="game.RPGGame" target="game.Inimigo.Robo" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Robo&gt;"/>
+    <UseRelation source="org.json.CookieList" target="org.json.JSONObject" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="game.Movimento.MovimentoDevagar" target="game.Movimento.Movimento"/>
+    <UseRelation source="game.Ataque.Poder" target="game.Ataque.Ataque" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.Personagem.Jogador" target="game.Inimigo.Robo" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
